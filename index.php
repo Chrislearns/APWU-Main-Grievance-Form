@@ -1,16 +1,14 @@
 <?php
   session_start();
-  echo session_id();
-  print_r($_SESSION);
+  echo session_id()."<br>";
+  print session_status()."<br>";
+  echo session_save_path()."<br>";
   if (isset($_SESSION['email'])) {
-
+    echo $_SESSION['name'];
    ?>
-   <script> function updateUserName(username) {
-     let welcome = document.getElementById('welcome-user');
-     welcome.innerHTML = 'Welcome, '+ username + '.' ; }
-   </script>
+   <h3>You're ready to file Your grievance!</h3>
    <?php
-echo $_SESSION['name'];
+
    } else {
      ?>
     <h3> Not logged in HTML and code here</h3>
