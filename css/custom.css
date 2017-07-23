@@ -37,7 +37,7 @@
   width: 100%;
 }
 
-.sticky-footer small {
+footer small {
   margin-left: 50px;
 }
 
@@ -68,7 +68,8 @@
 }
 
 .login input,
-.registration-form .submit-button {
+.registration-form .submit-button,
+.form-container .submit-button {
   display: block;
   width: 80% !important;
   margin: 15px auto !important;
@@ -83,6 +84,26 @@ form div,
 .button-container {
   width: 80%;
   margin: auto;
+}
+
+.form-container {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  border: 1px solid rgba(112, 128, 144, .2);
+  margin-top: 30px;
+  padding-bottom: 50px;
+  margin-bottom: 80px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.apwu-logo {
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  z-index: -5 !important;
+  opacity: .3;
 }
 
 .button-container button {

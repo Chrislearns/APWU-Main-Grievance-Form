@@ -24,10 +24,12 @@
            <span id="dividing-border"><span>
         </div>
         <div class="six columns" style="padding-top: 5%;">
-          <h3 class="center-text">Take care!</h3>
-          <p class="center-text">You have successfully logged out.</p>
-          <br>
-          <a class="button u-full-width" href="login.php"><i class="fa fa-sign-in fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Log back in</a>
+            <div class="button-container">
+            <h3 class="center-text">Take care!</h3>
+            <p class="center-text">You have successfully logged out.</p>
+            <br>
+            <a class="button u-full-width" href="login.php"><i class="fa fa-sign-in fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Log back in</a>
+          </div>
         </div>
       </div>
     </div>
