@@ -1,18 +1,7 @@
 <?php
 session_start();
-print $_SESSION;
-echo session_id();
-  if (isset($_SESSION['email'])) {
-    echo $_SESSION['name'];
-   ?>
-   <h3>You're ready to file Your grievance!</h3>
-   <?php
-ob_flush();
-   } else {
-     ?>
-    <h3> Not logged in HTML and code here</h3>
-     <?php
-   }
+print $_SESSION['name'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +12,11 @@ ob_flush();
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/skeleton/2.0.4/css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
+    "<script> function updateUserName(username) {
+        let welcome = document.getElementById('welcome-user');
+        welcome.innerHTML = 'Welcome, '+ username + '.' ; }
 
+      </script>
 
   </head>
   <body>
@@ -39,11 +32,23 @@ ob_flush();
         </div>
         <div class="six columns" style="padding-top: 3%;">
           <div class="button-container">
-            <h3 class="center-text" id="welcome-user">Welcome , <?php echo $_SESSION['name']?></h3>
-            <button class="u-full-width"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Update Account Information</button>
-            <button class="u-full-width"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View/Edit Submitted Grievances</button>
-            <button class="u-full-width"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; File New Grievance</button>
-            <button class="u-full-width"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Logout</button>
+            <h5 class="center-text" id="welcome-user"></h5>
+          <a href="newUpdateAccountInfo.html">
+            <button class="u-full-width"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
+            </i>&nbsp;&nbsp; Update Account Information</button>
+          </a>
+          <a href="grievance.php">
+            <button class="u-full-width"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true">
+            </i>&nbsp;&nbsp; View/Edit Submitted Grievances</button>
+          </a>
+          <a href = "grievancePage.html">
+            <button class="u-full-width"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true">
+            </i>&nbsp;&nbsp; File New Grievance</button>
+          </a>
+          <a href="logout.php">
+            <button class="u-full-width"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true">
+            </i>&nbsp;&nbsp; Logout</button>
+          </a>
           </div>
         </div>
       </div>

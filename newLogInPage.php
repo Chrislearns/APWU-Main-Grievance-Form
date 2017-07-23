@@ -1,7 +1,6 @@
 <?php
   session_start();
-  echo session_id()."<br>";
-
+print $_SESSION;
 ?>
 <!doctype html>
 <html>
