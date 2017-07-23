@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("grievance.php");
 $error = "<h6 class='move-aside'>Invalid Log-in creditials<h6>";
 $email = $_POST['user_email'];

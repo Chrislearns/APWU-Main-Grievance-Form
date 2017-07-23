@@ -1,8 +1,7 @@
 <?php
   session_start();
-  echo session_save_path();
   echo session_id()."<br>";
-  print session_status();
+
 ?>
 <!doctype html>
 <html>
@@ -38,14 +37,15 @@
     <div class="one-half column">
       <form class="login" method="post" action="inc.phpLogic/validatelogin.php">
         <input type="text" placeholder="email" name = "user_email" class="center" id="login">
-          <?php
-                    if(isset($_SESSION["error"])){
-                        $error = $_SESSION["error"];
-                        echo "<span>$error</span>";
-                    }
-                ?>
+
         <input type="password" placeholder="password" name="password" class="center">
         <button class="center">LOGIN</button>
+        <?php
+                  if(isset($_SESSION["error"])){
+                      $error = $_SESSION["error"];
+                      echo "<span class= error-message>$error</span>";
+                  }
+              ?>
         <div>
           <span class="pull-left">
             <small>Do not have an account?</small>

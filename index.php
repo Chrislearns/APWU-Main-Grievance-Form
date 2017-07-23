@@ -1,14 +1,13 @@
 <?php
-  session_start();
-  echo session_id()."<br>";
-  print session_status()."<br>";
-  echo session_save_path()."<br>";
+session_start();
+print $_SESSION;
+echo session_id();
   if (isset($_SESSION['email'])) {
     echo $_SESSION['name'];
    ?>
    <h3>You're ready to file Your grievance!</h3>
    <?php
-
+ob_flush();
    } else {
      ?>
     <h3> Not logged in HTML and code here</h3>
