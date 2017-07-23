@@ -1,9 +1,23 @@
 <?php
-// UI - Administrative Panel for all users
-// If super admin, show an extra button for viewing/editing all grievances 
-?>
+  session_start();
+  echo session_id();
+  print_r($_SESSION);
+  if (isset($_SESSION['email'])) {
 
-<!DOCTYPE <!DOCTYPE html>
+   ?>
+   <script> function updateUserName(username) {
+     let welcome = document.getElementById('welcome-user');
+     welcome.innerHTML = 'Welcome, '+ username + '.' ; }
+   </script>
+   <?php
+echo $_SESSION['name'];
+   } else {
+     ?>
+    <h3> Not logged in HTML and code here</h3>
+     <?php
+   }
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <script src="https://use.fontawesome.com/1c43e5f606.js"></script>
@@ -12,6 +26,8 @@
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/skeleton/2.0.4/css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
+
+
   </head>
   <body>
     <div class="container wrapper-before-sf">
@@ -26,7 +42,7 @@
         </div>
         <div class="six columns" style="padding-top: 3%;">
           <div class="button-container">
-            <h3 class="center-text">Welcome, Chris.</h3>
+            <h3 class="center-text" id="welcome-user">Welcome , <?php echo $_SESSION['name']?></h3>
             <button class="u-full-width"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Update Account Information</button>
             <button class="u-full-width"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View/Edit Submitted Grievances</button>
             <button class="u-full-width"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; File New Grievance</button>
@@ -35,7 +51,7 @@
         </div>
       </div>
     </div>
-    
+
     <footer class="sticky-footer">
       <small>&copy; 2017 American Postal Workers Union</a></small>
       <div class="social-box">
@@ -53,23 +69,23 @@
         </a>
       </div>
     </footer>
-    
+
     <div class="overlay"></div>
     <div class="registration-form">
-    
+
     <!--START OF FORM - tabbed left for spacing-->
     <form id="sign-up-form" method="#" action="#">
       <h3 class="center-text">APWU Grievance Reporting System
         <br>Registration Form - Create Your Profile</h3><br>
-      <div class="row"> <!--FORM ROW--> 
+      <div class="row"> <!--FORM ROW-->
         <div class="twelve columns">
           <label for="fullName">Full Name</label>
           <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128">
         </div>
         <div class="error" id = "full-name-error">Full Name Required</div>
       </div> <!--END ROW-->
-    
-      <div class="row"> <!--FORM ROW--> 
+
+      <div class="row"> <!--FORM ROW-->
         <div class="six columns">
           <label for="email">Email</label>
           <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120">
@@ -81,8 +97,8 @@
           <div class="error" id = "email2-error">Please verify email address</div>
         </div>
       </div> <!--END ROW-->
-    
-      <div class="row"> <!--FORM ROW--> 
+
+      <div class="row"> <!--FORM ROW-->
         <div class="six columns">
           <label for="password">Password</label>
           <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">

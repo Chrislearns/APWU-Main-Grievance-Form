@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  echo session_id();
+?>
 <!doctype html>
 <html>
 
@@ -32,9 +36,9 @@
       <span id="dividing-border"><span>
     </div>
     <div class="one-half column">
-      <form class="login" method="post" action="">
-        <input type="text" placeholder="username" class="center">
-        <input type="password" placeholder="password" class="center">
+      <form class="login" method="post" action="../inc.phpLogic/validatelogin.php">
+        <input type="text" placeholder="email" name = "user_email" class="center" id="login">
+        <input type="password" placeholder="password" name="password" class="center">
         <button class="center">LOGIN</button>
         <div>
           <span class="pull-left">
