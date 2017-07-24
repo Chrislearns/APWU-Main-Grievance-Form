@@ -1,7 +1,13 @@
 <?php
+  if(!isset($_SESSION['name'])){
+    header("location:newLogInPage.php")
+}
+ else{
 session_start();
-print $_SESSION['name'];
-
+echo $_SESSION['name'];
+}
+echo session_id();
+print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>

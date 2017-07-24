@@ -8,7 +8,7 @@ echo $_SESSION['name'];
 }
 echo session_id();
 print_r($_SESSION);
-phpinfo();
+
 ?>
 <!doctype html>
 <html>
