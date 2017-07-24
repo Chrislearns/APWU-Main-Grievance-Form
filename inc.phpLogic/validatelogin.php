@@ -15,7 +15,7 @@ $stmt->bindParam(':email', $email);
 $stmt->bindParam(':password', $password);
 $stmt->execute();
 $count = $stmt->rowCount();
-
+//verify if their is one row 
 if($count == 1){
   $_SESSION['email'] = $email;
   $_SESSION['password'] = $password;
