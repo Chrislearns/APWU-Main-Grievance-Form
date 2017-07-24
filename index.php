@@ -1,6 +1,6 @@
 <?php
   if(!isset($_SESSION['name'])){
-    header("location:newLogInPage.php")
+    header("location:newLogInPage.php");
 }
  else{
 session_start();

@@ -1,6 +1,14 @@
 <?php
-  session_start();
+if(!isset($_SESSION['name'])){
+
+}
+ else{
+session_start();
+header("location:index.php");
+}
+echo session_id();
 print_r($_SESSION);
+
 ?>
 <!doctype html>
 <html>
