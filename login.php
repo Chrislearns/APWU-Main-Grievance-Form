@@ -15,7 +15,7 @@
       </div>-->
       <div class="row" style="padding-top: 18%">
          <div class="six columns border" style="position: relative;">
-            <img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="center">
+            <img src="cs_logo_apwu.png" alt="APWU" class="center">
             <h3 class="center-text">APWU Grievance<br> Reporting System</h3>
            <span id="dividing-border"><span>
         </div>
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    
+
     <footer class="sticky-footer">
       <small>&copy; 2017 American Postal Workers Union</a></small>
       <div class="social-box">
@@ -54,23 +54,23 @@
         </a>
       </div>
     </footer>
-    
+
     <div class="overlay"></div>
     <div class="registration-form">
-    
+
     <!--START OF FORM - tabbed left for spacing-->
     <form id="sign-up-form" method="#" action="#">
       <h3 class="center-text">APWU Grievance Reporting System
         <br>Registration Form - Create Your Profile</h3><br>
-      <div class="row"> <!--FORM ROW--> 
+      <div class="row"> <!--FORM ROW-->
         <div class="twelve columns">
           <label for="fullName">Full Name</label>
           <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128">
         </div>
         <div class="error" id = "full-name-error">Full Name Required</div>
       </div> <!--END ROW-->
-    
-      <div class="row"> <!--FORM ROW--> 
+
+      <div class="row"> <!--FORM ROW-->
         <div class="six columns">
           <label for="email">Email</label>
           <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120">
@@ -82,8 +82,8 @@
           <div class="error" id = "email2-error">Please verify email address</div>
         </div>
       </div> <!--END ROW-->
-    
-      <div class="row"> <!--FORM ROW--> 
+
+      <div class="row"> <!--FORM ROW-->
         <div class="six columns">
           <label for="password">Password</label>
           <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">

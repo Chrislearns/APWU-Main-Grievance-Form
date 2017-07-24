@@ -19,7 +19,7 @@
       </div>-->
       <div class="row" style="padding-top: 18%">
          <div class="six columns border" style="position: relative;">
-            <img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="center">
+            <img src="cs_logo_apwu.png" alt="APWU" class="center u-full-width">
             <h3 class="center-text">APWU Grievance<br> Reporting System</h3>
            <span id="dividing-border"><span>
         </div>

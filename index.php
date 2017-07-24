@@ -26,7 +26,7 @@ print $_SESSION['name'];
       </div>-->
       <div class="row" style="padding-top: 18%">
          <div class="six columns border" style="position: relative;">
-            <img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="center">
+            <img src="cs_logo_apwu.png" alt="APWU" class="center u-full-width">
             <h3 class="center-text">APWU Grievance<br> Reporting System</h3>
            <span id="dividing-border"><span>
         </div>
@@ -34,19 +34,19 @@ print $_SESSION['name'];
           <div class="button-container">
             <h5 class="center-text" id="welcome-user"></h5>
           <a href="newUpdateAccountInfo.html">
-            <button class="u-full-width"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
+            <button class="b_respon"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; Update Account Information</button>
           </a>
           <a href="grievance.php">
-            <button class="u-full-width"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true">
+            <button class="b_respon"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; View/Edit Submitted Grievances</button>
           </a>
-          <a href = "grievancePage.html">
-            <button class="u-full-width"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true">
+          <a href = "grievancePage.php">
+            <button class="b_respon"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; File New Grievance</button>
           </a>
           <a href="logout.php">
-            <button class="u-full-width"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true">
+            <button class="b_respon"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; Logout</button>
           </a>
           </div>

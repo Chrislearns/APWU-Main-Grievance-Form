@@ -4,7 +4,10 @@
   margin: 0;
   padding: 0;
 }
-
+/* fixes responsiveness issues with u-full-width*/
+.b_respon {
+width: 310px !important;
+}
 
 /* universal center text utility class */
 
