@@ -1,11 +1,7 @@
 <?php
-if(!isset($_SESSION['name'])){
-
-}
- else{
 session_start();
-header("location:index.php");
-}
+
+var_dump($_SESSION);
 ?>
 <!doctype html>
 <html>
@@ -18,8 +14,7 @@ header("location:index.php");
   <title>APWU Grievances</title>
   <script src="https://use.fontawesome.com/51aa15acbd.js"></script>
   <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="inc.javascript/newLogIn.js">
-  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
@@ -27,7 +22,7 @@ header("location:index.php");
   <link rel="stylesheet" href="inc.styling/newLogIn.css">
 
 </head>
-
+<body>
 <div class="container wrapper-before-sf">
   <!--<div class="row" style="margin-top: 10%">
     <h1 class="center-text">APWU Grievance Reporting System</h1>
@@ -39,17 +34,21 @@ header("location:index.php");
       <span id="dividing-border"><span>
     </div>
     <div class="one-half column">
-      <form class="login" method="post" action="inc.phpLogic/validatelogin.php">
-        <input type="text" placeholder="email" name = "user_email" class="center" id="login">
 
+      <form class="login" method="post" action="inc.phpLogic/validatelogin.php">
+
+        <input type="text" placeholder="email" name = "user_email" class="center" id="login">
+        <?php
+               if(isset($_SESSION["error"])) {
+               $_SESSION["error"] = $error;
+              echo "hahaha mere mortal!!";
+              echo $error;
+    ;
+                       }
+         ?>
         <input type="password" placeholder="password" name="password" class="center">
         <button class="center">LOGIN</button>
-        <?php
-                  if(isset($_SESSION["error"])){
-                      $error = $_SESSION["error"];
-                      echo "<span class= error-message>$error</span>";
-                  }
-              ?>
+
         <div>
           <span class="pull-left">
             <small>Do not have an account?</small>
@@ -238,6 +237,11 @@ header("location:index.php");
   </form>
   <!--END OF FORM - tabbed left for spacing-->
 </div>
+<script type="text/javascript" src="inc.javascript/newLogIn.js">
+</script>
+
+</body>
+</html>
 <?php
     unset($_SESSION["error"]);
 ?>

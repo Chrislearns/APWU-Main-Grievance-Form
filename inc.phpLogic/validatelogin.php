@@ -3,9 +3,8 @@
 session_start();
 //include DB connection
 include("grievance.php");
-//set error message
-$error = "<h6 class='move-aside'>Invalid Log-in creditials<h6>";
 
+//Set POST variables
 $email = $_POST['user_email'];
 $password = $_POST['password'];
 //Start of query
@@ -27,7 +26,7 @@ if($count == 1){
 }
 
 else{
-   $_SESSION["error"] = $error;
+   $_SESSION["error"] = "Invalid Log-in creditials";
   header('location:../newLogInPage.php');
 exit;
 }
