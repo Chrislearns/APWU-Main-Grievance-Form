@@ -5,8 +5,8 @@ session_start();
 include("grievance.php");
 
 //Set POST variables
-$email = $_POST['user_email'];
-$password = $_POST['password'];
+$email = htmlentities($_POST['user_email'],ENT_QUOTES, "UTF-8");
+$password = htmlentities($_POST['password'],ENT_QUOTES, "UTF-8");
 //Start of query
 $query = "select * from userAccounts where emailAddress = :email and PASSWORD = :password";
 $stmt = $conn->prepare($query);
@@ -22,11 +22,14 @@ if($count == 1){
   $_SESSION['name'] = $results['fullName'];
   //Send user to Options Menu
   header("location:../index.php");
+
   exit;
+  $conn = null;
 }
 
 else{
    $_SESSION["error"] = "Invalid Log-in creditials";
   header('location:../newLogInPage.php');
 exit;
+$conn = null;
 }

@@ -1,14 +1,13 @@
 <?php
+session_start();
   if(empty($_SESSION['name'])){
     header("location:newLogInPage.php");
 }
  else{
 session_start();
 echo $_SESSION['name'];
-$_SESSION['name']; = $name;
+$name = $_SESSION['name'];
 }
-echo session_id();
-print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,11 +18,6 @@ print_r($_SESSION);
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/skeleton/2.0.4/css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
-    "<script> function updateUserName(username) {
-        let welcome = document.getElementById('welcome-user');
-        welcome.innerHTML = 'Welcome, '+ username + '.' ; }
-
-      </script>
 
   </head>
   <body>
@@ -39,7 +33,7 @@ print_r($_SESSION);
         </div>
         <div class="six columns" style="padding-top: 3%;">
           <div class="button-container">
-            <h5 class="center-text" id="welcome-user"><?php $name; ?></h5>
+          <?php echo "<h5>Welcome, $name</h5>"; ?>
           <a href="newUpdateAccountInfo.html">
             <button class="b_respon"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; Update Account Information</button>

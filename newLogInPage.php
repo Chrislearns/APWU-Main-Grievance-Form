@@ -1,10 +1,11 @@
 <?php
-if (isset($_SESSION['email']) && isset($_SESSION['password']) && isset($_SESSION['name'])) {
 session_start();
+if (isset($_SESSION["name"])) {
 header("location:index.php");
 }
 else{
   session_start();
+  var_dump($_SESSION);
 
 }
 ?>
