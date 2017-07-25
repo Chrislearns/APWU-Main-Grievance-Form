@@ -1,7 +1,12 @@
 <?php
-
+session_start();
+session_unset();
+session_destroy();
+session_write_close();
+setcookie(session_name(),'',0,'/');
+session_regenerate_id(true);
 ?>
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <script src="https://use.fontawesome.com/1c43e5f606.js"></script>
