@@ -4,7 +4,6 @@ session_start();
     header("location:newLogInPage.php");
 }
  else{
-session_start();
 echo $_SESSION['name'];
 $name = $_SESSION['name'];
 }
