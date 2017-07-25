@@ -28,5 +28,5 @@ if($count == 1){
 else{
    $_SESSION["error"] = "Invalid Log-in creditials";
   header('location:../newLogInPage.php');
-
+exit;
 }
