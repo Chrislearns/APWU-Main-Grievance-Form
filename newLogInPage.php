@@ -1,7 +1,12 @@
 <?php
+if (isset($_SESSION['email']) && isset($_SESSION['password']) && isset($_SESSION['name'])) {
 session_start();
+header("location:index.php");
+}
+else{
+  session_start();
 
-var_dump($_SESSION);
+}
 ?>
 <!doctype html>
 <html>
@@ -40,10 +45,8 @@ var_dump($_SESSION);
         <input type="text" placeholder="email" name = "user_email" class="center" id="login">
         <?php
                if(isset($_SESSION["error"])) {
-               $_SESSION["error"] = $error;
-              echo "hahaha mere mortal!!";
-              echo $error;
-    ;
+              $error = $_SESSION["error"];
+              echo "<h6>$error</h6>";
                        }
          ?>
         <input type="password" placeholder="password" name="password" class="center">

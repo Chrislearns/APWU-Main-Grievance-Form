@@ -1,15 +1,14 @@
 <?php
-if(isset($_SESSION['name'])){
+if(isset($_SESSION['email']) && isset($_SESSION['password']) && isset($_SESSION['name'])){
   session_start();
   echo $_SESSION['name'];
 }
  else{
-
+session_start();
+$_SESSION['error'] = "Please Log-in";
 header("location:newLogInPage.php");
-}
-echo session_id();
-print_r($_SESSION);
 
+}
 ?>
 <!doctype html>
 <html>
