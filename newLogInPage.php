@@ -1,7 +1,12 @@
 <?php
 session_start();
-if (isset($_SESSION["name"])) {
+$name = $_SESSION["name"];
+echo $name;
+if (isset($name)) {
 header("location:index.php");
+}
+else{
+  echo "Haha mere mortal!";
 }
 ?>
 <!doctype html>

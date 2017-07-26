@@ -33,9 +33,9 @@ header("location:newLogInPage.php");
 
 </head>
 
-<button class="button u-pull-right"><a href= "logout.php">Log out</a></button>
-<button class="button u-pull-right"><a href="newUpdateAccountInfo.html">Update Account Info</a></button>
-<button class="button u-pull-right"><a href="index.php">Menu</a></button>
+<a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
+<a href="newUpdateAccountInfo.html"><button class="button u-pull-right">Update Account Info</button></a>
+<a href="index.php"><button class="button u-pull-right">Menu</button></a>
 
 
 <div class="container u-cf">
