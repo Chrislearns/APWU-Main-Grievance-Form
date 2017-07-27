@@ -1,6 +1,14 @@
 <?php
 //Start Session so variables can persist
 session_start();
+$ip = $_SESSION['ip'];
+//check if ip address has changed for security
+if($ip != $_SERVER['REMOTE_ADDR']){
+  session_unset();
+  session_destroy();
+  $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+  header("location:newLogInPage.php");
+}
 //include DB connection
 include("grievance.php");
 

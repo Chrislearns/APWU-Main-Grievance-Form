@@ -1,12 +1,20 @@
 <?php
 session_start();
-  if(empty($_SESSION['name'])){
+$ip = $_SESSION['ip'];
+$name = $_SESSION['name'];
+function destroySession(){
+  session_unset();
+  session_destroy();
+}
+  if($ip != $_SERVER['REMOTE_ADDR']){
+    destroySession();
+    $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
     header("location:newLogInPage.php");
 }
- else{
-echo $_SESSION['name'];
-$name = $_SESSION['name'];
-}
+  if(empty($_SESSION['name'])){
+    $_SESSION['error'] = "<h4>Please Log-in</h4>";
+    header("location:newLogInPage.php");
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +47,7 @@ $name = $_SESSION['name'];
           </a>
           <a href="grievance.php">
             <button class="b_respon"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true">
-            </i>&nbsp;&nbsp; View/Edit Submitted Grievances</button>
+            </i>&nbsp;&nbsp; Review Submitted Grievances</button>
           </a>
           <a href = "grievancePage.php">
             <button class="b_respon"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true">
@@ -71,51 +79,6 @@ $name = $_SESSION['name'];
         </a>
       </div>
     </footer>
-
-    <div class="overlay"></div>
-    <div class="registration-form">
-
-    <!--START OF FORM - tabbed left for spacing-->
-    <form id="sign-up-form" method="#" action="#">
-      <h3 class="center-text">APWU Grievance Reporting System
-        <br>Registration Form - Create Your Profile</h3><br>
-      <div class="row"> <!--FORM ROW-->
-        <div class="twelve columns">
-          <label for="fullName">Full Name</label>
-          <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128">
-        </div>
-        <div class="error" id = "full-name-error">Full Name Required</div>
-      </div> <!--END ROW-->
-
-      <div class="row"> <!--FORM ROW-->
-        <div class="six columns">
-          <label for="email">Email</label>
-          <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120">
-          <div class="error" id = "email1-error">Please enter a email address.</div>
-        </div>
-        <div class="six columns">
-          <label for="email-confirm">Reenter Email</label>
-          <input id="email-address2" type="email" name="email2" class="u-full-width" maxlength="120">
-          <div class="error" id = "email2-error">Please verify email address</div>
-        </div>
-      </div> <!--END ROW-->
-
-      <div class="row"> <!--FORM ROW-->
-        <div class="six columns">
-          <label for="password">Password</label>
-          <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">
-          <div class="error" id = "password1-error">Please create a password.</div>
-        </div>
-        <div class="six columns">
-          <label for="email-password">Reenter Password</label>
-          <input id="passwordField2" type="password" name="password2" class="u-full-width" maxlength="120">
-          <div class="error" id = "password2-error">Please verify password</div>
-        </div>
-      </div> <!--END ROW-->
-      <input id="submit" type="submit" value="Register Account" class="submit-button">
-    </form>
-    <!--END OF FORM - tabbed left for spacing-->
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
   </body>

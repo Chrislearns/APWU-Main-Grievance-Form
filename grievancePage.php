@@ -1,14 +1,11 @@
 <?php
   session_start();
-if(isset($_SESSION['email']) && isset($_SESSION['password']) && isset($_SESSION['name'])){
-  echo $_SESSION['name'];
-}
- else{
-session_start();
-$_SESSION['error'] = "Please Log-in";
-header("location:newLogInPage.php");
+  $ip = $_SESSION['ip'];
 
-}
+if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
+  $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+      header("location:newLogInPage.php");
+  }
 ?>
 <!doctype html>
 <html>
