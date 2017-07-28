@@ -14,7 +14,7 @@
 
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../inc.styling/newLogIn.css">
+    <link rel="stylesheet" href="inc.styling/newLogIn.css">
 
 </head>
 <a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
@@ -28,13 +28,8 @@
             <h3 class="center-text">Update account info</h3>
         </div>
     </div>
-    <form id="update-account-info-form" method="post" action="../inc.phplogic/updateInfo.php">
+    <form id="update-account-info-form" method="post" action="inc.phpLogic/updateInfo.php">
 
-
-        <label> Full Name:</label>
-        <input id="full-name" type="text" name="full-name" size="28" maxlength="128">
-
-        <div class="error" id="full-name-error">Full Name Required</div>
         <br>
         <select name="employeeStatus" id="drop-down-menu">
           <option value="none">Select Employee Type</option>

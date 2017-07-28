@@ -55,14 +55,13 @@ if($ip != $_SERVER['REMOTE_ADDR']){
     <div class="one-half column">
 
       <form class="login" method="post" action="inc.phpLogic/validatelogin.php">
-
-        <input type="text" placeholder="email" name = "user_email" class="center" id="login">
         <?php
                if(isset($_SESSION["error"])) {
               $error = $_SESSION["error"];
-              echo "<h6>$error</h6>";
+              echo "<h6 class = i_c >$error</h6>";
                        }
          ?>
+        <input type="text" placeholder="email" name = "user_email" class="center" id="login">
         <input type="password" placeholder="password" name="password" class="center">
         <button class="center">LOGIN</button>
 
@@ -78,44 +77,20 @@ if($ip != $_SERVER['REMOTE_ADDR']){
   </div>
 </div>
 </div>
-<div class="b_c">
-  <ul class="s_l">
-    <li class="facebook first">
-      <a href="http://www.facebook.com/apwunational" class="facebook">
-        <i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="twitter">
-      <a href="http://twitter.com/apwunational" class="twitter">
-        <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="youtube">
-      <a href="http://www.youtube.com/apwucommunications" class="youtube">
-        <i class="fa fa-youtube-square fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="flickr last">
-      <a href="https://www.flickr.com/photos/123834212@N05/" class="flickr">
-        <i class="fa fa-flickr fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-  </ul>
-</div>
 <footer class="sticky-footer">
   <small>&copy; 2017 American Postal Workers Union</a></small>
   <div class="social-box">
     <a href="http://www.facebook.com/apwunational" class="facebook" target="_blank">
-      <i class="fa fa-facebook-official fa-fw social-icon" aria-hidden="true"></i>
+      <i class="fa fa-facebook-official fa-2x social-icon" aria-hidden="true"></i>
     </a>
     <a href="http://twitter.com/apwunational" class="twitter" target="_blank">
-      <i class="fa fa-twitter-square fa-fw social-icon" aria-hidden="true"></i>
+      <i class="fa fa-twitter-square fa-2x social-icon" aria-hidden="true"></i>
     </a>
     <a href="http://www.youtube.com/apwucommunications" class="youtube">
-      <i class="fa fa-youtube-square fa-fw social-icon" aria-hidden="true"></i>
+      <i class="fa fa-youtube-square fa-2x social-icon" aria-hidden="true"></i>
     </a>
     <a href="https://www.flickr.com/photos/123834212@N05/" class="flickr" target="_blank">
-      <i class="fa fa-flickr fa-fw social-icon" aria-hidden="true"></i>
+      <i class="fa fa-flickr fa-2x social-icon" aria-hidden="true"></i>
     </a>
   </div>
 </footer>

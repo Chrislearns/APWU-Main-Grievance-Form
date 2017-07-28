@@ -6,7 +6,7 @@ $ip = $_SESSION['ip'];
 if($ip != $_SERVER['REMOTE_ADDR']){
   session_unset();
   session_destroy();
-  $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+  $_SESSION['error'] = "<h4>Technical error! Please Log in again.</h4>";
   header("location:newLogInPage.php");
 }
 //include DB connection
@@ -36,7 +36,7 @@ if($count == 1){
 }
 
 else{
-   $_SESSION["error"] = "Invalid Log-in creditials";
+   $_SESSION["error"] = "<h4>Invalid Log-in creditials</h4>";
   header('location:../newLogInPage.php');
 exit;
 $conn = null;
