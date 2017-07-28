@@ -102,8 +102,22 @@ if($ip != $_SERVER['REMOTE_ADDR']){
     </li>
   </ul>
 </div>
-<footer class="sticky-footer s_f">
-  <p><small>&copy; 2017 American Postal Workers Union</a></small></p>
+<footer class="sticky-footer">
+  <small>&copy; 2017 American Postal Workers Union</a></small>
+  <div class="social-box">
+    <a href="http://www.facebook.com/apwunational" class="facebook" target="_blank">
+      <i class="fa fa-facebook-official fa-fw social-icon" aria-hidden="true"></i>
+    </a>
+    <a href="http://twitter.com/apwunational" class="twitter" target="_blank">
+      <i class="fa fa-twitter-square fa-fw social-icon" aria-hidden="true"></i>
+    </a>
+    <a href="http://www.youtube.com/apwucommunications" class="youtube">
+      <i class="fa fa-youtube-square fa-fw social-icon" aria-hidden="true"></i>
+    </a>
+    <a href="https://www.flickr.com/photos/123834212@N05/" class="flickr" target="_blank">
+      <i class="fa fa-flickr fa-fw social-icon" aria-hidden="true"></i>
+    </a>
+  </div>
 </footer>
 
 <div class="overlay"></div>
