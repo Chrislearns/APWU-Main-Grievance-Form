@@ -20,15 +20,28 @@ $daysOff = htmlentities(trim($_POST['daysOff']),ENT_QUOTES, "UTF-8");
 $veteran = htmlentities(trim($_POST['veteranStatus']),ENT_QUOTES, "UTF-8");
 $layOffProtected = htmlentities(trim($_POST['layOffProtected']),ENT_QUOTES, "UTF-8");
 $email = $_SESSION['email'];
+$password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
+$hash = password_hash($password,  PASSWORD_DEFAULT);
+$verify = password_verify($password, $hash);
 //on submit transaction will begin
-if($_SERVER['REQUEST_METHOD']=='POST'){
-  try{
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $conn->beginTransaction();
+$query = "select * from userAccounts where emailAddress = :email";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':email', $email);
+$stmt->execute();
+$count = $stmt->rowCount();
+
+//verify if their is one row
+//if current password is set update will start
+if($count == 1  && $verify){
+  try{
+
 if(!empty($_POST['eid'])) {
 $f_n = $conn->prepare("update UserSignUp Set employeeID = '$employeeID'  where emailAddress = '$email'");
 $f_n->execute();
 }
-if(!empty($_POST['employeeStatus'])) {
+if($_POST['employeeStatus'] != 'none') {
 $e_s = $conn->prepare("update UserSignUp Set employeeType = '$employeeType' where emailAddress = '$email'");
 $e_s->execute();
 }
@@ -72,25 +85,33 @@ if(!empty($_POST['daysOff'])) {
 $d_o = $conn->prepare("update UserSignUp Set daysOff = '$daysOff' where emailAddress = '$email'");
 $d_o->execute();
 }
-if(!empty($_POST['veteranStatus'])) {
+if($_POST['veteranStatus'] != 'none') {
 $v_n = $conn->prepare("update UserSignUp Set veteranStatus = '$veteran' where emailAddress = '$email'");
 $v_n->execute();
 }
-if(!empty($_POST['layOffProtected'])) {
+if($_POST['layOffProtected'] != 'none') {
 $l_p = $conn->prepare("update UserSignUp Set layOffProtected = '$layOffProtected' where emailAddress = '$email'");
 $l_p->execute();
 }
 $conn->commit();
-header('location:../newUpdateAccountInfo.html');
+header('location:../newUpdateAccountInfo.php');
     $conn = null;
     exit;
 }
+
 
 catch(PDOException $e) {
   echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
   $conn->rollBack();
     $conn = null;
-    exit
+    exit;
    }
+}
+}
+else{
+   $_SESSION["error"] = "<h4>Invalid Password. Please try again</h4>";
+   exit;
+   $conn = null;
+  header('location:../newUpdateAccountInfo.php');
 }

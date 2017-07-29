@@ -103,7 +103,7 @@ if($ip != $_SERVER['REMOTE_ADDR']){
 
 
   <!--START OF FORM - tabbed left for spacing-->
-  <form id="sign-up-form" method="post" action="../inc.phpLogic/signup.php">
+  <form id="sign-up-form" method="post" action="inc.phpLogic/signup.php">
     <h3 class="center-text"> - Create Your Profile</h3><br>
     <div class="row">
       <!--FORM ROW-->

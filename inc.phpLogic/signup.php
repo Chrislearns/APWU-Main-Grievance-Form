@@ -62,7 +62,10 @@ $stmtSignUpInfo->execute();
 $count2 = $stmtSignUpInfo->rowCount();
 $conn->commit();
 if($count1 == 1 && $count2 == 1) {
-  header("location:index.php");
+  $_SESSION['email'] = $email;
+  $_SESSION['eid'] = $employeeID;
+  $_SESSION['name'] = $fullName;
+  header("location:../index.php");
     $conn = null;
   exit;
 
