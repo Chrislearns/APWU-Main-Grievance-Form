@@ -43,7 +43,7 @@ function destroySession(){
         <div class="six columns" style="padding-top: 3%;">
           <div class="button-container">
           <?php echo "<h5>Welcome, $name</h5>"; ?>
-          <a href="newUpdateAccountInfo.html">
+          <a href="newUpdateAccountInfo.php">
             <button class="b_respon"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; Update Account Information</button>
           </a>
