@@ -1,6 +1,8 @@
 <?php
 //retrieve session variables
+if (session_status() == PHP_SESSION_NONE){
 session_start();
+}
 //include connection
 include("grievance.php");
 $employeeID = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
@@ -80,13 +82,15 @@ $l_p->execute();
 }
 $conn->commit();
 header('location:../newUpdateAccountInfo.html');
+    $conn = null;
+    exit;
 }
 
 catch(PDOException $e) {
   echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
   $conn->rollBack();
-
+    $conn = null;
+    exit
    }
 }
-$conn = null;

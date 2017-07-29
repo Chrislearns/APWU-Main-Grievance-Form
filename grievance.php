@@ -1,5 +1,7 @@
 <?php
-  session_start();
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
   $ip = $_SESSION['ip'];
 
 if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){

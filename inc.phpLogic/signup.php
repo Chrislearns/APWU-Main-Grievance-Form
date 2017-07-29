@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
 include ('grievance.php');
 
 
@@ -33,6 +36,7 @@ $stmt->bindValue(1,$fullName);
 $stmt->bindValue(2,$email);
 $stmt->bindValue(3,$hash);
 $stmt->execute();
+$count1 = $stmt->rowCount();
 //prepare second statement
 $stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (  employeeID , employeeType , address, city , state, zipcode, phoneNumber,
 seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected, emailAddress) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -55,8 +59,15 @@ $stmtSignUpInfo->bindValue(14, $layOffProtected);
 $stmtSignUpInfo->bindValue(15, $email);
 
 $stmtSignUpInfo->execute();
-
+$count2 = $stmtSignUpInfo->rowCount();
 $conn->commit();
+if($count1 == 1 && $count2 == 1) {
+  header("location:index.php");
+    $conn = null;
+  exit;
+
+
+}
 }
 
 
@@ -64,8 +75,6 @@ catch(PDOException $e) {
   echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
   $conn->rollBack();
-
+      $conn = null;
+  exit;
    }
-     $conn = null;
-//redirect to successful login page     
-//header('Location:../htmlPages/success.html');
