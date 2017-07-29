@@ -1,7 +1,7 @@
-<?php 
+<?php
 // Display account info for each user
 
-// Get the user id 
+// Get the user id
 
 // Need to create UI for this
 
@@ -25,7 +25,7 @@
         <!--START OF FORM -->
         <form id="sign-up-form" method="#" action="#">
           <h3 style="margin-left: 85px">John Doe - Profile</h3><br>
-          <div class="row"> <!--FORM ROW--> 
+          <div class="row"> <!--FORM ROW-->
             <div class="eight columns">
               <label for="fullName">Full Name</label>
               <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128">
@@ -42,16 +42,16 @@
             </div>
             <div class="error" id = "drop-down-menu-error">Please select your Employee Status</div>
           </div> <!--END ROW-->
-        
-          <div class="row"> <!--FORM ROW--> 
+
+          <div class="row"> <!--FORM ROW-->
             <div class="twelve columns">
               <label for="address">Street Address</label>
               <input id="address" type="text" name="address" maxlength="80" class="u-full-width">
             <div class="error" id = "address-error">Address field required</div>
             </div>
           </div> <!--END ROW-->
-        
-          <div class="row"> <!--FORM ROW--> 
+
+          <div class="row"> <!--FORM ROW-->
             <div class="six columns">
               <label for="city">City</label>
               <input id="city" type="text" name="city" maxlength="50" class="u-full-width">
@@ -68,8 +68,8 @@
               <div class="error" id = "zipCode-error">Zip-Code field required</div>
             </div>
           </div> <!--END ROW-->
-          
-           <div class="row"> <!--FORM ROW--> 
+
+           <div class="row"> <!--FORM ROW-->
             <div class="four columns">
               <label for="phone">Phone Number</label>
               <input id="phone-number" type="text" name="phone" class="u-full-width" maxlength="11">
@@ -86,8 +86,8 @@
               <div class="error" id = "seniorityDate-error">Seniority Date field required</div>
             </div>
           </div> <!--END ROW-->
-            
-          <div class="row"> <!--FORM ROW--> 
+
+          <div class="row"> <!--FORM ROW-->
             <div class="four columns">
               <label for="pay-status">Pay Status Level</label>
               <input id="payLevel" type="text" name="payLevel" class="u-full-width" maxlength="10">
@@ -104,8 +104,8 @@
               <div class="error" id = "tour-error">Tour field required</div>
             </div>
           </div> <!--END ROW-->
-        
-          <div class="row"> <!--FORM ROW--> 
+
+          <div class="row"> <!--FORM ROW-->
             <div class="four columns">
               <label for="days-off">Days Off</label>
               <input id="daysOff" type="text" name="daysOff" maxlength="10" class="u-full-width">
@@ -126,9 +126,9 @@
               </select>
               <div class="error" id ="layOffProtected-error">Lay-off Protected field required</div>
             </div>
-          </div> <!--END ROW-->  
-        
-          <div class="row"> <!--FORM ROW--> 
+          </div> <!--END ROW-->
+
+          <div class="row"> <!--FORM ROW-->
             <div class="six columns">
               <label for="email">Email</label>
               <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120">
@@ -140,8 +140,8 @@
               <div class="error" id = "email2-error">Please verify email address</div>
             </div>
           </div> <!--END ROW-->
-        
-          <div class="row"> <!--FORM ROW--> 
+
+          <div class="row"> <!--FORM ROW-->
             <div class="six columns">
               <label for="password">Password</label>
               <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">
@@ -153,13 +153,13 @@
               <div class="error" id = "password2-error">Please verify password</div>
             </div>
           </div> <!--END ROW-->
-          <input id="submit" type="submit" value="Update Account Information" class="submit-button">
+          <input id="submit" type="submit" value="Save Changes" class="submit-button">
         </form>
         <!--END OF FORM - tabbed left for spacing-->
       </div>
     </div>
-    
-    
+
+
     <footer class="">
       <small>&copy; 2017 American Postal Workers Union</a></small>
       <div class="social-box">

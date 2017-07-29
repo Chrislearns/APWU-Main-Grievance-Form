@@ -1,5 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE){
 session_start();
+}
 $ip = $_SESSION['ip'];
 $name = $_SESSION['name'];
 function destroySession(){

@@ -13,8 +13,8 @@ if($ip != $_SERVER['REMOTE_ADDR']){
 include("grievance.php");
 
 //Set POST variables
-$email = htmlentities($_POST['user_email'],ENT_QUOTES, "UTF-8");
-$password = htmlentities($_POST['password'],ENT_QUOTES, "UTF-8");
+$email = htmlentities(trim($_POST['user_email']),ENT_QUOTES, "UTF-8");
+$password = htmlentities(trim($_POST['password']),ENT_QUOTES, "UTF-8");
 //Start of query
 $query = "select * from userAccounts where emailAddress = :email and PASSWORD = :password";
 $stmt = $conn->prepare($query);

@@ -1,3 +1,23 @@
+<?php
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
+$ip = $_SESSION['ip'];
+$name = $_SESSION['name'];
+function destroySession(){
+  session_unset();
+  session_destroy();
+}
+  if($ip != $_SERVER['REMOTE_ADDR']){
+    destroySession();
+    $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+    header("location:newLogInPage.php");
+}
+  if(empty($_SESSION['name'])){
+    $_SESSION['error'] = "<h4>Please Log-in</h4>";
+    header("location:newLogInPage.php");
+  }
+?>
 <!doctype html>
 <html>
 
