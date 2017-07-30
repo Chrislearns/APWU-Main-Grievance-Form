@@ -17,9 +17,9 @@ function destroySession(){
     $_SESSION['error'] = "<h4>Please Log-in</h4>";
     header("location:newLogInPage.php");
   }
-  if (isset($_SESSION['error'])){
-    $error = $_SESSION['error'];
-    echo "<h2>$error</h2>";
+  if (isset($_SESSION['message'])){
+    $message = $_SESSION['message'];
+    echo "<h2>$message</h2>";
   }
 ?>
 <!doctype html>

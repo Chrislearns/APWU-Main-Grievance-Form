@@ -21,20 +21,29 @@ $veteran = htmlentities(trim($_POST['veteranStatus']),ENT_QUOTES, "UTF-8");
 $layOffProtected = htmlentities(trim($_POST['layOffProtected']),ENT_QUOTES, "UTF-8");
 $email = $_SESSION['email'];
 $password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
-$hash = password_hash($password,  PASSWORD_DEFAULT);
-$verify = password_verify($password, $hash);
+
 //on submit transaction will begin
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $conn->beginTransaction();
+  if(empty($password)){
+    $_SESSION['message'] = "<h1>Please enter current password to update info</h1>";
+    header("location:newUpdateAccountInfo.php");
+    exit;
+  }
+
 $query = "select * from userAccounts where emailAddress = :email";
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':email', $email);
 $stmt->execute();
 $count = $stmt->rowCount();
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+$dbpassword = $results['PASSWORD'];
+
+$verify = password_verify($password, $dbpassword);
 
 //verify if their is one row
 //if current password is set update will start
 if($count == 1  && $verify){
+
   try{
 
 if(!empty($_POST['eid'])) {
@@ -57,7 +66,7 @@ if(!empty($_POST['state'])) {
 $s_u = $conn->prepare("update UserSignUp Set state = '$state' where emailAddress = '$email'");
 $s_u->execute();
 }
-if(!empty($zipCode)) {
+if(!empty($_POST['zipCode'])) {
 $z_u = $conn->prepare("update UserSignUp Set zipCode = '$zipCode' where emailAddress = '$email'");
 $z_u->execute();
 }
@@ -93,7 +102,7 @@ if($_POST['layOffProtected'] != 'none') {
 $l_p = $conn->prepare("update UserSignUp Set layOffProtected = '$layOffProtected' where emailAddress = '$email'");
 $l_p->execute();
 }
-$conn->commit();
+$_SESSION["message"] = "<h4>Successfully updated account info!</h4>";
 header('location:../newUpdateAccountInfo.php');
     $conn = null;
     exit;
@@ -103,14 +112,14 @@ header('location:../newUpdateAccountInfo.php');
 catch(PDOException $e) {
   echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
-  $conn->rollBack();
+
     $conn = null;
     exit;
    }
 }
 }
 else{
-   $_SESSION["error"] = "<h4>Invalid Password. Please try again</h4>";
+   $_SESSION["message"] = "<h4>Invalid Password. Please try again</h4>";
    exit;
    $conn = null;
   header('location:../newUpdateAccountInfo.php');
