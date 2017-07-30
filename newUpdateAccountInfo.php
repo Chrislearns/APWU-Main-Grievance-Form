@@ -17,10 +17,7 @@ function destroySession(){
     $_SESSION['error'] = "<h4>Please Log-in</h4>";
     header("location:newLogInPage.php");
   }
-  if (isset($_SESSION['message'])){
-    $message = $_SESSION['message'];
-    echo "<h2>$message</h2>";
-  }
+
 ?>
 <!doctype html>
 <html>
@@ -50,6 +47,10 @@ function destroySession(){
     <div class="logo-header">
         <div class="apwuMainLogo"><img alt="APWU" class="" src="cs_logo_apwu.png"></img>
             <h3 class="center-text">Update account info</h3>
+            <?php   if (isset($_SESSION['message'])){
+                $message = $_SESSION['message'];
+                echo "<h3>$message</h3>";
+              } ?>
         </div>
     </div>
     <form id="update-account-info-form" method="post" action="inc.phpLogic/updateInfo.php">
@@ -165,5 +166,5 @@ function destroySession(){
 </form>
 </div>
 <footer class="sticky-footer"><p><small>&copy; 2017 American Postal Workers Union</a></small></p></footer>
-
+<?php unset($_SESSION['message']); ?>
 </html>
