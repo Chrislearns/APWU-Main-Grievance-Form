@@ -31,9 +31,9 @@ $verify = password_verify($password, $dbpassword);
 //if current password is set update will start
 if($count == 1  && $verify){
 
-if(!empty($_POST['eid'])) {
+if(isset($_POST['eid'])) {
 $employeeID = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
-$f_n = $conn->prepare("update UserSignUp Set employeeID = '$employeeID'  where emailAddress = '$email'");
+$f_n = $conn->prepare("update UserSignUp Set employeeID = $employeeID  where emailAddress = '$email'");
 $f_n->execute();
 }
 if($_POST['employeeStatus'] != 'none') {

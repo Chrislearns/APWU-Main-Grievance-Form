@@ -65,7 +65,7 @@ CREATE Database grievanceInfo;
 USE grievanceInfo;
 
 CREATE TABLE userAccounts (
-
+  isAdmin boolean not null default 0,
 	fullName varchar(128) NOT null,
 	emailAddress varchar(128) NOT null,
 	PASSWORD varchar(128) NOT null,
@@ -105,6 +105,9 @@ CREATE TABLE userAccounts (
 				timeHelpReceieved varchar(10) ,
 				timeHelpSweptMachine varchar(10),
 				hoursWorkedAlone int(2) NOT null,
-				minutesWorkedAlone int(2)
+				minutesWorkedAlone int(2),
+				resolved varchar(255),
+				comments varchar(1000)
+
 
 				)
