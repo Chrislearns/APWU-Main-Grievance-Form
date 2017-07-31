@@ -23,7 +23,7 @@
 
 10.Rewrite in laravel....
 
-This grievance form is for the multitude of union stewards who are having problems filing and keeping track of grievances forms.
+This grievance form is for the employees who are having problems filing and keeping track of grievances forms.
 In making this all grievances can be kept track of electronically and the APWU will become more green organization.
 
 Resources:
