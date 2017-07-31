@@ -1,6 +1,28 @@
 <?php
-  session_start();
-  echo session_id();
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
+if (isset($name)) {
+    header("location:index.php");
+    }
+
+$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+
+$ip = $_SESSION['ip'];
+
+$name = $_SESSION["name"];
+
+function destroySession(){
+  session_unset();
+  session_destroy();
+}
+
+
+if($ip != $_SERVER['REMOTE_ADDR']){
+  echo $session['error'] = "<h6>Technical error! Please Log in again.</h6>";
+  destroySession();
+
+}
 ?>
 <!doctype html>
 <html>
@@ -14,17 +36,14 @@
   <script src="https://use.fontawesome.com/51aa15acbd.js"></script>
   <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
 
-
-  <script type="text/javascript" src="../inc.javascript/newLogIn.js">
-  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../inc.styling/newLogIn.css">
+  <link rel="stylesheet" href="inc.styling/newLogIn.css">
 
 </head>
-
+<body>
 <div class="container wrapper-before-sf">
   <!--<div class="row" style="margin-top: 10%">
     <h1 class="center-text">APWU Grievance Reporting System</h1>
@@ -36,10 +55,18 @@
       <span id="dividing-border"><span>
     </div>
     <div class="one-half column">
-      <form class="login" method="post" action="../inc.phpLogic/validatelogin.php">
+
+      <form class="login" method="post" action="inc.phpLogic/validatelogin.php">
+        <?php
+               if(isset($_SESSION["error"])) {
+              $error = $_SESSION["error"];
+              echo "<h6 class = i_c >$error</h6>";
+                       }
+         ?>
         <input type="text" placeholder="email" name = "user_email" class="center" id="login">
         <input type="password" placeholder="password" name="password" class="center">
         <button class="center">LOGIN</button>
+
         <div>
           <span class="pull-left">
             <small>Do not have an account?</small>
@@ -52,32 +79,22 @@
   </div>
 </div>
 </div>
-<div class="b_c">
-  <ul class="s_l">
-    <li class="facebook first">
-      <a href="http://www.facebook.com/apwunational" class="facebook">
-        <i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="twitter">
-      <a href="http://twitter.com/apwunational" class="twitter">
-        <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="youtube">
-      <a href="http://www.youtube.com/apwucommunications" class="youtube">
-        <i class="fa fa-youtube-square fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="flickr last">
-      <a href="https://www.flickr.com/photos/123834212@N05/" class="flickr">
-        <i class="fa fa-flickr fa-3x" aria-hidden="true"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-<footer class="sticky-footer s_f">
-  <p><small>&copy; 2017 American Postal Workers Union</a></small></p>
+<footer class="sticky-footer">
+  <small>&copy; 2017 American Postal Workers Union</a></small>
+  <div class="social-box">
+    <a href="http://www.facebook.com/apwunational" class="facebook" target="_blank">
+      <i class="fa fa-facebook-official fa-2x social-icon" aria-hidden="true"></i>
+    </a>
+    <a href="http://twitter.com/apwunational" class="twitter" target="_blank">
+      <i class="fa fa-twitter-square fa-2x social-icon" aria-hidden="true"></i>
+    </a>
+    <a href="http://www.youtube.com/apwucommunications" class="youtube">
+      <i class="fa fa-youtube-square fa-2x social-icon" aria-hidden="true"></i>
+    </a>
+    <a href="https://www.flickr.com/photos/123834212@N05/" class="flickr" target="_blank">
+      <i class="fa fa-flickr fa-2x social-icon" aria-hidden="true"></i>
+    </a>
+  </div>
 </footer>
 
 <div class="overlay"></div>
@@ -86,7 +103,7 @@
 
 
   <!--START OF FORM - tabbed left for spacing-->
-  <form id="sign-up-form" method="post" action="../inc.phpLogic/signup.php">
+  <form id="sign-up-form" method="post" action="inc.phpLogic/signup.php">
     <h3 class="center-text"> - Create Your Profile</h3><br>
     <div class="row">
       <!--FORM ROW-->
@@ -228,3 +245,11 @@
   </form>
   <!--END OF FORM - tabbed left for spacing-->
 </div>
+<script type="text/javascript" src="inc.javascript/newLogIn.js">
+</script>
+
+</body>
+</html>
+<?php
+    unset($_SESSION["error"]);
+?>

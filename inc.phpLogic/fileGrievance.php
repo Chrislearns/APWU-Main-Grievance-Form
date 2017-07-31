@@ -1,18 +1,17 @@
 <?php
 include('grievance.php');
 
-$eid=$_POST['eid'];
-$date=$_POST['grievance-date'];
-$time_alone=$_POST['timeAlone'];
-$machine_number=$_POST['machine'];
-$feed_sweep=$_POST['radio'];
-$supervisor=$_POST['supervisor'];
-$mail_processed=$_POST['mail-processed'];
-$time_helped=$_POST['time-helped'];
-$time_swept=$_POST['time-swept'];
-$hoursWorkedAlone=$_POST['hours-worked-alone'];
-$minutesWorkedAlone=$_POST['minutes-worked-alone'];
-
+$eid = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
+$date = htmlentities(trim($_POST['grievance-date']),ENT_QUOTES, "UTF-8");
+$time_alone = htmlentities(trim($_POST['timeAlone']),ENT_QUOTES, "UTF-8");
+$machine_number = htmlentities(trim($_POST['machine']),ENT_QUOTES, "UTF-8");
+$feed_sweep = htmlentities(trim($_POST['radio']),ENT_QUOTES, "UTF-8");
+$supervisor = htmlentities(trim($_POST['supervisor']),ENT_QUOTES, "UTF-8");
+$mail_processed = htmlentities(trim($_POST['mail-processed']),ENT_QUOTES, "UTF-8");
+$time_helped = htmlentities(trim($_POST['time-helped']),ENT_QUOTES, "UTF-8");
+$time_swept = htmlentities(trim($_POST['time-swept']),ENT_QUOTES, "UTF-8");
+$hoursWorkedAlone = htmlentities(trim($_POST['hours-worked-alone']),ENT_QUOTES, "UTF-8");
+$minutesWorkedAlone = htmlentities(trim($_POST['minutes-worked-alone']),ENT_QUOTES, "UTF-8");
 
 $query = 'INSERT INTO filedGrievances(employeeID, date, machineNumber, timeAlone, supervisorName, feedAndSweep, mailProcessed, timeHelpReceieved, timeHelpSweptMachine, hoursWorkedAlone, minutesWorkedAlone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';
 

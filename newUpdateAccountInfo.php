@@ -1,3 +1,24 @@
+<?php
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
+$ip = $_SESSION['ip'];
+$name = $_SESSION['name'];
+function destroySession(){
+  session_unset();
+  session_destroy();
+}
+  if($ip != $_SERVER['REMOTE_ADDR']){
+    destroySession();
+    $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+    header("location:newLogInPage.php");
+}
+  if(empty($_SESSION['name'])){
+    $_SESSION['error'] = "<h4>Please Log-in</h4>";
+    header("location:newLogInPage.php");
+  }
+
+?>
 <!doctype html>
 <html>
 
@@ -10,32 +31,30 @@
 
     <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
 
-
-    <!--  <script type="text/javascript" src="../inc.javascript/update_info.js">
-  </script>  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../inc.styling/newLogIn.css">
+    <link rel="stylesheet" href="inc.styling/newLogIn.css">
 
 </head>
-<button class="button u-pull-right"><a href="grievancePage.html">File Grievance</a></button>
-<button class="button u-pull-right"><a href= "newLogInPage.html">Log out</a></button>
+<a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
+<a href="grievancePage.php"><button class="button u-pull-right">File Grievance</button></a>
+<a href="index.php"><button class="button u-pull-right">Menu</button></a>
+
 
 <div class="container u-cf">
     <div class="logo-header">
         <div class="apwuMainLogo"><img alt="APWU" class="" src="cs_logo_apwu.png"></img>
             <h3 class="center-text">Update account info</h3>
+            <?php   if (isset($_SESSION['message'])){
+                $message = $_SESSION['message'];
+                echo "<h3>$message</h3>";
+              } ?>
         </div>
     </div>
-    <form id="update-account-info-form" method="post" action="../inc.phplogic/updateInfo.php">
+    <form id="update-account-info-form" method="post" action="inc.phpLogic/updateInfo.php">
 
-
-        <label> Full Name:</label>
-        <input id="full-name" type="text" name="full-name" size="28" maxlength="128">
-
-        <div class="error" id="full-name-error">Full Name Required</div>
         <br>
         <select name="employeeStatus" id="drop-down-menu">
           <option value="none">Select Employee Type</option>
@@ -142,10 +161,10 @@
 
                 <div class="error" id = "password3-error">Passwords must match.</div>
 <br>
-                <input id="submit" type="submit" value="Update Info">
+                <input id="submit" type="submit" value="Save changes">
                 <div class="warnings">There were errors found in your submission</div>
 </form>
 </div>
 <footer class="sticky-footer"><p><small>&copy; 2017 American Postal Workers Union</a></small></p></footer>
-
+<?php unset($_SESSION['message']); ?>
 </html>

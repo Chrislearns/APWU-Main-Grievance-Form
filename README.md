@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # APWU-Main-Grievance-Form
 
 ******AGENDA*******
@@ -27,6 +26,7 @@ This grievance form is for the employees who are having problems filing and keep
 In making this all grievances can be kept track of electronically and the APWU will become more green organization.
 
 Resources:
+
 PHP for the Web: Visual Quick Start guide
 
 Learning PHP 7
@@ -108,5 +108,3 @@ CREATE TABLE userAccounts (
 				minutesWorkedAlone int(2)
 
 				)
-=======
->>>>>>> d4ee826025e987b3858174306818c70d1887706f

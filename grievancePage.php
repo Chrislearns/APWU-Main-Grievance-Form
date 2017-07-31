@@ -1,3 +1,15 @@
+<?php
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
+  $ip = $_SESSION['ip'];
+
+if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
+  $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+      header("location:newLogInPage.php");
+          exit;
+  }
+?>
 <!doctype html>
 <html>
 
@@ -11,19 +23,20 @@
     <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
 
 
-    <script type="text/javascript" src="../inc.javascript/userspage.js">
+    <script type="text/javascript" src="inc.javascript/userspage.js">
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../inc.styling/newLogIn.css">
+    <link rel="stylesheet" href="inc.styling/newLogIn.css">
 
 </head>
 
-  
-<button class="button u-pull-right"><a href="newUpdateAccountInfo.html">Update Account Info</a></button>
-<button class="button u-pull-right"><a href= "newLogInPage.html">Log out</a></button>
+<a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
+<a href="newUpdateAccountInfo.php"><button class="button u-pull-right">Update Account Info</button></a>
+<a href="index.php"><button class="button u-pull-right">Menu</button></a>
+
 
 <div class="container u-cf">
   <div class="logo-header">

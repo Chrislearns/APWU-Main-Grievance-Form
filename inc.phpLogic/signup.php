@@ -1,32 +1,33 @@
 <?php
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
 include ('grievance.php');
 
 
-$employeeID = $_POST['eid'];
-$fullName = $_POST['full-name'];
-$employeeType = $_POST['employeeStatus'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$zipCode = $_POST['zipCode'];
-$phone = $_POST['phone'];
-$seniority = $_POST['seniority'];
-$payStatus = $_POST['payLevel'];
-$payStep = $_POST['payStep'];
-$tour = $_POST['tour'];
-$daysOff = $_POST['daysOff'];
-$veteran = $_POST['veteranStatus'];
-$layOffProtected = $_POST['layOffProtected'];
-$email = $_POST['email1'];
-$password = $_POST['password1'];
+$employeeID = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
+$fullName = htmlentities(trim($_POST['full-name']),ENT_QUOTES, "UTF-8");
+$employeeType = htmlentities(trim($_POST['employeeStatus']),ENT_QUOTES, "UTF-8");
+$address = htmlentities(trim($_POST['address']),ENT_QUOTES, "UTF-8");
+$city = htmlentities(trim($_POST['city']),ENT_QUOTES, "UTF-8");
+$state = htmlentities(trim($_POST['state']),ENT_QUOTES, "UTF-8");
+$zipCode = htmlentities(trim($_POST['zipCode']),ENT_QUOTES, "UTF-8");
+$phone = htmlentities(trim($_POST['phone']),ENT_QUOTES, "UTF-8");
+$seniority = htmlentities(trim($_POST['seniority']),ENT_QUOTES, "UTF-8");
+$payStatus = htmlentities(trim($_POST['payLevel']),ENT_QUOTES, "UTF-8");
+$payStep = htmlentities(trim($_POST['payStep']),ENT_QUOTES, "UTF-8");
+$tour = htmlentities(trim($_POST['tour']),ENT_QUOTES, "UTF-8");
+$daysOff = htmlentities(trim($_POST['daysOff']),ENT_QUOTES, "UTF-8");
+$veteran = htmlentities(trim($_POST['veteranStatus']),ENT_QUOTES, "UTF-8");
+$layOffProtected = htmlentities(trim($_POST['layOffProtected']),ENT_QUOTES, "UTF-8");
+$email = htmlentities(trim($_POST['email1']),ENT_QUOTES, "UTF-8");
+$password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
 
 /* $options = [
     'cost' => 10,
 ]; Used to shorten execution time to under 100 millisection values 8 - 12 normally*/
 $hash = password_hash($password, PASSWORD_DEFAULT);
-/*$sqlQueryCreateAccount = "INSERT INTO userAccounts (employeeID, emailAddress, PASSWORD) VALUES (?,?,?)";
-$sqlQueryUserSignUp = "INSERT INTO UserSignUp(fullName , employeeType , address, city , state, zipcode, phoneNumber,
-seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; */
+
 $conn->beginTransaction();
 try{
 $stmt = $conn->prepare("INSERT INTO userAccounts ( fullName ,emailAddress, PASSWORD) VALUES (?,?,?)");
@@ -35,10 +36,8 @@ $stmt->bindValue(1,$fullName);
 $stmt->bindValue(2,$email);
 $stmt->bindValue(3,$hash);
 $stmt->execute();
-/*
-$stmtCreateUnique = $conn->prepare("CREATE TABLE ".$employeeID."Grievances like filedGrievances");
-$stmtCreateUnique->execute();
-*/
+$count1 = $stmt->rowCount();
+//prepare second statement
 $stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (  employeeID , employeeType , address, city , state, zipcode, phoneNumber,
 seniorityDate, payLevel, payStep, tour, daysOff, veteranStatus, layOffProtected, emailAddress) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
@@ -60,8 +59,18 @@ $stmtSignUpInfo->bindValue(14, $layOffProtected);
 $stmtSignUpInfo->bindValue(15, $email);
 
 $stmtSignUpInfo->execute();
-
+$count2 = $stmtSignUpInfo->rowCount();
 $conn->commit();
+if($count1 == 1 && $count2 == 1) {
+  $_SESSION['email'] = $email;
+  $_SESSION['eid'] = $employeeID;
+  $_SESSION['name'] = $fullName;
+  header("location:../index.php");
+    $conn = null;
+  exit;
+
+
+}
 }
 
 
@@ -69,7 +78,6 @@ catch(PDOException $e) {
   echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
   $conn->rollBack();
-
+      $conn = null;
+  exit;
    }
-     $conn = null;
-//header('Location:../htmlPages/success.html');

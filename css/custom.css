@@ -1,0 +1,175 @@
+/*CSS reset - remove all default padding and margin */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+/* fixes responsiveness issues with u-full-width*/
+.b_respon {
+width: 310px !important;
+}
+
+/* universal center text utility class */
+
+.center-text {
+  text-align: center;
+}
+
+
+/* universial center image utility class */
+
+.center {
+  display: block;
+  margin: auto;
+}
+
+.right {
+  float: right;
+}
+
+
+/* ***STICKY FOOTER*** */
+
+.wrapper-before-sf {
+  box-sizing: border-box !important;
+  min-height: calc(100vh - 50px);
+}
+
+.sticky-footer {
+  height: 50px;
+  width: 100%;
+}
+
+footer small {
+  margin-left: 50px;
+}
+
+
+/* ***END OF STICKY FOOTER*** */
+
+
+/* Social icons - in sticky footer */
+
+.social-box {
+  height: 50px;
+  float: right;
+  width: 120px;
+  margin-right: 50px;
+}
+
+.social-icon {
+  font-size: 25px !important;
+  width: 25px !important;
+  display: inline-block !important;
+  color: #186ada !important;
+  z-index: 900 !important;
+}
+
+.fa-panel {
+  vertical-align: middle !important;
+  color: rgba(112, 128, 144, .5) !important;
+}
+
+.login input,
+.registration-form .submit-button,
+.form-container .submit-button {
+  display: block;
+  width: 80% !important;
+  margin: 15px auto !important;
+}
+
+.login button {
+  width: 80% !important;
+  margin: 25px auto !important;
+}
+
+form div,
+.button-container {
+  width: 80%;
+  margin: auto;
+}
+
+.form-container {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  border: 1px solid rgba(112, 128, 144, .2);
+  margin-top: 30px;
+  padding-bottom: 50px;
+  margin-bottom: 80px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.apwu-logo {
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  z-index: -5 !important;
+  opacity: .3;
+}
+
+.button-container button {
+  text-align: left;
+}
+
+form {
+  padding-top: 9%;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 800;
+}
+
+#dividing-border {
+  position: absolute;
+  height: 290px;
+  width: 0;
+  border-right: 1px solid lightgray;
+  top: 0;
+  right: -10px;
+}
+
+.overlay {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  top: 0px;
+  opacity: 0.7;
+  left: 0px;
+  z-index: 899;
+}
+
+.registration-form {
+  position: absolute;
+  display: none;
+  z-index: 900;
+  background-color: #fff;
+  opacity: 1;
+  width: 76%;
+  height: 500px;
+  margin-left: 12%;
+  top: 50%;
+  margin-top: -250px;
+  overflow-y: scroll;
+  min-width: 245px;
+  padding: 30px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.error {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  #dividing-border {
+    display: none;
+  }
+}
