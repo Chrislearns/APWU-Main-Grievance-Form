@@ -45,13 +45,7 @@ if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
 </div>
 </div>
 
-        <form id="userPageForm" action="../inc.phpLogic/fileGrievance.php" method="POST">
-
-          <label> Employee ID:</label>
-          <input id="eid" type="text" name="eid" size="8" maxlength="8">
-
-          <div class="error" id = "eid-error">Employee ID field required</div>
-
+        <form id="userPageForm" action="inc.phpLogic/fileGrievance.php" method="POST">
 
                 <label>Date of Grievance (mm/dd/yy):</label>
                 <input id="grievance-date" type="date" name="grievance-date" size="10" maxlength="10">

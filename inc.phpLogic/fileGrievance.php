@@ -1,7 +1,7 @@
 <?php
 include('grievance.php');
 
-$eid = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
+$eid = $_SESSION['eid'];
 $date = htmlentities(trim($_POST['grievance-date']),ENT_QUOTES, "UTF-8");
 $time_alone = htmlentities(trim($_POST['timeAlone']),ENT_QUOTES, "UTF-8");
 $machine_number = htmlentities(trim($_POST['machine']),ENT_QUOTES, "UTF-8");
@@ -28,3 +28,5 @@ $stmt->bindValue(9, $time_swept );
 $stmt->bindValue(10, $hoursWorkedAlone );
 $stmt->bindValue(11, $minutesWorkedAlone );
 $stmt->execute();
+$_SESSION['message'] = "Grievance Filed successfully!";
+header("location:index.php");

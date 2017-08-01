@@ -36,6 +36,12 @@ function destroySession(){
       </div>-->
       <div class="row" style="padding-top: 18%">
          <div class="six columns border" style="position: relative;">
+           <?php
+          if(isset($_SESSION['message'])){
+            $_SESSION['message'] = $message;
+           echo "<h4>$message</h4>"
+         }
+           ?>
             <img src="cs_logo_apwu.png" alt="APWU" class="center u-full-width">
             <h3 class="center-text">APWU Grievance<br> Reporting System</h3>
            <span id="dividing-border"><span>

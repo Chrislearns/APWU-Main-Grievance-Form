@@ -87,11 +87,6 @@ function destroySession(){
         <input id="zipCode" type="text" name="zipCode" size="25" maxlength="25">
         <div class="error" id="zipCode-error">Zip-Code field required</div>
 
-        <label> Employee ID:</label>
-        <input id="eid" type="text" name="eid" size="8" maxlength="8">
-
-        <div class="error" id="eid-error">Employee ID field required</div>
-
         <label> Phone Number:</label>
         <input id="phone-number" type="text" name="phone" size="11" maxlength="11">
 
