@@ -1,7 +1,11 @@
 <?php
+//retrieve session variables
+if (session_status() == PHP_SESSION_NONE){
+session_start();
+}
 include('grievance.php');
 
-$eid = $_SESSION['eid'];
+$eid = htmlentities(trim($_SESSION['eid']),ENT_QUOTES, "UTF-8");
 $date = htmlentities(trim($_POST['grievance-date']),ENT_QUOTES, "UTF-8");
 $time_alone = htmlentities(trim($_POST['timeAlone']),ENT_QUOTES, "UTF-8");
 $machine_number = htmlentities(trim($_POST['machine']),ENT_QUOTES, "UTF-8");
@@ -27,6 +31,14 @@ $stmt->bindValue(8, $time_helped );
 $stmt->bindValue(9, $time_swept );
 $stmt->bindValue(10, $hoursWorkedAlone );
 $stmt->bindValue(11, $minutesWorkedAlone );
-$stmt->execute();
-$_SESSION['message'] = "Grievance Filed successfully!";
+if($stmt->execute()){
+$_SESSION['grievance'] = "Grievance Filed successfully!";
 header("location:index.php");
+$conn = null;
+exit;
+}
+else {
+  $_SESSION['grievance'] = "There was and error. Please try again.";
+  $conn = null;
+  exit;
+}

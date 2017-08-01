@@ -37,9 +37,9 @@ function destroySession(){
       <div class="row" style="padding-top: 18%">
          <div class="six columns border" style="position: relative;">
            <?php
-          if(isset($_SESSION['message'])){
-            $_SESSION['message'] = $message;
-           echo "<h4>$message</h4>"
+          if(isset($_SESSION['grievance'])){
+            $_SESSION['grievance'] = $grievance;
+           echo "<h4>$grievance</h4>";
          }
            ?>
             <img src="cs_logo_apwu.png" alt="APWU" class="center u-full-width">
@@ -90,5 +90,8 @@ function destroySession(){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
   </body>
-  <?php unset($_SESSION['message']); ?>
+  <?php unset($_SESSION['message']);
+  unset($_SESSION['grievance']);
+   ?>
+  
 </html>

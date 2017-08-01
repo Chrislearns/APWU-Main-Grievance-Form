@@ -2,6 +2,7 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
+$name = $_SESSION["name"];
 if (isset($name)) {
     header("location:index.php");
     }
@@ -10,7 +11,7 @@ $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
 
 $ip = $_SESSION['ip'];
 
-$name = $_SESSION["name"];
+
 
 function destroySession(){
   session_unset();
