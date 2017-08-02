@@ -61,7 +61,7 @@ if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
 
 
                 <label> Machine Number</label>
-                <input id="machine" type="text" name="machine" size="40" maxlength="3">
+                <input id="machine" type="number" name="machine" size="30" maxlength="3">
 
             <div class="error" id="machineNum">Machine # required</div>
 

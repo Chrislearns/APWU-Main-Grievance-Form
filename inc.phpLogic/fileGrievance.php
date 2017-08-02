@@ -39,6 +39,7 @@ exit;
 }
 else {
   $_SESSION['grievance'] = "There was and error. Please try again.";
+  header('location:index.php');
   $conn = null;
   exit;
 }
