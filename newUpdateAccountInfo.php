@@ -2,13 +2,13 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
-$ip = $_SESSION['ip'];
-$name = $_SESSION['name'];
+
+
 function destroySession(){
   session_unset();
   session_destroy();
 }
-  if($ip != $_SERVER['REMOTE_ADDR']){
+  if($_SESSION['ip'] != $_SERVER['REMOTE_ADDR']){
     destroySession();
     $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
     header("location:newLogInPage.php");
@@ -86,11 +86,6 @@ function destroySession(){
         <label> Zip Code:</label>
         <input id="zipCode" type="text" name="zipCode" size="25" maxlength="25">
         <div class="error" id="zipCode-error">Zip-Code field required</div>
-
-        <label> Employee ID:</label>
-        <input id="eid" type="text" name="eid" size="8" maxlength="8">
-
-        <div class="error" id="eid-error">Employee ID field required</div>
 
         <label> Phone Number:</label>
         <input id="phone-number" type="text" name="phone" size="11" maxlength="11">

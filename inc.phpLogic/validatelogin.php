@@ -3,6 +3,7 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
+$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
 $ip = $_SESSION['ip'];
 //check if ip address has changed for security
 if($ip != $_SERVER['REMOTE_ADDR']){

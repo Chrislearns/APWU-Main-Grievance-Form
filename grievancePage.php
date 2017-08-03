@@ -2,9 +2,8 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
-  $ip = $_SESSION['ip'];
 
-if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
+if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR']){
   $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
       header("location:newLogInPage.php");
           exit;
@@ -45,13 +44,7 @@ if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
 </div>
 </div>
 
-        <form id="userPageForm" action="../inc.phpLogic/fileGrievance.php" method="POST">
-
-          <label> Employee ID:</label>
-          <input id="eid" type="text" name="eid" size="8" maxlength="8">
-
-          <div class="error" id = "eid-error">Employee ID field required</div>
-
+        <form id="userPageForm" action="inc.phpLogic/fileGrievance.php" method="POST">
 
                 <label>Date of Grievance (mm/dd/yy):</label>
                 <input id="grievance-date" type="date" name="grievance-date" size="10" maxlength="10">
@@ -67,7 +60,7 @@ if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
 
 
                 <label> Machine Number</label>
-                <input id="machine" type="text" name="machine" size="40" maxlength="10">
+                <input id="machine" type="number" name="machine" size="30" maxlength="3">
 
             <div class="error" id="machineNum">Machine # required</div>
 
