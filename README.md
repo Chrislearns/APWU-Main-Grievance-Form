@@ -22,10 +22,13 @@
 
 10.Rewrite in laravel....
 
-11.Use Filters to validate form inputs
+11.Use php Filters to validate form inputs
 
-This grievance form is for the employees who are having problems filing and keeping track of grievances forms.
-In making this all grievances can be kept track of electronically and the APWU will become more green organization.
+
+
+This grievance form is for the employees who are having problems filing and keeping track of grievances forms. During the course of
+the average USPS employees career he or she will have filed 100's of grievances. In the course of the grievance process
+there is no feedback given. There is also no way to find out if your grievance has been received or denied.
 
 Resources:
 

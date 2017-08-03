@@ -7,9 +7,7 @@ if (isset($name)) {
     header("location:index.php");
     }
 
-$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
 
-$ip = $_SESSION['ip'];
 
 
 
@@ -19,11 +17,7 @@ function destroySession(){
 }
 
 
-if($ip != $_SERVER['REMOTE_ADDR']){
-  echo $session['error'] = "<h6>Technical error! Please Log in again.</h6>";
-  destroySession();
 
-}
 ?>
 <!doctype html>
 <html>
