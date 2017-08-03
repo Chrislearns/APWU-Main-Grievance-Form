@@ -2,19 +2,24 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
-$name = $_SESSION["name"];
-if (isset($name)) {
-    header("location:index.php");
-    }
-
-
-
-
-
 function destroySession(){
   session_unset();
   session_destroy();
 }
+
+if (isset($_SESSION["name"])) {
+    header("location:index.php");
+    }
+
+if (isset($_SESSION['ip'])) {
+  if ($_SESSION['ip'] !== $_SERVER['REMOTE_ADDR']){
+    destroySession();
+    $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+    header("location:newLogInPage.php");
+  }
+}
+
+
 
 
 
