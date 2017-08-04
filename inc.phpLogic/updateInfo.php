@@ -32,7 +32,9 @@ $verify = password_verify($password, $dbpassword);
 if($count == 1  && $verify){
 
 if(!empty($_POST['eid'])) {
-$employeeID = htmlentities(trim($_SESSION['eid']),ENT_QUOTES, "UTF-8");
+  
+$employeeID = $_SESSION['eid'];
+
 $f_n = $conn->prepare("update UserSignUp Set employeeID = $employeeID  where emailAddress = '$email'");
 $f_n->execute();
 }
