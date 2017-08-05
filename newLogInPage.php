@@ -228,18 +228,22 @@ if (isset($_SESSION['ip'])) {
 
     <div class="input-spacing">
       <h3> Reenter Email Address:</h3>
-      <input id="email-address2" type="email" name="email2" size="20" maxlength="120">
+      <input id="email-address2"  type="email" name="email2" size="20" maxlength="120">
     </div>
     <div class="error" id="email2-error">Please verify email address</div>
     <div class="input-spacing">
       <h3> Create Password:</h3>
-      <input id="passwordField1" type="password" name="password1" size="20" maxlength="120">
+      <input id="passwordField1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+      type="password" name="password2" size="20" maxlength="120">
     </div>
     <div class="error" id="password1-error">Please create a password.</div>
 
     <div class="input-spacing">
       <h3> Reenter Password:</h3>
-      <input id="passwordField2" type="password" name="password2" size="20" maxlength="120">
+      <input id="passwordField2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+      type="password" name="password2" size="20" maxlength="120">
     </div>
     <div class="error" id="password2-error">Please verify password</div>
     <input id="submit" type="submit" value="Sign up">

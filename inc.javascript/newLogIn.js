@@ -1,8 +1,11 @@
-
+/*if (email_RegEx.test($('#email-address1').val())){
+  $('#email1-error').html("<div class = error>Invalid Email Format</div>");
+  fieldErrs = true;
+}*/
 $(document).ready(function () {
   //Client side validation Checking fields with regex;
   let fieldErrs = false;
-
+  let emailRegEx = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
   $("#full-name").focusout(function(){
 
         if($("#full-name").val() == ""){
@@ -97,14 +100,14 @@ $(document).ready(function () {
 
   })
   $('#veteran_ddm').focusout(function(){
-        if ($('#veteran_ddm').val() === "") {
+        if ($('#veteran_ddm').val() === "none") {
         $('#veteranStatus-error').show("slow");
         fieldErrs = true;
     }
 
   })
   $('#layOff_ddm').focusout(function(){
-        if ($('#layOff_ddm').val() === "") {
+        if ($('#layOff_ddm').val() === "none") {
         $('#layOffProtected-error').show("slow");
         fieldErrs = true;
     }
@@ -112,16 +115,19 @@ $(document).ready(function () {
   })
 
   $('#email-address1').focusout(function(){
+
         if ($('#email-address1').val() === "") {
         $('#email1-error').show("slow");
         fieldErrs = true;
     }
+
 
   })
   $('#email-address2').focusout(function(){
         if ($('#email-address1').val() !== $('#email-address2')) {
         $('#email2-error').show("slow");
         fieldErrs = true;
+
     }
 
   })
@@ -139,7 +145,8 @@ $(document).ready(function () {
     }
 
   })
-        //Validation on submit;
+
+    //Validation on submit;
     $("#sign-up-form").submit(function (event) {
 
 
