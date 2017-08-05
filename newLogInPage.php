@@ -190,14 +190,14 @@ if (isset($_SESSION['ip'])) {
       <input id="payLevel" type="text" name="payLevel" size="10" maxlength="10">
     </div>
     <div class="error" id="payLevel-error">Pay Level field required</div>
-    <div class="error" id="payLevel-regex">Pay Level should contain number only</div>
+    <div class="error" id="payLevel-regex">Pay Level should contain letters and number only</div>
 
     <div class="input-spacing">
       <h3> Pay Step:</h3>
       <input id="payStep" type="text" name="payStep" size="10" maxlength="10">
     </div>
     <div class="error" id="payStep-error">Pay Step field required</div>
-    <div class="error" id="payStep-regex">Pay Step should contain number only</div>
+    <div class="error" id="payStep-regex">Pay Step should contain letters and number only</div>
 
     <div class="input-spacing">
       <h3> Tour:</h3>
@@ -207,12 +207,17 @@ if (isset($_SESSION['ip'])) {
     <div class="error" id="tour-regex">Tour field should contain numbers only</div>
 
     <div class="input-spacing">
-      <h3> Days Off:</h3>
-      <input id="daysOff" type="text" name="daysOff" size="10" maxlength="10">
+      <h3> Days Off(check all applicable boxes):</h3><br>
+    <input type="checkbox" name="daysOff" value="Saturday" > Saturday
+    <input type="checkbox" name="daysOff" value="Sunday" > Sunday
+    <input type="checkbox" name="daysOff" value="Monday" > Monday
+    <input type="checkbox" name="daysOff" value="Tuesday" > Tuesday
+    <input type="checkbox" name="daysOff" value="Wednesday" > Wednesday
+    <input type="checkbox" name="daysOff" value="Thursday" > Thursday
+    <input type="checkbox" name="daysOff" value="Friday" > Friday
     </div>
     <div class="error" id="daysOff-error">Days Off field required</div>
-    <div class="error" id="daysOff-regex">Days Off field should contain numbers only</div>
-
+<br>
     <select name="veteranStatus" class="veteranStatus" id="veteran_ddm">
       <option value="none">Veteran Status</option>
 
@@ -238,12 +243,15 @@ if (isset($_SESSION['ip'])) {
       <input id="email-address1" type="email" name="email1" size="20" maxlength="120">
     </div>
     <div class="error" id="email1-error">Please enter a email address.</div>
+    <div class="error" id="email1-regex">Please enter a  valid email address.</div>
 
     <div class="input-spacing">
       <h3> Reenter Email Address:</h3>
       <input id="email-address2"  type="email" name="email2" size="20" maxlength="120">
     </div>
     <div class="error" id="email2-error">Please verify email address</div>
+    <div class="error" id="email2-regex">Please verify with a valid email address</div>
+    <div class="error" id="email2-equal">Email address should be the same</div>
     <div class="input-spacing">
       <h3> Create Password:</h3>
       <input id="passwordField1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -251,6 +259,8 @@ if (isset($_SESSION['ip'])) {
       type="password" name="password2" size="20" maxlength="120">
     </div>
     <div class="error" id="password1-error">Please create a password.</div>
+    <div class="error" id="password1-equal">Password fields should contain be the same.</div>
+    <div class="error" id="password1-regex">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
 
     <div class="input-spacing">
       <h3> Reenter Password:</h3>
@@ -259,7 +269,9 @@ if (isset($_SESSION['ip'])) {
       type="password" name="password2" size="20" maxlength="120">
     </div>
     <div class="error" id="password2-error">Please verify password</div>
+    <div class="error" id="password2-regex">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
     <input id="submit" type="submit" value="Sign up">
+    <div class="warnings">Please fix the errors in your submission.</div>
   </form>
   <!--END OF FORM - tabbed left for spacing-->
 </div>
