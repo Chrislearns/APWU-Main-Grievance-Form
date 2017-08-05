@@ -111,6 +111,7 @@ if (isset($_SESSION['ip'])) {
         <label for="fullName">Full Name</label>
         <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128">
         <div class="error" id="full-name-error">Full Name Required</div>
+        <div class="error" id="full-name-regex">Full Name can only contain letters only</div>
       </div>
 
       <div class="four columns">
@@ -123,6 +124,7 @@ if (isset($_SESSION['ip'])) {
       </select>
       </div>
       <div class="error" id="drop-down-menu-error">Please select your Employee Status</div>
+
     </div>
     <!--END ROW-->
 
@@ -132,6 +134,7 @@ if (isset($_SESSION['ip'])) {
         <label for="address">Street Address</label>
         <input id="address" type="text" name="address" maxlength="80" class="u-full-width">
         <div class="error" id="address-error">Address field required</div>
+        <div class="error" id="address-regex">Address field can contain letters and number only</div>
       </div>
     </div>
     <!--END ROW-->
@@ -142,16 +145,19 @@ if (isset($_SESSION['ip'])) {
         <label for="city">City</label>
         <input id="city" type="text" name="city" maxlength="50" class="u-full-width">
         <div class="error" id="city-error">City field required</div>
+        <div class="error" id="city-regex">City field should contain letter only</div>
       </div>
       <div class="three columns">
         <label for="state">State</label>
         <input id="state" type="text" name="state" class="u-full-width" maxlength="25">
         <div class="error" id="state-error">State field required</div>
+        <div class="error" id="state-regex">State field should contain letters only</div>
       </div>
       <div class="three columns">
         <label for="zip">Zip Code</label>
         <input id="zipCode" type="number" name="zipCode" class="u-full-width" maxlength="25">
         <div class="error" id="zipCode-error">Zip-Code field required</div>
+        <div class="error" id="zipCode-regex">Zip-Code field should contain numbers only</div>
       </div>
     </div>
     <!--END ROW-->
@@ -162,6 +168,7 @@ if (isset($_SESSION['ip'])) {
       <input id="eid" type="number" name="eid" size="8" maxlength="8">
     </div>
     <div class="error" id="eid-error">Employee ID field required</div>
+    <div class="error" id="eid-regex">Employee ID field should contain numbers only</div>
 
 
     <div class="input-spacing">
@@ -169,36 +176,42 @@ if (isset($_SESSION['ip'])) {
       <input id="phone-number" type="text" name="phone" size="11" maxlength="11">
     </div>
     <div class="error" id="phoneNumber-error">Phone Number field required</div>
+    <div class="error" id="phoneNumber-regex">Phone Number field should contain numbers only</div>
 
     <div class="input-spacing">
       <h3> Seniority Date(mm/dd/yy):</h3>
       <input id="seniorityDate" type="text" name="seniority" size="10" maxlength="10">
     </div>
     <div class="error" id="seniorityDate-error">Seniority Date field required</div>
+    <div class="error" id="seniorityDate-regex">Seniority Date should contain dd-mm-yyyy or dd/mm/yyyy</div>
 
     <div class="input-spacing">
       <h3> (Pay Status) Level:</h3>
       <input id="payLevel" type="text" name="payLevel" size="10" maxlength="10">
     </div>
     <div class="error" id="payLevel-error">Pay Level field required</div>
+    <div class="error" id="payLevel-regex">Pay Level should contain number only</div>
 
     <div class="input-spacing">
       <h3> Pay Step:</h3>
       <input id="payStep" type="text" name="payStep" size="10" maxlength="10">
     </div>
     <div class="error" id="payStep-error">Pay Step field required</div>
+    <div class="error" id="payStep-regex">Pay Step should contain number only</div>
 
     <div class="input-spacing">
       <h3> Tour:</h3>
       <input id="tour" type="number" name="tour" size="10" maxlength="10">
     </div>
     <div class="error" id="tour-error">Tour field required</div>
+    <div class="error" id="tour-regex">Tour field should contain numbers only</div>
 
     <div class="input-spacing">
       <h3> Days Off:</h3>
       <input id="daysOff" type="text" name="daysOff" size="10" maxlength="10">
     </div>
     <div class="error" id="daysOff-error">Days Off field required</div>
+    <div class="error" id="daysOff-regex">Days Off field should contain numbers only</div>
 
     <select name="veteranStatus" class="veteranStatus" id="veteran_ddm">
       <option value="none">Veteran Status</option>

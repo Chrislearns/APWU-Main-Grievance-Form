@@ -5,23 +5,25 @@
 $(document).ready(function () {
   //Client side validation Checking fields with regex;
   let fieldErrs = false;
-  let emailRegEx = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
-  let lettersOnly = "/^[A-Za-z]+$/";
-  let dateValid = "/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/";
-  let numbersOnly = "/^[0-9]+$/";
-  let phoneValid = "/^\d{10}$/";
-  
+  let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let lettersOnly = /^[A-Za-z]+$/;
+  let dateValid = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+  let numbersOnly = /^[0-9]+$/;
+  let phoneValid = /^\d{10}$/;
+  let lettersNumber = /^[0-9a-zA-Z]+$/;
+
   $("#full-name").focusout(function(){
 
-        if($("#full-name").val() == ""){
-        $("#full-name-error").show("slow");
+        if (!lettersOnly.test($("#full-name").val())) {
+          console.log($("#full-name").val());
+        $("#full-name-regex").show("slow");
         fieldErrs = true;
   }
       })
   $("#address").focusout(function(){
 
-        if($("#address").val() == ""){
-        $("#address-error").show("slow");
+        if(!lettersNumber.test($("#address").val())){
+        $("#address-regex").show("slow");
         fieldErrs = true;
   }
       })
@@ -35,14 +37,15 @@ $(document).ready(function () {
         })
 
   $('#city').focusout(function(){
-        if ($('#city').val() === "") {
+
+        if (lettersOnly.test($('#city').val())) {
         $('#city-error').show("slow");
         fieldErrs = true;
     }
 
   })
   $('#state').focusout(function(){
-        if ($('#state').val() === "") {
+        if (lettersOnly.test($('#state').val())) {
         $('#state-error').show("slow");
         fieldErrs = true;
     }
