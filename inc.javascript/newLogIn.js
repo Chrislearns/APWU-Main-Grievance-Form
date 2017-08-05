@@ -3,25 +3,138 @@ $(document).ready(function () {
   //Client side validation Checking fields with regex;
   let fieldErrs = false;
 
-  $("#full-name").focusout("blur", function(){
+  $("#full-name").focusout(function(){
 
         if($("#full-name").val() == ""){
         $("#full-name-error").show("slow");
         fieldErrs = true;
   }
       })
+  $("#address").focusout(function(){
 
-  $("#drop-down-menu").focusout(function(){
+        if($("#address").val() == ""){
+        $("#address-error").show("slow");
+        fieldErrs = true;
+  }
+      })
 
-          if ($('#drop-down-menu').val() ==='none'){
-          $('#drop-down-menu-error').show("slow");
+  $("#veteran_ddm").focusout(function(){
+
+          if ($('#veteran_ddm').val() ==='none'){
+          $('#layOffProtected-error').show("slow");
           fieldErrs = true;
     }
         })
 
-  $('#address').focusout(function(){
-        if ($('#address').val() === "") {
-        $('#address-error').show("slow");
+  $('#city').focusout(function(){
+        if ($('#city').val() === "") {
+        $('#city-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#state').focusout(function(){
+        if ($('#state').val() === "") {
+        $('#state-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#zipCode').focusout(function(){
+        if ($('#zipCode').val() === "") {
+        $('#zipCode-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#eid').focusout(function(){
+        if ($('#eid').val() === "") {
+        $('#eid-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#phone-number').focusout(function(){
+        if ($('#phone-number').val() === "") {
+        $('#phoneNumber-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#seniorityDate').focusout(function(){
+        if ($('#seniorityDate').val() === "") {
+        $('#seniorityDate-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#payLevel').focusout(function(){
+        if ($('#payLevel').val() === "") {
+        $('#payLevel-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#payStep').focusout(function(){
+        if ($('#payStep').val() === "") {
+        $('#payStep-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#tour').focusout(function(){
+        if ($('#tour').val() === "") {
+        $('#tour-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#daysOff').focusout(function(){
+        if ($('#daysOff').val() === "") {
+        $('#daysOff-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#veteran_ddm').focusout(function(){
+        if ($('#veteran_ddm').val() === "") {
+        $('#veteranStatus-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#layOff_ddm').focusout(function(){
+        if ($('#layOff_ddm').val() === "") {
+        $('#layOffProtected-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+
+  $('#email-address1').focusout(function(){
+        if ($('#email-address1').val() === "") {
+        $('#email1-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#email-address2').focusout(function(){
+        if ($('#email-address1').val() !== $('#email-address2')) {
+        $('#email2-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#passwordField1').focusout(function(){
+        if ($('#passwordField1').val() == "") {
+        $('#password1-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
+  $('#passwordField2').focusout(function(){
+        if ($('#passwordField1').val() !== $('passwordField2').val()) {
+        $('#password2-error').show("slow");
         fieldErrs = true;
     }
 

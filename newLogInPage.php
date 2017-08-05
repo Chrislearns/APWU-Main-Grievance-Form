@@ -157,13 +157,13 @@ if (isset($_SESSION['ip'])) {
     <!--END ROW-->
 
 
-
-
     <div class="input-spacing">
       <h3> Employee ID:</h3>
       <input id="eid" type="number" name="eid" size="8" maxlength="8">
     </div>
     <div class="error" id="eid-error">Employee ID field required</div>
+
+
     <div class="input-spacing">
       <h3> Phone Number:</h3>
       <input id="phone-number" type="text" name="phone" size="11" maxlength="11">
@@ -181,6 +181,7 @@ if (isset($_SESSION['ip'])) {
       <input id="payLevel" type="text" name="payLevel" size="10" maxlength="10">
     </div>
     <div class="error" id="payLevel-error">Pay Level field required</div>
+
     <div class="input-spacing">
       <h3> Pay Step:</h3>
       <input id="payStep" type="text" name="payStep" size="10" maxlength="10">
@@ -199,7 +200,7 @@ if (isset($_SESSION['ip'])) {
     </div>
     <div class="error" id="daysOff-error">Days Off field required</div>
 
-    <select name="veteranStatus" class="veteranStatus" id="drop-down-menu">
+    <select name="veteranStatus" class="veteranStatus" id="veteran_ddm">
       <option value="none">Veteran Status</option>
 
       <option value="Yes">Yes</option>
@@ -209,7 +210,7 @@ if (isset($_SESSION['ip'])) {
     </select>
     <div class="error" id="veteranStatus-error">Veteran Status field required</div>
 
-    <select name="layOffProtected" class="layOffProtected" id="drop-down-menu">
+    <select name="layOffProtected" class="layOffProtected" id="layOff_ddm">
       <option value="none">Layoff Protected</option>
 
       <option value="YES">Yes</option>
