@@ -251,7 +251,7 @@ if (isset($_SESSION['ip'])) {
     </div>
     <div class="error" id="email2-error">Please verify email address</div>
     <div class="error" id="email2-regex">Please verify with a valid email address</div>
-    <div class="error" id="email2-equal">Email address should be the same</div>
+    <div class="error" id="email2-equal">Both fields should contain the same email address</div>
     <div class="input-spacing">
       <h3> Create Password:</h3>
       <input id="passwordField1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -259,7 +259,7 @@ if (isset($_SESSION['ip'])) {
       type="password" name="password2" size="20" maxlength="120">
     </div>
     <div class="error" id="password1-error">Please create a password.</div>
-    <div class="error" id="password1-equal">Password fields should contain be the same.</div>
+    <div class="error" id="password1-equal">Password fields should contain the same password.</div>
     <div class="error" id="password1-regex">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
 
     <div class="input-spacing">

@@ -1,18 +1,20 @@
 # APWU-Main-Grievance-Form
 
+This web applications intended use is for the employees of the United States Postal Service including all members of the American Postal Workers Union. The process of filing grievances is extremely outdated. The current process utilizes a ton of paper work and provides no potential for feedback during the arbitration process. The purpose of this applications is to provide one locations to file grievances, update employee info, update status info, and create a community supported by the APWU.
+
 ******AGENDA*******
 
-1.RegEx validation
+----1.RegEx validation
 
-2.Update info PHP validation/display database info
+----2.Update info PHP validation/display database info
 
-3.Sessions/Cookies
+----3.Sessions/Cookies
 
-4.Sanitize Inputs to prevent SQL injections
+----4.Sanitize Inputs to prevent SQL injections
 
 5.Rewrite/Refactor code PHP/JavaScript/CSS files
 
-6.Create admin login page to view and query grievances
+----6.Create admin login page to view and query grievances
 
 7.Create success page or message upon grievance submission
 
@@ -24,11 +26,9 @@
 
 11.Use php Filters to validate form inputs
 
+12.Server side validation
 
 
-This grievance form is for the employees who are having problems filing and keeping track of grievances forms. During the course of
-the average USPS employees career he or she will have filed 100's of grievances. In the course of the grievance process
-there is no feedback given. There is also no way to find out if your grievance has been received or denied.
 
 Resources:
 
