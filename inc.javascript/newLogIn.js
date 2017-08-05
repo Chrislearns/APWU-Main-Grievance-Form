@@ -18,6 +18,14 @@ $(document).ready(function () {
           fieldErrs = true;
     }
         })
+
+  $('#address').focusout(function(){
+        if ($('#address').val() === "") {
+        $('#address-error').show("slow");
+        fieldErrs = true;
+    }
+
+  })
         //Validation on submit;
     $("#sign-up-form").submit(function (event) {
 

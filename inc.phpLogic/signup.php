@@ -3,7 +3,9 @@ if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
 include ('grievance.php');
-
+function filter_var($data){
+  filter_input(INPUT_POST, $data, FILTER_VALIDATE_EMAIL)
+}
 
 $employeeID = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
 $fullName = htmlentities(trim($_POST['full-name']),ENT_QUOTES, "UTF-8");
@@ -21,8 +23,17 @@ $daysOff = htmlentities(trim($_POST['daysOff']),ENT_QUOTES, "UTF-8");
 $veteran = htmlentities(trim($_POST['veteranStatus']),ENT_QUOTES, "UTF-8");
 $layOffProtected = htmlentities(trim($_POST['layOffProtected']),ENT_QUOTES, "UTF-8");
 $email = htmlentities(trim($_POST['email1']),ENT_QUOTES, "UTF-8");
+}
+$_POST['email1']),ENT_QUOTES, "UTF-8");
 $password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
 
+if(!filter_input(INPUT_POST, $_POST['email1'], FILTER_VALIDATE_EMAIL)){
+  $_SESSION['email_message'] = "Valid email required";
+  exit;
+}
+else{
+
+}
 /* $options = [
     'cost' => 10,
 ]; Used to shorten execution time to under 100 millisection values 8 - 12 normally*/
