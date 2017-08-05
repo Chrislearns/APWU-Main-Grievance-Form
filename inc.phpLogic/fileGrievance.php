@@ -7,8 +7,9 @@ include('grievance.php');
 
 //DRY
 function sanitize($data){
-  trim($data);
-  htmlentities($data, ENT_QUOTES, "UTF-8");
+  $data = trim($data);
+  $data = htmlentities($data, ENT_QUOTES, "UTF-8");
+  return $data;
 }
 $eid = $_SESSION['eid'];
 $date = sanitize($_POST['grievance-date']);

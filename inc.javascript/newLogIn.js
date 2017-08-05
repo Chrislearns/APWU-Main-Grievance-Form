@@ -1,7 +1,24 @@
 
 $(document).ready(function () {
+  //Client side validation Checking fields with regex;
+  let fieldErrs = false;
 
+  $("#full-name").focusout("blur", function(){
 
+        if($("#full-name").val() == ""){
+        $("#full-name-error").show("slow");
+        fieldErrs = true;
+  }
+      })
+
+  $("#drop-down-menu").focusout(function(){
+
+          if ($('#drop-down-menu').val() ==='none'){
+          $('#drop-down-menu-error').show("slow");
+          fieldErrs = true;
+    }
+        })
+        //Validation on submit;
     $("#sign-up-form").submit(function (event) {
 
 
@@ -14,15 +31,17 @@ $(document).ready(function () {
         $(".error").hide();
 
  //Make sure each field is not blank
+    if ($("#full-name").val() === "") {
+        $("#full-name-error").show("slow");
+        errors = true;
+    }
 
-        if ($("#full-name").val() === "") {
-            $("#full-name-error").show("slow");
-            errors = true;
-        }
-        if ($('#drop-down-menu').val() ==='none'){
-              $('#drop-down-menu-error').show("slow");
-              errors = true;
-        }
+
+          if ($('#drop-down-menu').val() ==='none'){
+                $('#drop-down-menu-error').show("slow");
+                errors = true;
+          }
+
         if ($('#address').val() === "") {
             $('#address-error').show("slow");
             errors = true;
@@ -103,6 +122,7 @@ $(document).ready(function () {
  //If there are errors then show a general error message
 
 if(errors){
+    event.preventDefault();
 
   $(".warnings").show("slow").fadeOut(5000);
 
