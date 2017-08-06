@@ -256,7 +256,7 @@ if (isset($_SESSION['ip'])) {
       <h3> Create Password:</h3>
       <input id="passwordField1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
       title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-      type="password" name="password2" size="20" maxlength="120">
+      type="password" name="password1" size="20" maxlength="120">
     </div>
     <div class="error" id="password1-error">Please create a password.</div>
     <div class="error" id="password1-equal">Password fields should contain the same password.</div>
