@@ -169,7 +169,11 @@ if (isset($_SESSION['ip'])) {
     </div>
     <div class="error" id="eid-error">Employee ID field required</div>
     <div class="error" id="eid-regex">Employee ID field should contain numbers only</div>
-
+<?php if (isset($_SESSION['eid_message'])) {
+  $eid = $_SESSION['eid_message'];
+  echo "<h4>$eid</h4>";
+}
+?>
 
     <div class="input-spacing">
       <h3> Phone Number:</h3>
