@@ -16,7 +16,7 @@ $(document).ready(function () {
   $("#full-name").focusout(function(){
 
         if (!lettersOnly.test($("#full-name").val())) {
-          console.log($("#full-name").val());
+
         $("#full-name-regex").show("slow");
         fieldErrs = true;
   }
@@ -165,11 +165,12 @@ $(document).ready(function () {
     //Validation on submit;
     $("#sign-up-form").submit(function (event) {
 
-      if (fieldErrs) {
+  /*    if (fieldErrs) {
         event.preventDefault();
         $('.warnings').show("slow");
+        return false;
       }
-
+*/
 
    //Assume there are no errors
         var errors = false;
@@ -261,7 +262,7 @@ $(document).ready(function () {
 
         if ( $('input[name=password2]').val() != $('input[name=password1]').val()) {
 
-              $('#password2-error').show("slow");
+              $('#password1-equal').show("slow");
                 errors = true;
                 }
 
