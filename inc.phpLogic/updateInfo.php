@@ -8,9 +8,10 @@ include("grievance.php");
 
 
 $email = $_SESSION['email'];
+$password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
 
   if(empty($_POST['password1'])){
-    $password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
+
     $_SESSION['message'] = "Please enter current password to update info";
     header("location:newUpdateAccountInfo.php");
     $conn = null;
@@ -32,7 +33,7 @@ $verify = password_verify($password, $dbpassword);
 if($count == 1  && $verify){
 
 if(!empty($_POST['eid'])) {
-  
+
 $employeeID = $_SESSION['eid'];
 
 $f_n = $conn->prepare("update UserSignUp Set employeeID = $employeeID  where emailAddress = '$email'");
