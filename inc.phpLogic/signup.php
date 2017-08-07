@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
 include ('grievance.php');
-$daysOff = $_POST['daysOff']
+$daysOff = $_POST['daysOff'];
 
 $employeeID = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
 $fullName = htmlentities(trim($_POST['full-name']),ENT_QUOTES, "UTF-8");
@@ -33,11 +33,11 @@ $passwordValid = array("options"=>array("regexp"=>"/(?=.*\d)(?=.*[a-z])(?=.*[A-Z
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   $errors = false;
 
-    if(filter_var($employeeID, FILTER_VALIDATE_INT) === false) {
+    if(filter_var($employeeID, 257) === false) {
       $_SESSION['eid_message'] = "Valid employee ID required";
 $errors = true;
     }
-    if(filter_var($fullName, FILTER_VALIDATE_STRING) === false) {
+    if(filter_var($fullName, 513) === false) {
       $_SESSION['fullName_message'] = "Valid name required";
 $errors = true;
     }
@@ -45,39 +45,39 @@ $errors = true;
       $_SESSION['employeeStatus_message'] = "Employee status required";
 $errors = true;
     }
-    if(filter_var($address, FILTER_VALIDATE_REGEX, $letterNumbers) === false) {
+    if(filter_var($address, 272, $letterNumbers) === false) {
       $_SESSION['address_message'] = "Address should contain letters and numbers required";
 $errors = true;
     }
-    if(filter_var($city, FILTER_VALIDATE_STRING) === false) {
+    if(filter_var($city, 513) === false) {
       $_SESSION['city_message'] = "Valid city required";
 $errors = true;
     }
-    if(filter_var($state, FILTER_VALIDATE_STRING) === false) {
+    if(filter_var($state, 513) === false) {
       $_SESSION['state_message'] = "Valid state required";
 $errors = true;
     }
-    if(filter_var($zipCode, FILTER_VALIDATE_INT) === false) {
+    if(filter_var($zipCode, 257) === false) {
       $_SESSION['zip_message'] = "Valid Zip-Code required";
 $errors = true;
     }
-    if(filter_var($phone, FILTER_VALIDATE_INT) === false) {
+    if(filter_var($phone, 257) === false) {
       $_SESSION['phone_message'] = "Valid phone number required";
 $errors = true;
     }
-    if(filter_var($seniority, FILTER_VALIDATE_REGEX, $dateValid) === false) {
+    if(filter_var($seniority, 272, $dateValid) === false) {
       $_SESSION['seniority_message'] = "Valid seniority date required required";
 $errors = true;
     }
-    if(filter_var($payStatus, FILTER_VALIDATE_INT) === false) {
+    if(filter_var($payStatus, 257) === false) {
       $_SESSION['payStatus_message'] = "Valid Pay Status required";
 $errors = true;
     }
-    if(filter_var($payStep, FILTER_VALIDATE_REGEX, $lettersNumber) === false) {
+    if(filter_var($payStep, 272, $lettersNumber) === false) {
       $_SESSION['payStep_message'] = "Valid Pay Step required";
 $errors = true;
     }
-    if(filter_var($tour, FILTER_VALIDATE_INT) === false) {
+    if(filter_var($tour, 257) === false) {
       $_SESSION['tour_message'] = "Valid tour required";
 $errors = true;
     }
@@ -94,12 +94,12 @@ $errors = true;
 $errors = true;
     }
 
-    if(filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    if(filter_var($email, 274) === false) {
       $_SESSION['email_message'] = "Valid email required";
 $errors = true;
     }
 
-    if(filter_var($email2, FILTER_VALIDATE_EMAIL) === false) {
+    if(filter_var($email2, 274) === false) {
       $_SESSION['email2_message'] = "You must re-enter a valid email";
 $errors = true;
     }
@@ -109,11 +109,11 @@ $errors = true;
 $errors = true;
     }
 
-    if(filter_var($password, FILTER_VALIDATE_REGEX, $passwordValid) === false) {
+    if(filter_var($password, 272, $passwordValid) === false) {
       $_SESSION['password_message'] = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters";
 $errors = true;
     }
-    if(filter_var($password2, FILTER_VALIDATE_REGEX, $passwordValid) === false) {
+    if(filter_var($password2, 272, $passwordValid) === false) {
       $_SESSION['password2_message'] = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters";
 $errors = true;
     }
@@ -122,7 +122,7 @@ $errors = true;
 $errors = true;
     }
     if($errors){
-      header("location:newLogInPage.php");
+      header("location:../newLogInPage.php");
       $conn = null;
       exit;
     }
