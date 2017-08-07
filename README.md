@@ -90,7 +90,8 @@ CREATE TABLE userAccounts (
 	    payLevel varchar(10) NOT null,
 	    payStep varchar(10) NOT null,
 	    tour int(3) NOT null,
-	    daysOff varchar(28) NOT null,
+	    firstdayOff varchar(28) NOT null,
+	    secondDayOff varchar(28) NOT null,
 	    veteranStatus varchar(10) NOT null,
 	    layOffProtected varchar(10) NOT null,
 			emailAddress varchar(128) NOT null
