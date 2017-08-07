@@ -73,7 +73,7 @@ $errors = true;
       $_SESSION['payStatus_message'] = "Valid Pay Status required";
 $errors = true;
     }
-    if(filter_var($payStep, 272, $lettersNumber) === false) {
+    if(filter_var($payStep, 272, $letterNumber) === false) {
       $_SESSION['payStep_message'] = "Valid Pay Step required";
 $errors = true;
     }
@@ -104,7 +104,7 @@ $errors = true;
 $errors = true;
     }
 
-    if($email1 !== $email2) {
+    if($email !== $email2) {
       $_SESSION['email_equal'] = "Emails fields must contain the same input";
 $errors = true;
     }
@@ -122,7 +122,7 @@ $errors = true;
 $errors = true;
     }
     if($errors){
-      header("location:../newLogInPage.php");
+      header("location:../newLogInPage.php#");
       $conn = null;
       exit;
     }

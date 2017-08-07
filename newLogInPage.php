@@ -199,7 +199,7 @@ if (isset($_SESSION['ip'])) {
     <div class="error" id="eid-regex">Employee ID field should contain numbers only</div>
       <?php if (isset($_SESSION['eid_message'])) {
         $eid = $_SESSION['eid_message'];
-        echo "<h4>$eid</h4>";
+        echo "<div>$eid</div>";
       }
       ?>
 
@@ -330,7 +330,7 @@ if (isset($_SESSION['ip'])) {
     <div class="error" id="email2-error">Please verify email address</div>
     <div class="error" id="email2-regex">Please verify with a valid email address</div>
     <div class="error" id="email2-equal">Both fields should contain the same email address</div>
-    
+
     <div class="input-spacing">
       <h3> Create Password:</h3>
       <input id="passwordField1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
