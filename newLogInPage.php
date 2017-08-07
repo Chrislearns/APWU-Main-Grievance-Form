@@ -184,7 +184,7 @@ if (isset($_SESSION['ip'])) {
 
     <div class="input-spacing">
       <h3> Seniority Date(mm/dd/yy):</h3>
-      <input id="seniorityDate" type="text" name="seniority" size="10" maxlength="10">
+      <input id="seniorityDate" type="date" name="seniority" size="10" maxlength="20">
     </div>
     <div class="error" id="seniorityDate-error">Seniority Date field required</div>
     <div class="error" id="seniorityDate-regex">Seniority Date should contain dd-mm-yyyy or dd/mm/yyyy</div>

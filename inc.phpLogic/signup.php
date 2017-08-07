@@ -22,51 +22,70 @@ $veteran = htmlentities(trim($_POST['veteranStatus']),ENT_QUOTES, "UTF-8");
 $layOffProtected = htmlentities(trim($_POST['layOffProtected']),ENT_QUOTES, "UTF-8");
 $email = htmlentities(trim($_POST['email1']),ENT_QUOTES, "UTF-8");
 $password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
-$lettersOnly = array("options"=>array("regexp"=>"/^[A-Za-z]+$/"));
+
+$letterNumbers = array("options"=>array("regexp"=>"/^[0-9a-zA-Z]+$/"));
+$dateValid = array("options"=>array("regexp"=>"/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/"));
+$passwordValid = array("options"=>array("regexp"=>"/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/"));
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   $errors = false;
-    if(filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
+    if(filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
       $_SESSION['email_message'] = "Valid email required";
 
     }
-    if(filter_var($employeeID, FILTER_VALIDATE_REGEXP,$lettersOnly )) {
+    if(filter_var($employeeID, FILTER_VALIDATE_INT) === false) {
       $_SESSION['eid_message'] = "Valid employee ID required";
 $errors = true;
     }
-    if(filter_var($fullName, FILTER_VALIDATE_STRING)) {
+    if(filter_var($fullName, FILTER_VALIDATE_STRING) === false) {
       $_SESSION['fullName_message'] = "Valid name required";
 
     }
-    if(filter_var($address, FILTER_VALIDATE_EMAIL)) {
-      $_SESSION['email_message'] = "Valid email required";
+    if(filter_var($address, FILTER_VALIDATE_REGEX, $letterNumbers) === false) {
+      $_SESSION['address_message'] = "Address should contain letters and numbers required";
 
     }
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $_SESSION['email_message'] = "Valid email required";
+    if(filter_var($city, FILTER_VALIDATE_STRING) === false) {
+      $_SESSION['city_message'] = "Valid city required";
 
     }
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $_SESSION['email_message'] = "Valid email required";
+    if(filter_var($state, FILTER_VALIDATE_STRING) === false) {
+      $_SESSION['state_message'] = "Valid state required";
 
     }
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $_SESSION['email_message'] = "Valid email required";
+    if(filter_var($zipCode, FILTER_VALIDATE_INT) === false) {
+      $_SESSION['zip_message'] = "Valid Zip-Code required";
 
     }
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $_SESSION['email_message'] = "Valid email required";
+    if(filter_var($phone, FILTER_VALIDATE_INT) === false) {
+      $_SESSION['phone_message'] = "Valid phone number required";
 
     }
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $_SESSION['email_message'] = "Valid email required";
+    if(filter_var($seniority, FILTER_VALIDATE_REGEX, $dateValid) === false) {
+      $_SESSION['seniority_message'] = "Valid seniority date required required";
 
     }
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $_SESSION['email_message'] = "Valid email required";
+    if(filter_var($payStatus, FILTER_VALIDATE_INT) === false) {
+      $_SESSION['payStatus_message'] = "Valid Pay Status required";
+
+    }
+    if(filter_var($payStep, FILTER_VALIDATE_REGEX, $lettersNumber) === false) {
+      $_SESSION['payStep_message'] = "Valid Pay Step required";
+
+    }
+    if(filter_var($tour, FILTER_VALIDATE_INT) === false) {
+      $_SESSION['tour_message'] = "Valid tour required";
+
+    }
+
+    if(filter_var($password, FILTER_VALIDATE_REGEX, ) === false) {
+      $_SESSION['password_message'] = "Valid password required";
 
     }
     if($errors){
       header("location:newLogInPage.php");
+      $conn = null;
+      exit;
     }
   }
 
