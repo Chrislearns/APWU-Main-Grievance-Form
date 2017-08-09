@@ -50,7 +50,7 @@ $errors = true;
 $errors = true;
     }
     else{
-      $_SESSION['name'] = $fullName;
+      $_SESSION['nameF'] = $fullName;
     }
     if($employeeType === "none") {
       $_SESSION['employeeStatus_message'] = "Employee status required";
@@ -122,7 +122,7 @@ $errors = true;
 $errors = true;
     }
     else{
-      $_SESSION["email"] = $email;
+      $_SESSION["email1"] = $email;
     }
 
     if(filter_var($email2, 274) === false) {

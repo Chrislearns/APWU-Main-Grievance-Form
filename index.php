@@ -93,5 +93,5 @@ function destroySession(){
   <?php unset($_SESSION['message']);
   unset($_SESSION['grievance']);
    ?>
-  
+
 </html>

@@ -23,10 +23,6 @@ else{
   $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
 }
 
-
-
-
-
 ?>
 <!doctype html>
 <html>
@@ -113,7 +109,7 @@ else{
       <!--FORM ROW-->
       <div class="eight columns">
         <label for="fullName">Full Name</label>
-        <input class="u-full-width" value="<?php echo $f_n = $_SESSION["name"]; ?>" id="full-name"  type="text" name="full-name" maxlength="128">
+        <input class="u-full-width" value="<?php echo $f_n = $_SESSION["nameF"]; ?>" id="full-name"  type="text" name="full-name" maxlength="128">
         <div class="error" id="full-name-error">Full Name Required</div>
         <div class="error" id="full-name-regex">Full Name can only contain letters only</div>
       </div>
@@ -297,7 +293,7 @@ else{
     ?>
     <div class="input-spacing">
       <h3> Email Address:</h3>
-      <input id="email-address1" value="<?php echo $e_a = $_SESSION["email"]; ?>" type="email" name="email1" size="20" maxlength="120">
+      <input id="email-address1" value="<?php echo $e_a = $_SESSION["email1"]; ?>" type="email" name="email1" size="20" maxlength="120">
     </div>
     <div class="error" id="email1-error">Please enter a email address.</div>
     <div class="error" id="email1-regex">Please enter a  valid email address.</div>
@@ -369,4 +365,17 @@ else{
 </html>
 <?php
     unset($_SESSION["error"]);
+    unset($_SESSION["nameF"]);
+    unset($_SESSION["address"]);
+    unset($_SESSION["city"]);
+    unset($_SESSION["state"]);
+    unset($_SESSION["zipCode"]);
+    unset($_SESSION["employeeID"]);
+    unset($_SESSION["phone"]);
+    unset($_SESSION["seniority"]);
+    unset($_SESSION["payStatus"]);
+    unset($_SESSION["payStep"]);
+    unset($_SESSION["tour"]);
+    unset($_SESSION["email1"]);
+    unset($_SESSION["email2"]);
 ?>
