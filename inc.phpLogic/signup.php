@@ -26,63 +26,86 @@ $email2 = htmlentities(trim($_POST['email2']),ENT_QUOTES, "UTF-8");
 $password = htmlentities(trim($_POST['password1']),ENT_QUOTES, "UTF-8");
 $password2 = htmlentities(trim($_POST['password2']),ENT_QUOTES, "UTF-8");
 
+//integer options for employee ID
+$min = 111111;
+$max = 99999999;
+$optionEID = array("options"=>
+array("min_range"=>$min, "max_range"=>$max));
 $letterNumbers = array("options"=>array("regexp"=>"/^[0-9a-zA-Z]+$/"));
-$dateValid = array("options"=>array("regexp"=>"/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/"));
+$dateValid = array("options"=>array("regexp"=>"/^(0[1-9]|1[012])[\- \/](0[1-9]|[12][0-9]|3[01])[\- \/](19|20)\d\d$/"));
 $passwordValid = array("options"=>array("regexp"=>"/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/"));
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   $errors = false;
 
-    if(filter_var($employeeID, 257) === false) {
+    if(filter_var($employeeID, 257, $optionEID === false)) {
       $_SESSION['eid_message'] = "Valid employee ID required";
 $errors = true;
+    }
+    else{
+      $_SESSION['employeeID'] = $employeeID;
     }
     if(filter_var($fullName, 513) === false) {
       $_SESSION['fullName_message'] = "Valid name required";
 $errors = true;
     }
+    else{
+      $_SESSION['name'] = $fullName;
+    }
     if($employeeType === "none") {
       $_SESSION['employeeStatus_message'] = "Employee status required";
 $errors = true;
     }
-    if(filter_var($address, 272, $letterNumbers) === false) {
-      $_SESSION['address_message'] = "Address should contain letters and numbers required";
-$errors = true;
+    if($address){
+      $_SESSION["address"]= $address;
     }
+
     if(filter_var($city, 513) === false) {
       $_SESSION['city_message'] = "Valid city required";
 $errors = true;
+    }
+    else{
+      $_SESSION['city'] = $city;
     }
     if(filter_var($state, 513) === false) {
       $_SESSION['state_message'] = "Valid state required";
 $errors = true;
     }
-    if(filter_var($zipCode, 257) === false) {
-      $_SESSION['zip_message'] = "Valid Zip-Code required";
-$errors = true;
+    else{
+      $_SESSION["state"] = $state;
     }
-    if(filter_var($phone, 257) === false) {
-      $_SESSION['phone_message'] = "Valid phone number required";
-$errors = true;
+    if($zipCode){
+      $_SESSION['zipCode'] = $zipCode;
     }
-    if(filter_var($seniority, 272, $dateValid) === false) {
-      $_SESSION['seniority_message'] = "Valid seniority date required required";
-$errors = true;
+    if($phone){
+      $_SESSION["phone"] = $phone;
+    }
+    if($seniority){
+      $_SESSION["seniority"]= $seniority;
     }
     if(filter_var($payStatus, 257) === false) {
       $_SESSION['payStatus_message'] = "Valid Pay Status required";
 $errors = true;
     }
-    if(filter_var($payStep, 272, $letterNumber) === false) {
+    else{
+      $_SESSION["payStatus"] = $payStatus;
+    }
+    if(filter_var($payStep, 272, $letterNumbers) === false) {
       $_SESSION['payStep_message'] = "Valid Pay Step required";
 $errors = true;
+    }
+    else{
+      $_SESSION["payStep"] = $payStep;
     }
     if(filter_var($tour, 257) === false) {
       $_SESSION['tour_message'] = "Valid tour required";
 $errors = true;
     }
-    if(empty($daysOff[0]) || empty($daysOff[1]) ) {
-      $_SESSION['daysOff_message'] = "Must provide Days off required";
+    else{
+      $_SESSION["tour"] = $tour;
+    }
+    if(empty($daysOff) ) {
+      $_SESSION['daysOff_message'] = "Must provide Days off";
 $errors = true;
     }
     if($veteran == "none") {
@@ -98,12 +121,17 @@ $errors = true;
       $_SESSION['email_message'] = "Valid email required";
 $errors = true;
     }
+    else{
+      $_SESSION["email"] = $email;
+    }
 
     if(filter_var($email2, 274) === false) {
       $_SESSION['email2_message'] = "You must re-enter a valid email";
 $errors = true;
     }
-
+  else {
+     $_SESSION["email2"] = $email2;
+}
     if($email !== $email2) {
       $_SESSION['email_equal'] = "Emails fields must contain the same input";
 $errors = true;
@@ -122,15 +150,15 @@ $errors = true;
 $errors = true;
     }
     if($errors){
+    $_SESSION["error"] = "There were errors in your submission!<br> Please try again.";
       header("location:../newLogInPage.php#");
+
       $conn = null;
       exit;
     }
   }
 
-/* $options = [
-    'cost' => 10,
-]; Used to shorten execution time to under 100 millisection values 8 - 12 normally*/
+if(!$errors){
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
 $conn->beginTransaction();
@@ -167,16 +195,17 @@ $stmtSignUpInfo->bindValue(16, $email);
 $stmtSignUpInfo->execute();
 $count2 = $stmtSignUpInfo->rowCount();
 $conn->commit();
-if($count1 == 1 && $count2 == 1) {
+
   $_SESSION['email'] = $email;
   $_SESSION['eid'] = $employeeID;
   $_SESSION['name'] = $fullName;
+  $_SESSION["loggedIn"] = "Logged In";
   header("location:../index.php");
     $conn = null;
   exit;
 
 
-}
+
 }
 
 
@@ -187,3 +216,4 @@ catch(PDOException $e) {
       $conn = null;
   exit;
    }
+}

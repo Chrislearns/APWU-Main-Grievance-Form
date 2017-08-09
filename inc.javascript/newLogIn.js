@@ -7,27 +7,12 @@ $(document).ready(function () {
   let fieldErrs = false;
   let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   let lettersOnly = /^[A-Za-z]+$/;
-  let dateValid = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+  let dateValid = /^(0[1-9]|1[012])[\-\/](0[1-9]|[12][0-9]|3[01])[\-\/](19|20)\d\d$/;
   let numbersOnly = /^[0-9]+$/;
   let phoneValid = /^\d{10}$/;
   let lettersNumber = /^[0-9a-zA-Z]+$/;
   let password = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
-  $("#full-name").focusout(function(){
-
-        if (!lettersOnly.test($("#full-name").val())) {
-
-        $("#full-name-regex").show("slow");
-        fieldErrs = true;
-  }
-      })
-  $("#address").focusout(function(){
-
-        if(!lettersNumber.test($("#address").val())){
-        $("#address-regex").show("slow");
-        fieldErrs = true;
-  }
-      })
 
   $("#veteran_ddm").focusout(function(){
 
@@ -52,13 +37,7 @@ $(document).ready(function () {
     }
 
   })
-  $('#zipCode').focusout(function(){
-        if (!numbersOnly.test($('#zipCode').val())) {
-        $('#zipCode-regex').show("slow");
-        fieldErrs = true;
-    }
 
-  })
   $('#eid').focusout(function(){
         if (!numbersOnly.test($('#eid').val())) {
         $('#eid-regex').show("slow");
@@ -66,20 +45,7 @@ $(document).ready(function () {
     }
 
   })
-  $('#phone-number').focusout(function(){
-        if (!phoneValid.test($('#phone-number').val())) {
-        $('#phoneNumber-regex').show("slow");
-        fieldErrs = true;
-    }
 
-  })
-  $('#seniorityDate').focusout(function(){
-        if (!dateValid.test($('#seniorityDate').val())) {
-        $('#seniorityDate-regex').show("slow");
-        fieldErrs = true;
-    }
-
-  })
   $('#payLevel').focusout(function(){
         if (!lettersNumber.test($('#payLevel').val())) {
         $('#payLevel-regex').show("slow");

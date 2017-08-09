@@ -7,7 +7,7 @@ function destroySession(){
   session_destroy();
 }
 
-if (isset($_SESSION["name"])) {
+if (isset($_SESSION["loggedIn"])) {
     header("location:index.php");
     }
 
@@ -17,6 +17,10 @@ if (isset($_SESSION['ip'])) {
     $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
     header("location:newLogInPage.php");
   }
+
+}
+else{
+  $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
 }
 
 
@@ -109,13 +113,13 @@ if (isset($_SESSION['ip'])) {
       <!--FORM ROW-->
       <div class="eight columns">
         <label for="fullName">Full Name</label>
-        <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128">
+        <input class="u-full-width" value="<?php echo $f_n = $_SESSION["name"]; ?>" id="full-name"  type="text" name="full-name" maxlength="128">
         <div class="error" id="full-name-error">Full Name Required</div>
         <div class="error" id="full-name-regex">Full Name can only contain letters only</div>
       </div>
       <?php if (isset($_SESSION['fullName_message'])) {
         $fn = $_SESSION['fullName_message'];
-        echo "<div>$fn</div>";
+        echo "<div class = php>$fn</div>";
       }
       ?>
       <div class="four columns">
@@ -130,7 +134,7 @@ if (isset($_SESSION['ip'])) {
       <div class="error" id="drop-down-menu-error">Please select your Employee Status</div>
       <?php if (isset($_SESSION['employeeStatus_message'])) {
         $es = $_SESSION['employeeStatus_message'];
-        echo "<div>$es</div>";
+        echo "<div class = php>$es</div>";
       }
       ?>
     </div>
@@ -140,14 +144,10 @@ if (isset($_SESSION['ip'])) {
       <!--FORM ROW-->
       <div class="twelve columns">
         <label for="address">Street Address</label>
-        <input id="address" type="text" name="address" maxlength="80" class="u-full-width">
+        <input id="address" value="<?php echo $add = $_SESSION["address"]; ?>" type="text" name="address" maxlength="80" class="u-full-width">
         <div class="error" id="address-error">Address field required</div>
         <div class="error" id="address-regex">Address field can contain letters and number only</div>
-        <?php if (isset($_SESSION['address_message'])) {
-          $add = $_SESSION['address_message'];
-          echo "<div>$add</div>";
-        }
-        ?>
+
       </div>
     </div>
     <!--END ROW-->
@@ -156,34 +156,34 @@ if (isset($_SESSION['ip'])) {
       <!--FORM ROW-->
       <div class="six columns">
         <label for="city">City</label>
-        <input id="city" type="text" name="city" maxlength="50" class="u-full-width">
+        <input id="city" value="<?php echo $cityField = $_SESSION["city"]; ?>" type="text" name="city" maxlength="50" class="u-full-width">
         <div class="error" id="city-error">City field required</div>
         <div class="error" id="city-regex">City field should contain letter only</div>
         <?php if (isset($_SESSION['city_message'])) {
           $city = $_SESSION['city_message'];
-          echo "<div>$city</div>";
+          echo "<div class = php>$city</div>";
         }
         ?>
       </div>
       <div class="three columns">
         <label for="state">State</label>
-        <input id="state" type="text" name="state" class="u-full-width" maxlength="25">
+        <input id="state" value="<?php echo $s_f = $_SESSION["state"]; ?>" type="text" name="state" class="u-full-width" maxlength="25">
         <div class="error" id="state-error">State field required</div>
         <div class="error" id="state-regex">State field should contain letters only</div>
         <?php if (isset($_SESSION['state_message'])) {
           $state = $_SESSION['state_message'];
-          echo "<div>$state</div>";
+          echo "<div class = php>$state</div>";
         }
         ?>
       </div>
       <div class="three columns">
         <label for="zip">Zip Code</label>
-        <input id="zipCode" type="number" name="zipCode" class="u-full-width" maxlength="25">
+        <input id="zipCode" value="<?php echo $z_c = $_SESSION["zipCode"]; ?>" type="number" name="zipCode" class="u-full-width" maxlength="25">
         <div class="error" id="zipCode-error">Zip-Code field required</div>
         <div class="error" id="zipCode-regex">Zip-Code field should contain numbers only</div>
         <?php if (isset($_SESSION['zip_message'])) {
           $zip = $_SESSION['zip_message'];
-          echo "<div>$zip</div>";
+          echo "<div class = php>$zip</div>";
         }
         ?>
       </div>
@@ -193,69 +193,61 @@ if (isset($_SESSION['ip'])) {
 
     <div class="input-spacing">
       <h3> Employee ID:</h3>
-      <input id="eid" type="number" name="eid" size="8" maxlength="8">
+      <input id="eid" type="number" value="<?php echo $e_i = $_SESSION["employeeID"]; ?>" name="eid" size="8" maxlength="8">
     </div>
     <div class="error" id="eid-error">Employee ID field required</div>
     <div class="error" id="eid-regex">Employee ID field should contain numbers only</div>
       <?php if (isset($_SESSION['eid_message'])) {
         $eid = $_SESSION['eid_message'];
-        echo "<div>$eid</div>";
+        echo "<div class = php>$eid</div>";
       }
       ?>
 
     <div class="input-spacing">
       <h3> Phone Number:</h3>
-      <input id="phone-number" type="text" name="phone" size="11" maxlength="11">
+      <input id="phone-number" value="<?php echo $p_n = $_SESSION["phone"]; ?>" type="tel" name="phone" size="11" maxlength="11">
     </div>
     <div class="error" id="phoneNumber-error">Phone Number field required</div>
     <div class="error" id="phoneNumber-regex">Phone Number field should contain numbers only</div>
-    <?php if (isset($_SESSION['phone_message'])) {
-      $phone = $_SESSION['phone_message'];
-      echo "<div>$phone</div>";
-    }
-    ?>
+
     <div class="input-spacing">
       <h3> Seniority Date(mm/dd/yy):</h3>
-      <input id="seniorityDate" type="date" name="seniority" size="10" maxlength="20">
+      <input id="seniorityDate" value="<?php echo $s_d = $_SESSION["seniority"]; ?>" type="date" name="seniority" size="10" maxlength="20">
     </div>
     <div class="error" id="seniorityDate-error">Seniority Date field required</div>
     <div class="error" id="seniorityDate-regex">Seniority Date should contain dd-mm-yyyy or dd/mm/yyyy</div>
-    <?php if (isset($_SESSION['seniority_message'])) {
-      $senior = $_SESSION['seniority_message'];
-      echo "<div>$senior</div>";
-    }
-    ?>
+
     <div class="input-spacing">
       <h3> (Pay Status) Level:</h3>
-      <input id="payLevel" type="text" name="payLevel" size="10" maxlength="10">
+      <input id="payLevel" value="<?php echo $p_s = $_SESSION["payStatus"]; ?>" type="text" name="payLevel" size="10" maxlength="10">
     </div>
     <div class="error" id="payLevel-error">Pay Level field required</div>
     <div class="error" id="payLevel-regex">Pay Level should contain letters and number only</div>
     <?php if (isset($_SESSION['payStatus'])) {
       $payStat = $_SESSION['payStatus_message'];
-      echo "<div>$payStat</div>";
+      echo "<div class = php>$payStat</div>";
     }
     ?>
     <div class="input-spacing">
       <h3> Pay Step:</h3>
-      <input id="payStep" type="text" name="payStep" size="10" maxlength="10">
+      <input id="payStep" value="<?php echo $p_s = $_SESSION["payStep"]; ?>" type="text" name="payStep" size="10" maxlength="10">
     </div>
     <div class="error" id="payStep-error">Pay Step field required</div>
     <div class="error" id="payStep-regex">Pay Step should contain letters and number only</div>
     <?php if (isset($_SESSION['payStep_message'])) {
       $payAlpha = $_SESSION['payStep_message'];
-      echo "<div>$payAlpha</div>";
+      echo "<div class = php>$payAlpha</div>";
     }
     ?>
     <div class="input-spacing">
       <h3> Tour:</h3>
-      <input id="tour" type="number" name="tour" size="10" maxlength="10">
+      <input id="tour" value="<?php echo $t_n = $_SESSION["tour"]; ?>" type="number" name="tour" size="10" maxlength="10">
     </div>
     <div class="error" id="tour-error">Tour field required</div>
     <div class="error" id="tour-regex">Tour field should contain numbers only</div>
     <?php if (isset($_SESSION['tour_message'])) {
       $shift = $_SESSION['tour_message'];
-      echo "<div>$shift</div>";
+      echo "<div class = php>$shift</div>";
     }
     ?>
     <div class="input-spacing">
@@ -271,7 +263,7 @@ if (isset($_SESSION['ip'])) {
     <div class="error" id="daysOff-error">Days Off field required</div>
     <?php if (isset($_SESSION['daysOff_message'])) {
       $days = $_SESSION['daysOff_message'];
-      echo "<div>$days</div>";
+      echo "<div class = php>$days</div>";
     }
     ?>
 <br>
@@ -286,7 +278,7 @@ if (isset($_SESSION['ip'])) {
     <div class="error" id="veteranStatus-error">Veteran Status field required</div>
     <?php if (isset($_SESSION['veteran_message'])) {
       $vet = $_SESSION['veteran_message'];
-      echo "<div>$vet</div>";
+      echo "<div class = php>$vet</div>";
     }
     ?>
     <select name="layOffProtected" class="layOffProtected" id="layOff_ddm">
@@ -300,31 +292,31 @@ if (isset($_SESSION['ip'])) {
     <div class="error" id="layOffProtected-error">Lay-off Protected field required</div>
     <?php if (isset($_SESSION['layOff_message'])) {
       $layOff = $_SESSION['layOff_message'];
-      echo "<div>$layOff</div>";
+      echo "<div class = php>$layOff</div>";
     }
     ?>
     <div class="input-spacing">
       <h3> Email Address:</h3>
-      <input id="email-address1" type="email" name="email1" size="20" maxlength="120">
+      <input id="email-address1" value="<?php echo $e_a = $_SESSION["email"]; ?>" type="email" name="email1" size="20" maxlength="120">
     </div>
     <div class="error" id="email1-error">Please enter a email address.</div>
     <div class="error" id="email1-regex">Please enter a  valid email address.</div>
     <?php if (isset($_SESSION['email_message'])) {
       $emailAdd = $_SESSION['email_message'];
-      echo "<div>$emailAdd</div>";
+      echo "<div class = php>$emailAdd</div>";
     }
     ?>
     <div class="input-spacing">
       <h3> Reenter Email Address:</h3>
-      <input id="email-address2"  type="email" name="email2" size="20" maxlength="120">
+      <input id="email-address2" value="<?php echo $e_a2 = $_SESSION["email2"]; ?>"  type="email" name="email2" size="20" maxlength="120">
     </div>
     <?php if (isset($_SESSION['email2_message'])) {
       $emailAdd2 = $_SESSION['email2_message'];
-      echo "<div>$emailAdd2</div>";
+      echo "<div class = php>$emailAdd2</div>";
     }
     if (isset($_SESSION['email_equal'])) {
       $emailequal = $_SESSION['email_equal'];
-      echo "<div>$emailequal</div>";
+      echo "<div class = php>$emailequal</div>";
     }
     ?>
     <div class="error" id="email2-error">Please verify email address</div>
@@ -339,7 +331,7 @@ if (isset($_SESSION['ip'])) {
     </div>
     <?php if (isset($_SESSION['password_message'])) {
       $passMess = $_SESSION['password_message'];
-      echo "<div>$passMess</div>";
+      echo "<div class = php>$passMess</div>";
     }
     ?>
     <div class="error" id="password1-error">Please create a password.</div>
@@ -355,11 +347,11 @@ if (isset($_SESSION['ip'])) {
     </div>
     <?php if (isset($_SESSION['password2_message'])) {
       $passMess2 = $_SESSION['password2_message'];
-      echo "<div>$passMess2</div>";
+      echo "<div class = php>$passMess2</div>";
     }
    if (isset($_SESSION['password_equal'])) {
       $passequal = $_SESSION['password_equal'];
-      echo "<div>$passequal</div>";
+      echo "<div class = php>$passequal</div>";
     }
 
     ?>

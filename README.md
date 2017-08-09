@@ -91,7 +91,7 @@ CREATE TABLE userAccounts (
 	    payStep varchar(10) NOT null,
 	    tour int(3) NOT null,
 	    firstdayOff varchar(28) NOT null,
-	    secondDayOff varchar(28) NOT null,
+	    secondDayOff varchar(28) ,
 	    veteranStatus varchar(10) NOT null,
 	    layOffProtected varchar(10) NOT null,
 			emailAddress varchar(128) NOT null
