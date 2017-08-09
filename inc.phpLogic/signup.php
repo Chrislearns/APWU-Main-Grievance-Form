@@ -109,7 +109,7 @@ $errors = true;
 $errors = true;
     }
     if($veteran == "none") {
-      $_SESSION['daysOff_message'] = "Must provide veteran status required";
+      $_SESSION['veteran_message'] = "Must provide veteran status required";
 $errors = true;
     }
     if($layOffProtected == "none") {

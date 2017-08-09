@@ -193,7 +193,7 @@ else{
       <input id="eid" type="number" value="<?php echo $e_i = $_SESSION["employeeID"]; ?>" name="eid" size="8" maxlength="8">
     </div>
     <div class="error" id="eid-error">Employee ID field required</div>
-    
+
       <?php if (isset($_SESSION['eid_message'])) {
         $eid = $_SESSION['eid_message'];
         echo "<div class = php>$eid</div>";
@@ -379,4 +379,21 @@ else{
     unset($_SESSION["tour"]);
     unset($_SESSION["email1"]);
     unset($_SESSION["email2"]);
+    unset($_SESSION["eid_message"]);
+    unset($_SESSION["fullName_message"]);
+    unset($_SESSION["employeeStatus_message"]);
+    unset($_SESSION["city_message"]);
+    unset($_SESSION["state_message"]);
+    unset($_SESSION["payStatus_message"]);
+    unset($_SESSION["payStep_message"]);
+    unset($_SESSION["tour_message"]);
+    unset($_SESSION["daysOff_message"]);
+    unset($_SESSION["veteran_message"]);
+    unset($_SESSION["layOff_message"]);
+    unset($_SESSION["email_message"]);
+    unset($_SESSION["email2_message"]);
+    unset($_SESSION["email_equal"]);
+    unset($_SESSION["password_message"]);
+    unset($_SESSION["password2_message"]);
+    unset($_SESSION["password_equal"]);
 ?>
