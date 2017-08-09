@@ -13,6 +13,25 @@ $(document).ready(function () {
   let lettersNumber = /^[0-9a-zA-Z]+$/;
   let password = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
+  $("#full-name").focusout(function(){
+    if($("#full-name").val() === ""){
+      $("#full-name-error").show("slow");
+      fieldErrs = true;
+    }
+  })
+
+  $("#drop-down-menu").focusout(function(){
+    if ($('#drop-down-menu').val() ==='none'){
+          $('#drop-down-menu-error').show("slow");
+          fieldErrs = true;
+    }
+  })
+  $("#address").focusout(function(){
+    if ($('#address').val() === "") {
+        $('#address-error').show("slow");
+        fieldErrs = true;
+    }
+  })
 
   $("#veteran_ddm").focusout(function(){
 
@@ -37,10 +56,27 @@ $(document).ready(function () {
     }
 
   })
-
+  $("#zipCode").focusout(function(){
+    if ($("#zipCode").val() === "") {
+       $("#zipCode-error").show("slow");
+       fieldErrs = true;
+           }
+  })
+  $("#phone-number").focusout(function(){
+    if ($("#phone-number").val() === "") {
+      $("#phoneNumber-error").show("slow");
+      fieldErrs = true;
+    }
+  })
+  $("#seniorityDate").focusout(function(){
+    if (!$("#seniorityDate").val()) {
+      $("#seniorityDate-error").show("slow");
+      fieldErrs = true;
+    }
+  })
   $('#eid').focusout(function(){
         if (!numbersOnly.test($('#eid').val())) {
-        $('#eid-regex').show("slow");
+        $('#eid-error').show("slow");
         fieldErrs = true;
     }
 

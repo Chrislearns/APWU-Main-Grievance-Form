@@ -126,8 +126,9 @@ else{
         <option value="PTR">Part Time Regular</option>
         <option value="PSE">Postal Support Employee</option>
       </select>
+        <div class="error" id="drop-down-menu-error">Please select your Employee Status</div>
       </div>
-      <div class="error" id="drop-down-menu-error">Please select your Employee Status</div>
+
       <?php if (isset($_SESSION['employeeStatus_message'])) {
         $es = $_SESSION['employeeStatus_message'];
         echo "<div class = php>$es</div>";
@@ -192,7 +193,7 @@ else{
       <input id="eid" type="number" value="<?php echo $e_i = $_SESSION["employeeID"]; ?>" name="eid" size="8" maxlength="8">
     </div>
     <div class="error" id="eid-error">Employee ID field required</div>
-    <div class="error" id="eid-regex">Employee ID field should contain numbers only</div>
+    
       <?php if (isset($_SESSION['eid_message'])) {
         $eid = $_SESSION['eid_message'];
         echo "<div class = php>$eid</div>";
