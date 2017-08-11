@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
 
-if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR']){
+if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'] || empty($_SESSION["loggedIn"])){
   $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
       header("location:newLogInPage.php");
           exit;

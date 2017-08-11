@@ -48,6 +48,7 @@ if($count == 1 && $verify){
   $results2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 
   $_SESSION['eid'] = $results2['employeeID'];
+  $_SESSION["loggedIn"] = "You are now logged in.";
     //Send user to Options Menu
     header("location:../index.php");
   $conn = null;
