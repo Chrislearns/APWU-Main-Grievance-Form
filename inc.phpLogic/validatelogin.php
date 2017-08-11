@@ -31,6 +31,11 @@ $dbpassword = $results['PASSWORD'];
 $_SESSION['name'] = $results['fullName'];
 $_SESSION['email']= $email;
 $verify = password_verify($password, $dbpassword);
+$hashedPassword = $row->password;
+$admin = $results["admin"];
+if(password_verify($password, $hashedPassword)) {
+  session_start();
+  $_SESSION['name'] = $row->full_name;
 
 
 //verify if their is one row
@@ -49,6 +54,13 @@ if($count == 1 && $verify){
 
   $_SESSION['eid'] = $results2['employeeID'];
   $_SESSION["loggedIn"] = "You are now logged in.";
+  //If admin send user to admin Menu
+  if ($admin == 1) {
+    $_SESSION['admin'] = $admin;
+    header('Location:../admin/index.php');
+    $conn = null;
+    exit;
+  }
     //Send user to Options Menu
     header("location:../index.php");
   $conn = null;

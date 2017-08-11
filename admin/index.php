@@ -1,23 +1,15 @@
 <?php
-if (session_status() == PHP_SESSION_NONE){
-session_start();
+// UI - Administrative Panel for all users
+// If super admin, show an extra button for viewing/editing all grievances 
+session_start(); 
+if (!empty($_SESSION['admin'])) {
+  $name = $_SESSION['name'];
+  $id = $_SESSION['id'];
+} else {
+  header('Location: login.php');
 }
-$ip = $_SESSION['ip'];
-$name = $_SESSION['name'];
-function destroySession(){
-  session_unset();
-  session_destroy();
-}
-  if($ip != $_SERVER['REMOTE_ADDR']){
-    destroySession();
-    $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
-    header("location:newLogInPage.php");
-}
-  if(empty($_SESSION['name']) || empty($_SESSION["loggedIn"])){
-    $_SESSION['error'] = "<h4>Please Log-in</h4>";
-    header("location:newLogInPage.php");
-  }
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -26,8 +18,7 @@ function destroySession(){
     <title></title>
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/skeleton/2.0.4/css/skeleton.css">
-    <link rel="stylesheet" href="css/custom.css">
-
+    <link rel="stylesheet" href="../css/custom.css">
   </head>
   <body>
     <div class="container wrapper-before-sf">
@@ -36,40 +27,23 @@ function destroySession(){
       </div>-->
       <div class="row" style="padding-top: 18%">
          <div class="six columns border" style="position: relative;">
-           <?php
-          if(isset($_SESSION['grievance'])){
-            $_SESSION['grievance'] = $grievance;
-           echo "<h4>$grievance</h4>";
-         }
-           ?>
-            <img src="cs_logo_apwu.png" alt="APWU" class="center u-full-width">
-            <h3 class="center-text">APWU Grievance<br> Reporting System</h3>
+            <img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="center">
+            <h3 class="center-text"><strong>Admin Panel</strong><br>APWU Grievance<br> Reporting System</h3>
            <span id="dividing-border"><span>
         </div>
         <div class="six columns" style="padding-top: 3%;">
           <div class="button-container">
-          <?php echo "<h5>Welcome, $name</h5>"; ?>
-          <a href="account-info.php">
-            <button class="b_respon"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
-            </i>&nbsp;&nbsp; Update Account Information</button>
-          </a>
-          <a href="grievance.php">
-            <button class="b_respon"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true">
-            </i>&nbsp;&nbsp; Review Submitted Grievances</button>
-          </a>
-          <a href = "grievancePage.php">
-            <button class="b_respon"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true">
-            </i>&nbsp;&nbsp; File New Grievance</button>
-          </a>
-          <a href="logout.php">
-            <button class="b_respon"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true">
-            </i>&nbsp;&nbsp; Logout</button>
-          </a>
+            <h3 class="center-text">Welcome, <?php echo $name; ?>.</h3>
+            <a class="button u-full-width" href="../account-info.php"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Update Account Information</a>
+            <a class="button u-full-width" href="all-grievances.php"><i class="fa fa-folder-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View All Grievances</a>
+            <a class="button u-full-width" href="view-all-grievances.php"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; View/Edit Submitted Grievances</a>
+            <a class="button u-full-width" href="../create-grievance.php"><i class="fa fa-folder-open-o fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; File New Grievance</a>
+            <a class="button u-full-width" href="../logout.php"><i class="fa fa-sign-out fa-2x fa-panel" aria-hidden="true"></i>&nbsp;&nbsp; Logout</a>
           </div>
         </div>
       </div>
     </div>
-
+    
     <footer class="sticky-footer">
       <small>&copy; 2017 American Postal Workers Union</a></small>
       <div class="social-box">
@@ -87,11 +61,8 @@ function destroySession(){
         </a>
       </div>
     </footer>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
   </body>
-  <?php unset($_SESSION['message']);
-  unset($_SESSION['grievance']);
-   ?>
-
 </html>
