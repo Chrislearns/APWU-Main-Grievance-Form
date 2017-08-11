@@ -97,7 +97,7 @@ $(document).ready(function () {
 
   })
   $('#tour').focusout(function(){
-        if (!numbersOnly.test($('#tour').val())) {
+        if (!(/[123]/).test($('#tour').val())) {
         $('#tour-regex').show("slow");
         fieldErrs = true;
     }
@@ -271,7 +271,7 @@ $(document).ready(function () {
 
  //If there are errors then show a general error message
 
-if(errors){
+if(errors || fieldErrs){
     event.preventDefault();
 
   $(".warnings").show("slow").fadeOut(5000);

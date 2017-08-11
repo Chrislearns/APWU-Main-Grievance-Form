@@ -241,7 +241,7 @@ else{
       <input id="tour" value="<?php echo $t_n = $_SESSION["tour"]; ?>" type="number" name="tour" size="10" maxlength="10">
     </div>
     <div class="error" id="tour-error">Tour field required</div>
-    <div class="error" id="tour-regex">Tour field should contain numbers only</div>
+    <div class="error" id="tour-regex">Field should contain a 1, 2, or 3</div>
     <?php if (isset($_SESSION['tour_message'])) {
       $shift = $_SESSION['tour_message'];
       echo "<div class = php>$shift</div>";
