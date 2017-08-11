@@ -25,6 +25,7 @@ include_once('connection.php');
 $query = $handler->query("SELECT * FROM UserSignUp WHERE emailAddress = '$email'");
 $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 //putting results in variables before second query executes
+
 // Query database for name and email from
 //Must change table name depending on database/computer/contributor
 $query2 = $handler->query("SELECT * FROM UserSignUp WHERE emailAddress = '$email'");
