@@ -4,7 +4,6 @@
 }*/
 $(document).ready(function () {
   //Client side validation Checking fields with regex;
-  let fieldErrs = false;
   let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   let lettersOnly = /^[A-Za-z]+$/;
   let dateValid = /^(0[1-9]|1[012])[\-\/](0[1-9]|[12][0-9]|3[01])[\-\/](19|20)\d\d$/;
@@ -16,20 +15,20 @@ $(document).ready(function () {
   $("#full-name").focusout(function(){
     if($("#full-name").val() === ""){
       $("#full-name-error").show("slow");
-      fieldErrs = true;
+
     }
   })
 
   $("#drop-down-menu").focusout(function(){
     if ($('#drop-down-menu').val() ==='none'){
           $('#drop-down-menu-error').show("slow");
-          fieldErrs = true;
+
     }
   })
   $("#address").focusout(function(){
     if ($('#address').val() === "") {
         $('#address-error').show("slow");
-        fieldErrs = true;
+
     }
   })
 
@@ -37,7 +36,7 @@ $(document).ready(function () {
 
           if ($('#veteran_ddm').val() ==='none'){
           $('#layOffProtected-error').show("slow");
-          fieldErrs = true;
+
     }
         })
 
@@ -45,39 +44,38 @@ $(document).ready(function () {
 
         if (!lettersOnly.test($('#city').val())) {
         $('#city-regex').show("slow");
-        fieldErrs = true;
+
     }
 
   })
   $('#state').focusout(function(){
         if (!lettersOnly.test($('#state').val())) {
         $('#state-regex').show("slow");
-        fieldErrs = true;
+
     }
 
   })
   $("#zipCode").focusout(function(){
     if ($("#zipCode").val() === "") {
        $("#zipCode-error").show("slow");
-       fieldErrs = true;
-           }
+
   })
   $("#phone-number").focusout(function(){
     if ($("#phone-number").val() === "") {
       $("#phoneNumber-error").show("slow");
-      fieldErrs = true;
+
     }
   })
   $("#seniorityDate").focusout(function(){
     if (!$("#seniorityDate").val()) {
       $("#seniorityDate-error").show("slow");
-      fieldErrs = true;
+
     }
   })
   $('#eid').focusout(function(){
         if (!numbersOnly.test($('#eid').val())) {
         $('#eid-error').show("slow");
-        fieldErrs = true;
+
     }
 
   })
@@ -85,41 +83,41 @@ $(document).ready(function () {
   $('#payLevel').focusout(function(){
         if (!lettersNumber.test($('#payLevel').val())) {
         $('#payLevel-regex').show("slow");
-        fieldErrs = true;
+
     }
 
   })
   $('#payStep').focusout(function(){
         if (!lettersNumber.test($('#payStep').val())) {
         $('#payStep-regex').show("slow");
-        fieldErrs = true;
+
     }
 
   })
   $('#tour').focusout(function(){
         if (!(/[123]/).test($('#tour').val())) {
         $('#tour-regex').show("slow");
-        fieldErrs = true;
+
     }
 
   })
   if(!$("input[type='checkbox']").is(":checked")){
 
           $('#daysOff-error').show("slow");
-          fieldErrs = true;
+
     }
 
   $('#veteran_ddm').focusout(function(){
         if ($('#veteran_ddm').val() === "none") {
         $('#veteranStatus-error').show("slow");
-        fieldErrs = true;
+
     }
 
   })
   $("#layOff_ddm").focusout(function(){
         if ($("#layOff_ddm").val() === "none") {
         $("#layOffProtected-error").show("slow");
-        fieldErrs = true;
+
     }
 
   })
@@ -128,7 +126,7 @@ $(document).ready(function () {
 
         if (!emailRegEx.test($("#email-address1").val())) {
         $("#email1-regex").show("slow");
-        fieldErrs = true;
+
     }
 
 
@@ -136,11 +134,10 @@ $(document).ready(function () {
   $("#email-address2").focusout(function(){
         if (!emailRegEx.test($("#email-address2").val())) {
         $("#email2-regex").show("slow");
-        fieldErrs = true;
+
 }
         if ($("#email-address1").val() !== $("#email-address2")) {
         $("#email2-equal").show("slow");
-        fieldErrs = true;
 
     }
 
@@ -148,18 +145,18 @@ $(document).ready(function () {
   $("#passwordField1").focusout(function(){
         if (!password.test($("#passwordField1").val())) {
         $('#password1-regex').show("slow");
-        fieldErrs = true;
+
     }
 
       })
   $("#passwordField2").focusout(function(){
         if (!password.test($('#passwordField2').val())) {
         $("#password2-regex").show("slow");
-        fieldErrs = true;
+
 
         if ($("#passwordField1").val() !== $("passwordField2").val()) {
         $("#password1-equal").show("slow");
-        fieldErrs = true;
+      
     }
 
   }
@@ -271,7 +268,7 @@ $(document).ready(function () {
 
  //If there are errors then show a general error message
 
-if(errors || fieldErrs){
+if(errors){
     event.preventDefault();
 
   $(".warnings").show("slow").fadeOut(5000);
