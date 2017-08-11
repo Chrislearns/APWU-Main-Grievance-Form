@@ -108,6 +108,12 @@ $errors = true;
       $_SESSION['daysOff_message'] = "Must provide Days off";
 $errors = true;
     }
+    if(!empty($daysOff[0])){
+      $_SESSION["daysOff0"] = $daysOff[0];
+    }
+    if(!empty($daysOff[1])){
+      $_SESSION["daysOff1"] = $daysOff[1];
+    }
     if($veteran == "none") {
       $_SESSION['veteran_message'] = "Must provide veteran status required";
 $errors = true;
