@@ -12,12 +12,23 @@ function destroySession(){
     destroySession();
     $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
     header("location:newLogInPage.php");
+
 }
   if(empty($_SESSION['name']) || empty($_SESSION["loggedIn"])){
     $_SESSION['error'] = "<h4>Please Log-in</h4>";
     destroySession();
     header("location:newLogInPage.php");
   }
+  include("inc.phpLogic/grievance.php");
+
+  $email = $_SESSION['email'];
+  $query = "select * from UserSignUp where emailAddress = :email";
+  $stmt = $conn->prepare($query);
+  $stmt->bindParam(':email', $email);
+  $stmt->execute();
+  $count = $stmt->rowCount();
+  $results = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 ?>
 <!doctype html>
@@ -54,11 +65,11 @@ function destroySession(){
               } ?>
         </div>
     </div>
-    <form id="update-account-info-form" method="post" action="inc.phpLogic/updateInfo.php">
+    <form id="update-account-info-form" method="post" action="newUpdateAccountInfo.php">
 
         <br>
         <select name="employeeStatus" id="drop-down-menu">
-          <option value="none">Select Employee Type</option>
+          <option value="<?php echo $eStatus = $results["employeeType"];  ?>">Select Employee Type</option>
 
           <option value="FTR">Full Time Regular</option>
 
@@ -70,59 +81,79 @@ function destroySession(){
         <div class="error" id="drop-down-menu-error">Please select your Employee Status</div>
 
         <label> Address:</label>
-        <input id="address" type="text" name="address" size="30" maxlength="80">
+        <input id="address" type="text" value="<?php echo $address = $results["address"]; ?>"name="address" size="30" maxlength="80">
 
         <div class="error" id="address-error">Address field required</div>
 
         <label> City:</label>
-        <input id="city" type="text" name="city" size="25" maxlength="50">
+        <input id="city" type="text" value="<?php echo $city = $results["city"]; ?>" name="city" size="25" maxlength="50">
 
         <div class="error" id="city-error">City field required</div>
 
         <label> State:</label>
-        <input id="state" type="text" name="state" size="25" maxlength="25">
+        <input id="state" type="text" value="<?php echo $state = $results["address"]; ?>" name="state" size="25" maxlength="25">
 
         <div class="error" id="state-error">State field required</div>
 
         <label> Zip Code:</label>
-        <input id="zipCode" type="text" name="zipCode" size="25" maxlength="25">
+        <input id="zipCode" type="text" value="<?php echo $zipCode = $results["zipcode"]; ?>" name="zipCode" size="25" maxlength="25">
         <div class="error" id="zipCode-error">Zip-Code field required</div>
 
         <label> Phone Number:</label>
-        <input id="phone-number" type="text" name="phone" size="11" maxlength="11">
+        <input id="phone-number" type="text" value="<?php echo $phone = $results["phoneNumber"]; ?>" name="phone" size="11" maxlength="11">
 
         <div class="error" id="phoneNumber-error">Phone Number field required</div>
 
 
         <label> Seniority Date(mm/dd/yy):</label>
-        <input id="seniorityDate" type="text" name="seniority" size="10" maxlength="10">
+        <input id="seniorityDate" type="text" value="<?php echo $seniority = $results["seniorityDate"]; ?>" name="seniority" size="10" maxlength="10">
 
         <div class="error" id="seniorityDate-error">Seniority Date field required</div>
 
 
         <label> (Pay Status) Level:</label>
-        <input id="payLevel" type="text" name="payLevel" size="10" maxlength="10">
+        <input id="payLevel" type="text" value="<?php echo $payLevel = $results["payLevel"]; ?>" name="payLevel" size="10" maxlength="10">
 
         <div class="error" id="payLevel-error">Pay Level field required</div>
 
         <label> Pay Step:</label>
-        <input id="payStep" type="text" name="payStep" size="10" maxlength="10">
+        <input id="payStep" type="text" value="<?php echo $payStep = $results["payStep"]; ?>" name="payStep" size="10" maxlength="10">
 
         <div class="error" id="payStep-error">Pay Step field required</div>
 
 
         <label> Tour:</label>
-        <input id="tour" type="text" name="tour" size="10" maxlength="10">
+        <input id="tour" type="text" value="<?php echo $tour = $results["tour"]; ?>" name="tour" size="10" maxlength="10">
 
         <div class="error" id="tour-error">Tour field required</div>
-
-        <label> Days Off:</label>
-        <input id="daysOff" type="text" name="daysOff" size="10" maxlength="10">
-
+        <div class="input-spacing">
+          <h3> Days Off(check all applicable boxes):</h3><br>
+        <input type="checkbox" name="daysOff[]" value="Saturday"
+        <?php if($results["firstdayOff"] === "Saturday" || $results["secondDayOff"] === "Saturday")
+         { echo " checked";} ?>> Saturday
+        <input type="checkbox" name="daysOff[]" value="Sunday"
+        <?php if($results["firstdayOff"] === "Sunday" || $results["Sunday"] === "Saturday")
+         { echo " checked";} ?>> Sunday
+        <input type="checkbox" name="daysOff[]" value="Monday"
+        <?php if($results["firstdayOff"] === "Monday" || $results["secondDayOff"] === "Monday")
+         { echo " checked";} ?> > Monday
+        <input type="checkbox" name="daysOff[]" value="Tuesday"
+        <?php if($results["firstdayOff"] === "Tuesday" || $results["secondDayOff"] === "Tuesday")
+         { echo " checked";} ?> > Tuesday
+        <input type="checkbox" name="daysOff[]" value="Wednesday"
+        <?php if($results["firstdayOff"] === "Wednesday" || $results["secondDayOff"] === "Wednesday")
+         { echo " checked";} ?> > Wednesday
+        <input type="checkbox" name="daysOff[]" value="Thursday"
+        <?php if($results["firstdayOff"] === "Thursday" || $results["secondDayOff"] === "Thursday")
+         { echo " checked";} ?> > Thursday
+        <input type="checkbox" name="daysOff[]" value="Friday"
+        <?php if($results["firstdayOff"] === "Friday" || $results["secondDayOff"] === "Friday")
+         { echo " checked";} ?> > Friday
+        </div>
         <div class="error" id="daysOff-error">Days Off field required</div>
         <br>
         <select name="veteranStatus" class="veteranStatus" id="drop-down-menu">
-              <option value="none">Veteran Status</option>
+              <option value="value="<?php echo $veteran = $results["veteranStatus"]; ?>"">Veteran Status</option>
 
               <option value="Yes">Yes</option>
 
@@ -132,7 +163,7 @@ function destroySession(){
         <div class="error" id="veteranStatus-error">Veteran Status field required</div>
         <br>
         <select name="layOffProtected" class="layOffProtected" id="drop-down-menu">
-                 <option value="none">Layoff Protected</option>
+                 <option value="value="<?php echo $layOff = $results["layOffProtected"]; ?>"">Layoff Protected</option>
 
                  <option value="YES">Yes</option>
 
