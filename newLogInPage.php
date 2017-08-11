@@ -410,4 +410,6 @@ else{
     unset($_SESSION["password_message"]);
     unset($_SESSION["password2_message"]);
     unset($_SESSION["password_equal"]);
+    unset($_SESSION["daysOff0"]);
+    unset($_SESSION["daysOff1"]);
 ?>
