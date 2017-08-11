@@ -3,6 +3,11 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
+if($_SESSION['ip'] != $_SERVER['REMOTE_ADDR']){
+  destroySession();
+  $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+  header("location:newLogInPage.php");
+}
 //include connection
 include("grievance.php");
 
