@@ -58,9 +58,14 @@ if (isset($_POST['submit'])) {
     $stmt->execute();
     //after update submit go to loading screen then say grievance submitted
     //then redirect to main menu
-  header("location:index.php")
-  } catch (PDOException $e) {
+  header("location:index.php");
+  $handler = null;
+  exit;
+  }
+   catch (PDOException $e) {
     echo "We have an error"."<br>";
     echo $e->getMessage()."<br>";
+    $handler = null;
+    exit;
   }
 }

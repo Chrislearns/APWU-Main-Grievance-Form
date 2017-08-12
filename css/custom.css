@@ -60,12 +60,13 @@ footer small {
   color: #186ada !important;
   z-index: 900 !important;
 }
-
 .fa-panel {
   vertical-align: middle !important;
   color: rgba(112, 128, 144, .5) !important;
 }
-
+.b_respon {
+width: 310px !important;
+}
 .login input,
 .registration-form .submit-button,
 .form-container .submit-button,
