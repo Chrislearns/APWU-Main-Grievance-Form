@@ -22,15 +22,26 @@ function destroySession(){
 include_once('connection.php');
 // Query database for name and email from
 //Must change table name depending on database/computer/contributor
-$query = $handler->query("SELECT * FROM UserSignUp WHERE emailAddress = '$email'");
+$query = $handler->query("SELECT * FROM UserSignUp WHERE email = '$email'");
 $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 //putting results in variables before second query executes
-$full_name = $row->full_name;
-// Query database for name and email from
-//Must change table name depending on database/computer/contributor
-$query2 = $handler->query("SELECT * FROM UserSignUp WHERE emailAddress = '$email'");
-$row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
-
+$full_name = $name;
+$employee_type = $row->employee_type;
+$address = $row->address;
+$city = $row->city;
+$state = $row->state;
+$zip_code = $row->zip_code;
+$phone_number = $row->phone_number;
+$employee_id = $row->employee_id;
+$seniority_date = $row->seniority_date;
+$pay_level = $row->pay_level;
+$pay_step = $row->pay_step;
+$tour = $row->tour;
+$first_day_off = $row->first_day_off;
+$second_day_off = $row->second_day_off;
+$veteran_status = $row->veteran_status;
+$layoff_protected = $row->layoff_protected;
+// No need to make a second call to db name variable is in session
 ?>
 
 
@@ -49,9 +60,9 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
       <div class="form-container">
         <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <!--START OF FORM -->
-        <form id="sign-up-form" method="post" action="update-acct-info.php">
+        <form id="sign-up-form" method="post" action="inc.phpLogic/update-acct-info.php">
 
-          <h3 style="margin-left: 85px">Profile<br><small><?php echo $full_name; ?></small></h3><br>
+          <h3 style="margin-left: 85px">Update Info<br><small><?php echo $full_name; ?></small></h3><br>
           <div class="row"> <!--FORM ROW-->
             <div class="eight columns">
               <label for="fullName">Full Name</label>
@@ -62,11 +73,11 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
               <label for="employee-status">Employee Status</label>
               <select name="employeeStatus" id="drop-down-menu" class="u-full-width">
                 <option value="none">Select Employee Type</option>
-                <?php echo (isset($row->employee_type) ? $loop = true : $loop = ''); ?>
+                <?php echo (isset($employee_type) ? $loop = true : $loop = ''); ?>
                 <?php if($loop) : ?>
-                <option <?php echo ((isset($row->employee_type) && $row->employee_type === 'FTR') ? "value='FTR' selected" : "value='FTR'"); ?>>Full Time Regular</option>
-                <option <?php echo ((isset($row->employee_type) && $row->employee_type === 'PTR') ? "value='PTR' selected" : "value='PTR'"); ?>>Part Time Regular</option>
-                <option <?php echo ((isset($row->employee_type) && $row->employee_type === 'PSE') ? "value='PSE' selected" : "value='PSE'"); ?>>Postal Support Employee</option>
+                <option <?php echo ((isset($employee_type) && $employee_type === 'FTR') ? "value='FTR' selected" : "value='FTR'"); ?>>Full Time Regular</option>
+                <option <?php echo ((isset($employee_type) && $employee_type === 'PTR') ? "value='PTR' selected" : "value='PTR'"); ?>>Part Time Regular</option>
+                <option <?php echo ((isset($employee_type) && $employee_type === 'PSE') ? "value='PSE' selected" : "value='PSE'"); ?>>Postal Support Employee</option>
                 <?php endif; ?>
               </select>
             </div>
@@ -76,7 +87,7 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
           <div class="row"> <!--FORM ROW-->
             <div class="twelve columns">
               <label for="address">Street Address</label>
-              <input id="address" type="text" name="address" maxlength="80" class="u-full-width" value="<?php echo (isset($row->address) ? $row->address : ''); ?>">
+              <input id="address" type="text" name="address" maxlength="80" class="u-full-width" value="<?php echo (isset($address) ? $address : ''); ?>">
             <div class="error" id = "address-error">Address field required</div>
             </div>
           </div> <!--END ROW-->
@@ -84,17 +95,17 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
           <div class="row"> <!--FORM ROW-->
             <div class="six columns">
               <label for="city">City</label>
-              <input id="city" type="text" name="city" maxlength="50" class="u-full-width" value="<?php echo (isset($row->city) ? $row->city : ''); ?>">
+              <input id="city" type="text" name="city" maxlength="50" class="u-full-width" value="<?php echo (isset($city) ? $city : ''); ?>">
             <div class="error" id ="city-error">City field required</div>
             </div>
             <div class="three columns">
               <label for="state">State</label>
-              <input id="state" type="text" name="state" class="u-full-width" maxlength="25" value="<?php echo (isset($row->state) ? $row->state : ''); ?>">
+              <input id="state" type="text" name="state" class="u-full-width" maxlength="25" value="<?php echo (isset($state) ? $state : ''); ?>">
               <div class="error" id = "state-error">State field required</div>
             </div>
             <div class="three columns">
               <label for="zip">Zip Code</label>
-              <input id="zipCode" type="text" name="zipCode" class="u-full-width" maxlength="25" value="<?php echo (isset($row->state) ? $row->zip_code : ''); ?>">
+              <input id="zipCode" type="text" name="zipCode" class="u-full-width" maxlength="25" value="<?php echo (isset($zip_code) ? $zip_code : ''); ?>">
               <div class="error" id = "zipCode-error" >Zip-Code field required</div>
             </div>
           </div> <!--END ROW-->
@@ -102,17 +113,17 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
            <div class="row"> <!--FORM ROW-->
             <div class="four columns">
               <label for="phone">Phone Number</label>
-              <input id="phone-number" type="text" name="phone" class="u-full-width" maxlength="11" value="<?php echo (isset($row->state) ? $row->phone_number : ''); ?>">
+              <input id="phone-number" type="text" name="phone" class="u-full-width" maxlength="11" value="<?php echo (isset($phone_number) ? $phone_number : ''); ?>">
               <div class="error" id="phoneNumber-error">Phone Number field required</div>
             </div>
             <div class="four columns">
               <label for="employeeId">Employeee Id</label>
-              <input id="eid" type="text" name="eid" class="u-full-width" maxlength="8" value="<?php echo (isset($row->state) ? $row->employee_id : ''); ?>">
+              <input id="eid" type="text" name="eid" class="u-full-width" maxlength="8" value="<?php echo (isset($employee_id) ? $employee_id : ''); ?>">
               <div class="error" id = "eid-error">Employee ID field required</div>
             </div>
             <div class="four columns">
               <label for="seniority">Seniority Date</label>
-              <input id="seniorityDate" type="date" name="seniority" maxlength="10" class="u-full-width" value="<?php echo (isset($row->state) ? $row->seniority_date : ''); ?>">
+              <input id="seniorityDate" type="date" name="seniority" maxlength="10" class="u-full-width" value="<?php echo (isset($seniority_date) ? $seniority_date : ''); ?>">
               <div class="error" id = "seniorityDate-error">Seniority Date field required</div>
             </div>
           </div> <!--END ROW-->
@@ -120,38 +131,62 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
           <div class="row"> <!--FORM ROW-->
             <div class="four columns">
               <label for="pay-status">Pay Status Level</label>
-              <input id="payLevel" type="text" name="payLevel" class="u-full-width" maxlength="10" value="<?php echo (isset($row->state) ? $row->pay_level : ''); ?>">
+              <input id="payLevel" type="text" name="payLevel" class="u-full-width" maxlength="10" value="<?php echo (isset($pay_level) ? $pay_level : ''); ?>">
               <div class="error" id = "payLevel-error">Pay Level field required</div>
             </div>
-            <div class="four columns">
+            <div class="six columns">
               <label for="pay-step">Pay Step</label>
-              <input id="payStep" type="text" name="payStep" class="u-full-width" maxlength="10" value="<?php echo (isset($row->state) ? $row->pay_step : ''); ?>">
+              <input id="payStep" type="text" name="payStep" class="u-full-width" maxlength="10" value="<?php echo (isset($pay_step) ? $pay_step : ''); ?>">
               <div class="error" id = "payStep-error">Pay Step field required</div>
             </div>
-            <div class="four columns">
+              </div> <!--END ROW-->
+              <div class="row"><!--Form Row-->
+
+            <div class="six columns">
               <label for="tour">Tour</label>
-              <input id="tour" type="text" name="tour" class="u-full-width" maxlength="10" value="<?php echo (isset($row->state) ? $row->tour : ''); ?>">
+              <input id="tour" type="text" name="tour" class="u-full-width" size = "10" maxlength="10" value="<?php echo (isset($tour) ? $tour : ''); ?>">
               <div class="error" id = "tour-error">Tour field required</div>
             </div>
-          </div> <!--END ROW-->
+          </div> <!--End Row-->
 
           <div class="row"> <!--FORM ROW-->
-            <div class="four columns">
-
+            <div class="u-full-width">
+              <h3> Days Off(check all applicable boxes):</h3><br>
+            <input type="checkbox" name="daysOff[]" value="Saturday"
+            <?php if($first_day_off === "Saturday" || $second_day_off === "Saturday")
+             { echo " checked";} ?>> Saturday
+            <input type="checkbox" name="daysOff[]" value="Sunday"
+            <?php if($first_day_off === "Sunday" || $second_day_off === "Saturday")
+             { echo " checked";} ?>> Sunday
+            <input type="checkbox" name="daysOff[]" value="Monday"
+            <?php if($first_day_off === "Monday" || $second_day_off === "Monday")
+             { echo " checked";} ?> > Monday
+            <input type="checkbox" name="daysOff[]" value="Tuesday"
+            <?php if($first_day_off === "Tuesday" || $second_day_off === "Tuesday")
+             { echo " checked";} ?> > Tuesday
+            <input type="checkbox" name="daysOff[]" value="Wednesday"
+            <?php if($first_day_off === "Wednesday" || $second_day_off === "Wednesday")
+             { echo " checked";} ?> > Wednesday
+            <input type="checkbox" name="daysOff[]" value="Thursday"
+            <?php if($first_day_off === "Thursday" || $second_day_off === "Thursday")
+             { echo " checked";} ?> > Thursday
+            <input type="checkbox" name="daysOff[]" value="Friday"
+            <?php if($first_day_off === "Friday" || $second_day_off === "Friday")
+             { echo " checked";} ?> > Friday
             </div>
             <div class="four columns">
               <label for="veteran-status">Veteran Status</label>
-              <select name="veteranStatus" class="veteranStatus u-full-width" id="drop-down-menu" value="<?php echo (isset($row->state) ? $row->veteran_status : ''); ?>">
-                <option <?php echo ((isset($row->veteran_status) && $row->veteran_status === 'Yes') ? "value='Yes' selected" : "value='Yes'"); ?>>Yes</option>
-                <option <?php echo ((isset($row->veteran_status) && $row->veteran_status === 'NO') ? "value='NO' selected" : "value='NO'"); ?>>No</option>
+              <select name="veteranStatus" class="veteranStatus u-full-width" id="drop-down-menu" value="<?php echo (isset($veteran_status) ? $veteran_status : ''); ?>">
+                <option <?php echo ((isset($veteran_status) && $veteran_status === 'Yes') ? "value='Yes' selected" : "value='Yes'"); ?>>Yes</option>
+                <option <?php echo ((isset($veteran_status) && $veteran_status === 'NO') ? "value='NO' selected" : "value='NO'"); ?>>No</option>
               </select>
               <div class="error" id = "veteranStatus-error">Veteran Status field required</div>
             </div>
             <div class="four columns">
               <label for="layoff-protected">Layoff Protected</label>
               <select name="layOffProtected" class="layOffProtected u-full-width" id="drop-down-menu">
-                <option <?php echo ((isset($row->layoff_protected) && $row->layoff_protected === 'YES') ? "value='YES' selected" : "value='YES'"); ?>>Yes</option>
-                <option <?php echo ((isset($row->layoff_protected) && $row->layoff_protected === 'NO') ? "value='NO' selected" : "value='NO'"); ?>>No</option>
+                <option <?php echo ((isset($layoff_protected) && $layoff_protected === 'YES') ? "value='YES' selected" : "value='YES'"); ?>>Yes</option>
+                <option <?php echo ((isset($layoff_protected) && $layoff_protected === 'NO') ? "value='NO' selected" : "value='NO'"); ?>>No</option>
               </select>
               <div class="error" id ="layOffProtected-error">Lay-off Protected field required</div>
             </div>
@@ -165,31 +200,7 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
               <a class="button u-full-width" id="change-pw">Update Password</a>
             </div>
           </div>
-          <!--<div class="row">
-            <div class="six columns">
-              <label for="email">Email</label>
-              <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120" value="<?php echo $row->email; ?>">
-              <div class="error" id = "email1-error">Please enter a email address.</div>
-            </div>
-            <div class="six columns">
-              <label for="email-confirm">Reenter Email</label>
-              <input id="email-address2" type="email" name="email2" class="u-full-width" maxlength="120" value="<?php echo $row->email; ?>">
-              <div class="error" id = "email2-error">Please verify email address</div>
-            </div>
-          </div> -->
 
-          <!--<div class="row">
-            <div class="six columns">
-              <label for="password" style="color: red;">Reset Password</label>
-              <input id="passwordField1" type="password" name="password1" class="u-full-width" maxlength="120">
-              <div class="error" id = "password1-error">Please create a password.</div>
-            </div>
-            <div class="six columns">
-              <label for="email-password" style="color: red;">Reenter New Password</label>
-              <input id="passwordField2" type="password" name="password2" class="u-full-width" maxlength="120">
-              <div class="error" id = "password2-error">Please verify password</div>
-            </div>
-          </div>-->
           <input id="submit" type="submit" value="Update Account Information" class="submit-button" name="submit">
         </form>
         <!--END OF FORM - tabbed left for spacing-->
@@ -220,7 +231,7 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
     <div class="update-email-form">
 
     <!--START OF FORM -->
-    <form id="sign-up-form" method="post" action="update-email-pw.php">
+    <form id="sign-up-form" method="post" action="inc.phpLogic/update-email-pw.php">
       <h3 class="center-text">Update Email</h3><br>
 
       <div class="row"> <!--FORM ROW-->
@@ -255,7 +266,7 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 
     <div class="update-pw-form">
     <!--START OF FORM -->
-    <form id="sign-up-form" method="post" action="update-email-pw.php">
+    <form id="sign-up-form" method="post" action="inc.phpLogic/update-email-pw.php">
       <h3 class="center-text">Update Password</h3><br>
       <div class="row"> <!--FORM ROW-->
         <div class="six columns">
@@ -287,6 +298,6 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="inc.javascript/script.js"></script>
   </body>
 </html>

@@ -4,10 +4,7 @@
   margin: 0;
   padding: 0;
 }
-/* fixes responsiveness issues with u-full-width*/
-.b_respon {
-width: 310px !important;
-}
+
 
 /* universal center text utility class */
 
@@ -47,7 +44,6 @@ footer small {
 
 /* ***END OF STICKY FOOTER*** */
 
-
 /* Social icons - in sticky footer */
 
 .social-box {
@@ -72,7 +68,8 @@ footer small {
 
 .login input,
 .registration-form .submit-button,
-.form-container .submit-button {
+.form-container .submit-button,
+.comment-form .submit-button {
   display: block;
   width: 80% !important;
   margin: 15px auto !important;
@@ -84,12 +81,14 @@ footer small {
 }
 
 form div,
-.button-container {
+.button-container,
+.content-container div {
   width: 80%;
   margin: auto;
 }
 
-.form-container {
+.form-container,
+.content-container {
   position: relative;
   width: 90%;
   margin: auto;
@@ -103,14 +102,9 @@ form div,
 
 .apwu-logo {
   position: absolute;
-  top: 15px;
-  right: 40px;
-  z-index: -5 !important;
-  opacity: .3;
-}
-
-.button-container button {
-  text-align: left;
+  top: 50px;
+  right: 55px;
+  z-index: 5;
 }
 
 form {
@@ -144,17 +138,22 @@ a {
   z-index: 899;
 }
 
-.registration-form {
+.registration-form,
+.update-email-form,
+.update-pw-form,
+.comment-form,
+.view-related-comments,
+.view-grievance {
   position: absolute;
   display: none;
   z-index: 900;
   background-color: #fff;
   opacity: 1;
   width: 76%;
-  height: 500px;
+  height: 550px;
   margin-left: 12%;
   top: 50%;
-  margin-top: -250px;
+  margin-top: -275px;
   overflow-y: scroll;
   min-width: 245px;
   padding: 30px;
@@ -164,12 +163,35 @@ a {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
 }
 
+.postButton,
+.view-comments {
+  cursor: pointer;
+}
+
 .error {
   display: none;
+}
+
+.button-container button,
+.button-container .button {
+  text-align: left !important;
 }
 
 @media only screen and (max-width: 768px) {
   #dividing-border {
     display: none;
   }
+}
+
+table td,
+th {
+  text-align: center !important;
+}
+
+.blah {
+  display: inline !important;
+}
+
+#save-status {
+  width: 75px !important;
 }
