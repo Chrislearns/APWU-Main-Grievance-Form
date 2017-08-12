@@ -25,7 +25,7 @@ include_once('connection.php');
 $query = $handler->query("SELECT * FROM UserSignUp WHERE emailAddress = '$email'");
 $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 //putting results in variables before second query executes
-
+$full_name = $row->full_name;
 // Query database for name and email from
 //Must change table name depending on database/computer/contributor
 $query2 = $handler->query("SELECT * FROM UserSignUp WHERE emailAddress = '$email'");
@@ -51,11 +51,11 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
         <!--START OF FORM -->
         <form id="sign-up-form" method="post" action="update-acct-info.php">
 
-          <h3 style="margin-left: 85px">Profile<br><small><?php echo $row->full_name; ?></small></h3><br>
+          <h3 style="margin-left: 85px">Profile<br><small><?php echo $full_name; ?></small></h3><br>
           <div class="row"> <!--FORM ROW-->
             <div class="eight columns">
               <label for="fullName">Full Name</label>
-              <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128" value="<?php echo $row->full_name; ?>">
+              <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128" value="<?php echo $full_name; ?>">
             </div>
             <div class="error" id = "full-name-error">Full Name Required</div>
             <div class="four columns">
@@ -137,8 +137,7 @@ $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 
           <div class="row"> <!--FORM ROW-->
             <div class="four columns">
-              <label for="days-off">Days Off</label>
-              <input id="daysOff" type="text" name="daysOff" maxlength="10" class="u-full-width" value="<?php echo (isset($row->state) ? $row->days_off : ''); ?>">
+
             </div>
             <div class="four columns">
               <label for="veteran-status">Veteran Status</label>
