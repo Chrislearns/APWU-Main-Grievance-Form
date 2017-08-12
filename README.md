@@ -82,7 +82,7 @@ CREATE TABLE userAccounts (
 	CREATE TABLE UserSignUp (
 
 			employee_id int(8) PRIMARY KEY NOT null,
-	    employeeType varchar(28) NOT null,
+	    employee_type varchar(28) NOT null,
 	    address varchar(128) NOT null,
 	    city varchar(28) NOT null,
 	    state varchar(28) NOT null,
@@ -103,17 +103,17 @@ CREATE TABLE userAccounts (
 			CREATE TABLE filedGrievances (
 
 				id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
-	      employeeID int(8) not null,			
+	      employee_id int(8) not null,			
 				date varchar(10) NOT null,
-				machineNumber int(3) NOT null,
-				timeAlone varchar(28) NOT null,
-				supervisorName varchar(128) NOT null,
-				feedAndSweep varchar(10) NOT null,
+				machine_number int(3) NOT null,
+				time_alone varchar(28) NOT null,
+				supervisor_name varchar(128) NOT null,
+				feed_sweep varchar(10) NOT null,
 				mailProcessed int(11) NOT null,
-				timeHelpReceieved varchar(10) ,
-				timeHelpSweptMachine varchar(10),
-				hoursWorkedAlone int(2) NOT null,
-				minutesWorkedAlone int(2),
+				time_help_received varchar(10) ,
+				time_help_swept_machine varchar(10),
+				time_worked_alone int(2) NOT null,
+				minutes_worked_alone int(2),
 				resolved varchar(255),
 				comments varchar(1000)
 

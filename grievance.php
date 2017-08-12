@@ -7,6 +7,7 @@ session_start();
 if(empty($_SESSION['name']) || $ip != $_SERVER['REMOTE_ADDR']){
   $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
       header("location:newLogInPage.php");
+      exit;
   }
   $eid = $_SESSION['eid'];
 ?>
