@@ -58,7 +58,7 @@ $(document).ready(function () {
   $("#zipCode").focusout(function(){
     if ($("#zipCode").val() === "") {
        $("#zipCode-error").show("slow");
-
+}
   })
   $("#phone-number").focusout(function(){
     if ($("#phone-number").val() === "") {
@@ -156,7 +156,7 @@ $(document).ready(function () {
 
         if ($("#passwordField1").val() !== $("passwordField2").val()) {
         $("#password1-equal").show("slow");
-      
+
     }
 
   }
