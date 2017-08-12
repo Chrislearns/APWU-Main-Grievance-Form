@@ -72,7 +72,6 @@ USE grievanceInfo;
 CREATE TABLE userAccounts (
 
   admin boolean not null default 0,
-  id int(11) AUTO_INCREMENT NOT null,
 	full_name varchar(128) NOT null,
 	email varchar(128) NOT null,
 	PASSWORD varchar(128) NOT null,
