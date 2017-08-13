@@ -49,7 +49,7 @@ function destroySession(){
         <div class="six columns" style="padding-top: 3%;">
           <div class="button-container">
           <?php echo "<h5>Welcome, $name</h5>"; ?>
-          <a href="newUpdateAccountInfo.php">
+          <a href="account-info.php">
             <button class="b_respon"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; Update Account Information</button>
           </a>
@@ -88,7 +88,7 @@ function destroySession(){
       </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="inc.javascript/script.js"></script>
   </body>
   <?php unset($_SESSION['message']);
   unset($_SESSION['grievance']);

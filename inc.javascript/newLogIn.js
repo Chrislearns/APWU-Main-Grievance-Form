@@ -14,8 +14,10 @@ $(document).ready(function () {
 
   $("#full-name").focusout(function(){
     if($("#full-name").val() === ""){
-      $("#full-name-error").show("slow");
+      $("#full-name-error").toggle("slow");
 
+    }else if($("#full-name").val() != "") {
+        $("#full-name-error").hide();
     }
   })
 
@@ -58,7 +60,7 @@ $(document).ready(function () {
   $("#zipCode").focusout(function(){
     if ($("#zipCode").val() === "") {
        $("#zipCode-error").show("slow");
-}
+    }
   })
   $("#phone-number").focusout(function(){
     if ($("#phone-number").val() === "") {

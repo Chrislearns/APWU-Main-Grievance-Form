@@ -13,32 +13,33 @@ if($ip != $_SERVER['REMOTE_ADDR']){
   header("location:newLogInPage.php");
 }
 //include DB connection
-include("grievance.php");
+include("../connection.php");
 
 //Set POST variables
 $email = htmlentities(trim($_POST['user_email']),ENT_QUOTES, "UTF-8");
 $password = htmlentities(trim($_POST['password']),ENT_QUOTES, "UTF-8");
 
 //Start of query
-
-$query = "select * from userAccounts where emailAddress = :email";
-$stmt = $conn->prepare($query);
+//change table name depending on user/database/computer/etc.
+$query = "select * from userAccounts where email = :email";
+$stmt = $handler->prepare($query);
 $stmt->bindParam(':email', $email);
 $stmt->execute();
 $count = $stmt->rowCount();
 $results = $stmt->fetch(PDO::FETCH_ASSOC);
 $dbpassword = $results['PASSWORD'];
-$_SESSION['name'] = $results['fullName'];
+$_SESSION['name'] = $results['full_name'];
 $_SESSION['email']= $email;
 $verify = password_verify($password, $dbpassword);
 
+$admin = $results["admin"];
 
 //verify if their is one row
 //verify hash from database
 if($count == 1 && $verify){
   //Get employee ID for sessions
-  $queryid = "select * from UserSignUp where emailAddress = :email ";
-  $stmt2 = $conn->prepare($queryid);
+  $queryid = "select * from UserSignUp where email = :email ";
+  $stmt2 = $handler->prepare($queryid);
   $stmt2->bindParam(':email', $_SESSION['email']);
   $stmt2->execute();
 
@@ -47,11 +48,18 @@ if($count == 1 && $verify){
   if($count2 == 1){
   $results2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 
-  $_SESSION['eid'] = $results2['employeeID'];
+  $_SESSION['eid'] = $results2['employee_id'];
   $_SESSION["loggedIn"] = "You are now logged in.";
+  //If admin send user to admin Menu
+  if ($admin == 1) {
+    $_SESSION['admin'] = $admin;
+    header('Location:../admin/index.php');
+    $handler = null;
+    exit;
+  }
     //Send user to Options Menu
     header("location:../index.php");
-  $conn = null;
+  $handler = null;
   exit;
 
 
@@ -64,6 +72,6 @@ if($count == 1 && $verify){
 
         header('location:../newLogInPage.php');
 
-        $conn = null;
+        $handler = null;
           exit;
       }
