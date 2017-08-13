@@ -60,7 +60,7 @@ $(document).ready(function () {
   $("#zipCode").focusout(function(){
     if ($("#zipCode").val() === "") {
        $("#zipCode-error").show("slow");
-     }
+    }
   })
   $("#phone-number").focusout(function(){
     if ($("#phone-number").val() === "") {
