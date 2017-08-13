@@ -37,9 +37,9 @@ function destroySession(){
       <div class="row" style="padding-top: 18%">
          <div class="six columns border" style="position: relative;">
            <?php
-          if(isset($_SESSION['grievance'])){
-            $_SESSION['grievance'] = $grievance;
-           echo "<h4>$grievance</h4>";
+          if(isset($_SESSION['message'])){
+            $message = $_SESSION["message"];
+           echo "<h4>$message</h4>";
          }
            ?>
             <img src="cs_logo_apwu.png" alt="APWU" class="center u-full-width">

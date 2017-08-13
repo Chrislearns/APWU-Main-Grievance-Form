@@ -28,7 +28,7 @@ include_once('connection.php');
 $query = $handler->query("SELECT * FROM UserSignUp WHERE email = '$email'");
 $row = $query->fetch(PDO::FETCH_OBJ); // Variable to hold row - OO
 //putting results in variables before second query executes
-$full_name = $name;
+
 $employee_type = $row->employee_type;
 $address = $row->address;
 $city = $row->city;
@@ -44,10 +44,11 @@ $first_day_off = $row->first_day_off;
 $second_day_off = $row->second_day_off;
 $veteran_status = $row->veteran_status;
 $layoff_protected = $row->layoff_protected;
-// No need to make a second call to db name variable is in session
+// 2nd query to update full name
+$query2 = $handler->query("SELECT * FROM userAccounts WHERE email = '$email'");
+$row2 = $query2->fetch(PDO::FETCH_OBJ);
+$name = $row2->full_name;
 ?>
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,17 +60,25 @@ $layoff_protected = $row->layoff_protected;
     <link rel="stylesheet" href="css/custom.css">
   </head>
   <body>
-    <div class="container">
+    <a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
+    <a href="newUpdateAccountInfo.php"><button class="button u-pull-right">Update Account Info</button></a>
+    <a href="index.php"><button class="button u-pull-right">Menu</button></a>
+    <div class="container u-cf">
       <div class="form-container">
         <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <!--START OF FORM -->
         <form id="sign-up-form" method="post" action="inc.phpLogic/update-acct-info.php">
-
-          <h3 style="margin-left: 85px">Update Info<br><small><?php echo $full_name; ?></small></h3><br>
+          <?php
+          if (isset($_SESSION["error"])) {
+            $error = $_SESSION["error"];
+            echo "<h4>$error</h4";
+          }
+          ?>
+          <h3 style="margin-left: 85px">Update Info<br><small><?php echo $name; ?></small></h3><br>
           <div class="row"> <!--FORM ROW-->
             <div class="eight columns">
               <label for="fullName">Full Name</label>
-              <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128" value="<?php echo $full_name; ?>">
+              <input class="u-full-width" id="full-name" type="text" name="full-name" maxlength="128" value="<?php echo $name; ?>">
             </div>
             <div class="error" id = "full-name-error">Full Name Required</div>
             <div class="four columns">
@@ -120,7 +129,7 @@ $layoff_protected = $row->layoff_protected;
               <div class="error" id="phoneNumber-error">Phone Number field required</div>
             </div>
             <div class="four columns">
-              <label for="employeeId">Employeee Id</label>
+              <label for="employeeId">Employee Id</label>
               <input id="eid" type="text" name="eid" class="u-full-width" maxlength="8" value="<?php echo (isset($employee_id) ? $employee_id : ''); ?>">
               <div class="error" id = "eid-error">Employee ID field required</div>
             </div>
