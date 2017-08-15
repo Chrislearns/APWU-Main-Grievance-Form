@@ -43,7 +43,11 @@ function formatDate($date) {
     <link rel="stylesheet" href="css/custom.css">
   </head>
   <body>
-    <div class="container">
+    <a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
+    <a href="account-info.php"><button class="button u-pull-right">Update Account Info</button></a>
+    <a href="grievancePage.php"><button class="button u-pull-right">File new grievance</button></a>
+    <a href="index.php"><button class="button u-pull-right">Menu</button></a>
+    <div class="container u-cf">
       <div class="content-container">
         <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <div style="padding-top: 80px">

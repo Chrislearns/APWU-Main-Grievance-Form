@@ -53,7 +53,7 @@ function destroySession(){
             <button class="b_respon"><i class="fa fa-address-card-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; Update Account Information</button>
           </a>
-          <a href="grievance.php">
+          <a href="view-all-grievances.php">
             <button class="b_respon"><i class="fa fa-pencil-square-o fa-2x fa-panel" aria-hidden="true">
             </i>&nbsp;&nbsp; Review Submitted Grievances</button>
           </a>

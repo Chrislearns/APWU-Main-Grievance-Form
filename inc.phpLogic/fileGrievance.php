@@ -3,7 +3,26 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
-include('grievance.php');
+$ip = $_SESSION['ip'];
+$name = $_SESSION['name'];
+$email = $_SESSION["email"];
+function destroySession(){
+  session_unset();
+  session_destroy();
+}
+  if($ip != $_SERVER['REMOTE_ADDR']){
+    destroySession();
+    $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+    header("location:newLogInPage.php");
+    exit;
+
+}
+  if(empty($_SESSION['name']) || empty($_SESSION["loggedIn"])){
+    $_SESSION['error'] = "<h4>Please Log-in</h4>";
+    header("location:newLogInPage.php");
+    exit;
+  }
+include('../connection.php');
 
 //DRY
 function sanitize($data){
@@ -23,9 +42,9 @@ $time_swept = sanitize($_POST['time-swept']);
 $hoursWorkedAlone = sanitize($_POST['hours-worked-alone']);
 $minutesWorkedAlone = sanitize($_POST['minutes-worked-alone']);
 
-$query = 'INSERT INTO filedGrievances(employeeID, date, machineNumber, timeAlone, supervisorName, feedAndSweep, mailProcessed, timeHelpReceieved, timeHelpSweptMachine, hoursWorkedAlone, minutesWorkedAlone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';
+$query = 'INSERT INTO filedGrievances(employee_id, date, machine_number, time_alone, supervisor_name, feed_sweep, mailProcessed, time_help_received, time_help_swept_machine, time_worked_alone, minutes_worked_alone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';
 
-$stmt = $conn->prepare($query);
+$stmt = $handler->prepare($query);
 $stmt->bindValue(1, $eid);
 $stmt->bindValue(2, $date);
 $stmt->bindValue(3, $time_alone);
@@ -38,14 +57,14 @@ $stmt->bindValue(9, $time_swept);
 $stmt->bindValue(10, $hoursWorkedAlone);
 $stmt->bindValue(11, $minutesWorkedAlone);
 if($stmt->execute()) {
-$_SESSION['grievance'] = "Grievance Filed successfully!";
+$_SESSION['message'] = "Grievance Filed successfully!";
 header("location:index.php");
-$conn = null;
+$handler = null;
 exit;
 }
 else {
-  $_SESSION['grievance'] = "There was and error. Please try again.";
+  $_SESSION['message'] = "There was and error. Please try again.";
   header('location:index.php');
-  $conn = null;
+  $handler = null;
   exit;
 }
