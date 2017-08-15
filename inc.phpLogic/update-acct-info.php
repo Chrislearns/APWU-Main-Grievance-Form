@@ -37,9 +37,8 @@ if (isset($_POST['submit'])) {
   $daysOff = $_POST["daysOff"];
   $firstDay = $daysOff[0];
   $secondDay = $daysOff[1];
-  $daysOff = htmlentities(trim($_POST['daysOff']),ENT_QUOTES, "UTF-8");
-  $daysOff = htmlentities(trim($secondDay),ENT_QUOTES, "UTF-8");
-
+  $firstDay = htmlentities(trim($firstDay),ENT_QUOTES, "UTF-8");
+  $secondDay = htmlentities(trim($secondDay),ENT_QUOTES, "UTF-8");
   $veteranStatus = htmlentities(trim($_POST['veteranStatus']),ENT_QUOTES, "UTF-8");
   $layoffProtected = htmlentities(trim($_POST['layOffProtected']),ENT_QUOTES, "UTF-8");
 //Change table name Jay Watson
