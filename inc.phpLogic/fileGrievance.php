@@ -41,6 +41,10 @@ $time_helped = sanitize($_POST['time-helped']);
 $time_swept = sanitize($_POST['time-swept']);
 $hoursWorkedAlone = sanitize($_POST['hours-worked-alone']);
 $minutesWorkedAlone = sanitize($_POST['minutes-worked-alone']);
+if($minutesWorkedAlone === ""){
+  $minutesWorkedAlone = 0;
+}
+
 
 $query = 'INSERT INTO filedGrievances(employee_id, date, machine_number, time_alone, supervisor_name, feed_sweep, mailProcessed, time_help_received, time_help_swept_machine, time_worked_alone, minutes_worked_alone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';
 
@@ -58,13 +62,13 @@ $stmt->bindValue(10, $hoursWorkedAlone);
 $stmt->bindValue(11, $minutesWorkedAlone);
 if($stmt->execute()) {
 $_SESSION['message'] = "Grievance Filed successfully!";
-header("location:index.php");
+header("location:../index.php");
 $handler = null;
 exit;
 }
 else {
   $_SESSION['message'] = "There was and error. Please try again.";
-  header('location:index.php');
+  header('location:../index.php');
   $handler = null;
   exit;
 }

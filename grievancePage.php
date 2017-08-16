@@ -91,7 +91,8 @@ if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'] || emp
 </div>
 
 </div>
-                <label>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="10" placeholder="Minutes"> <br> on the above date and machine.</label>
+                <label>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours"> and
+                   <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="2" placeholder="Minutes"> <br> on the above date and machine.</label>
                 <div class="error" id="totalHoursWorkedAlone">Total hours worked alone required</div>
 
             <input id="submit" type="submit" value="Submit Grievance">
