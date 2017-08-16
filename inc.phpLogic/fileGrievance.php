@@ -30,7 +30,7 @@ $data = trim($data);
 $data = htmlentities($data, ENT_QUOTES, "UTF-8");
 return $data;
 }
-$eid = $_SESSION['eid'];
+$eid = sanitize($_SESSION['eid']);
 $date = sanitize($_POST['grievance-date']);
 $time_alone = sanitize($_POST['timeAlone']);
 $machine_number = sanitize($_POST['machine']);
@@ -45,6 +45,62 @@ if($minutesWorkedAlone === ""){
   $minutesWorkedAlone = 0;
 }
 
+//integer options for employee ID
+$min = 111111;
+$max = 99999999;
+$optionEID = array("options"=>
+array("min_range"=>$min, "max_range"=>$max));
+$letterNumbers = array("options"=>array("regexp"=>"/^[0-9a-zA-Z]+$/"));
+$dateValid = array("options"=>array("regexp"=>"/^(0[1-9]|1[012])[\- \/](0[1-9]|[12][0-9]|3[01])[\- \/](19|20)\d\d$/"));
+$passwordValid = array("options"=>array("regexp"=>"/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/"));
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $errors = false;
+
+      if (filter_var($eid, 257, $optionEID === false)) {
+        $_SESSION["eid_message"] = "Valid employee ID required";
+        $errors = true;
+      }
+      else {
+        $_SESSION["employee_id"] = $eid;
+      }
+      if (filter_var($eid, 257, $optionEID === false)) {
+        $_SESSION["eid_message"] = "Valid employee ID required";
+        $errors = true;
+      }
+      else {
+        $_SESSION["employee_id"] = $eid;
+      }
+      if (filter_var($eid, 257, $optionEID === false)) {
+        $_SESSION["eid_message"] = "Valid employee ID required";
+        $errors = true;
+      }
+      else {
+        $_SESSION["employee_id"] = $eid;
+      }
+      if (filter_var($eid, 257, $optionEID === false)) {
+        $_SESSION["eid_message"] = "Valid employee ID required";
+        $errors = true;
+      }
+      else {
+        $_SESSION["employee_id"] = $eid;
+      }
+      if (filter_var($eid, 257, $optionEID === false)) {
+        $_SESSION["eid_message"] = "Valid employee ID required";
+        $errors = true;
+      }
+      else {
+        $_SESSION["employee_id"] = $eid;
+      }
+      if (filter_var($eid, 257, $optionEID === false)) {
+        $_SESSION["eid_message"] = "Valid employee ID required";
+        $errors = true;
+      }
+      else {
+        $_SESSION["employee_id"] = $eid;
+      }
+}
 
 $query = 'INSERT INTO filedGrievances(employee_id, date, machine_number, time_alone, supervisor_name, feed_sweep, mailProcessed, time_help_received, time_help_swept_machine, time_worked_alone, minutes_worked_alone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';
 
