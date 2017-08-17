@@ -107,10 +107,10 @@ $query = 'INSERT INTO filedGrievances(employee_id, date, machine_number, time_al
 $stmt = $handler->prepare($query);
 $stmt->bindValue(1, $eid);
 $stmt->bindValue(2, $date);
-$stmt->bindValue(3, $time_alone);
-$stmt->bindValue(4, $machine_number);
-$stmt->bindValue(5, $feed_sweep);
-$stmt->bindValue(6, $supervisor);
+$stmt->bindValue(3, $machine_number);
+$stmt->bindValue(4, $time_alone);
+$stmt->bindValue(5, $supervisor);
+$stmt->bindValue(6, $feed_sweep);
 $stmt->bindValue(7, $mail_processed);
 $stmt->bindValue(8, $time_helped);
 $stmt->bindValue(9, $time_swept);
