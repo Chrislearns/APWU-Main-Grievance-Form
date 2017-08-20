@@ -61,21 +61,22 @@ $name = $row2->full_name;
   </head>
   <body>
     <a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
-    <a href="view-all-grievances.php"><button class="button u-pull-right">Review grievances</button></a>
-    <a href="grievancePage.php"><button class="button u-pull-right">File new grievance</button></a>
     <a href="index.php"><button class="button u-pull-right">Menu</button></a>
     <div class="container u-cf">
       <div class="form-container">
-        <a href="index.php"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
-        <!--START OF FORM -->
-        <form id="sign-up-form" method="post" action="inc.phpLogic/update-acct-info.php">
+        <div class="row">
+            <h3 class="seven columns"style="margin-left: 85px; padding-top:10px;">Update Info<br><small><?php echo $name; ?></small></h3><br>
+        <a href="index.php"><img class="four columns" src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
+          </div>
           <?php
           if (isset($_SESSION["error"])) {
             $error = $_SESSION["error"];
             echo "<h4>$error</h4";
           }
           ?>
-          <h3 style="margin-left: 85px">Update Info<br><small><?php echo $name; ?></small></h3><br>
+        <!--START OF FORM -->
+        <form id="sign-up-form" method="post" action="inc.phpLogic/update-acct-info.php">
+
           <div class="row"> <!--FORM ROW-->
             <div class="eight columns">
               <label for="fullName">Full Name</label>

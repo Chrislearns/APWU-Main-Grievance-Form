@@ -33,8 +33,6 @@ if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'] || emp
 </head>
 
 <a href= "logout.php"><button class="button u-pull-right">Log out</button></a>
-<a href="account-info.php"><button class="button u-pull-right">Update Account Info</button></a>
-<a href="view-all-grievances.php"><button class="button u-pull-right">Review Grievances</button></a>
 <a href="index.php"><button class="button u-pull-right">Menu</button></a>
 
 

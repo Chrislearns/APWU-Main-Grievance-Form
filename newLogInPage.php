@@ -8,7 +8,7 @@ function destroySession(){
 }
 
 if (isset($_SESSION["loggedIn"])) {
-    if(isset($_SESSION("admin"))) {
+    if($_SESSION("admin") === 0) {
       header("location:admin/index.php");
       $handler = null;
       exit;
