@@ -155,7 +155,7 @@ else{
         <label for="city">City</label>
         <input id="city" value="<?php if(isset($_SESSION["city"])) { echo $cityField = $_SESSION["city"];} ?>" type="text" name="city" maxlength="50" class="u-full-width" required>
         <div class="error" id="city-error">City field required</div>
-        <div class="error" id="city-regex">City field should contain letter only</div>
+        <div class="error" id="city-regex">City field should contain letters only</div>
         <?php if (isset($_SESSION['city_message'])) {
           $city = $_SESSION['city_message'];
           echo "<div class = php>$city</div>";

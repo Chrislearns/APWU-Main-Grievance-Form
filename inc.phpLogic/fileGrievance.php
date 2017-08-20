@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
         $_SESSION["date"] = $date;
       }
+
       if (filter_var($eid, 257, $optionEID === false)) {
         $_SESSION["eid_message"] = "Valid employee ID required";
         $errors = true;

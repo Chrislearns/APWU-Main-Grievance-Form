@@ -2,7 +2,27 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
-include ('grievance.php');
+function destroySession(){
+  session_unset();
+  session_destroy();
+}
+
+if (isset($_SESSION["loggedIn"])) {
+    header("location:index.php");
+    }
+
+if (isset($_SESSION['ip'])) {
+  if ($_SESSION['ip'] !== $_SERVER['REMOTE_ADDR']){
+    destroySession();
+    $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
+    header("location:newLogInPage.php");
+  }
+
+}
+else{
+  $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
+}
+include ('../connection.php');
 $daysOff = $_POST['daysOff'];
 
 $employeeID = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");
@@ -159,7 +179,7 @@ $errors = true;
     $_SESSION["error"] = "There were errors in your submission!<br> Please try again.";
       header("location:../newLogInPage.php#");
 
-      $conn = null;
+      $handler = null;
       exit;
     }
   }
@@ -167,9 +187,9 @@ $errors = true;
 if(!$errors){
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
-$conn->beginTransaction();
+$handler->beginTransaction();
 try{
-$stmt = $conn->prepare("INSERT INTO userAccounts ( fullName ,emailAddress, PASSWORD) VALUES (?,?,?)");
+$stmt = $handler->prepare("INSERT INTO userAccounts ( full_name ,email, PASSWORD) VALUES (?,?,?)");
 
 $stmt->bindValue(1,$fullName);
 $stmt->bindValue(2,$email);
@@ -177,8 +197,8 @@ $stmt->bindValue(3,$hash);
 $stmt->execute();
 $count1 = $stmt->rowCount();
 //prepare second statement
-$stmtSignUpInfo = $conn->prepare("INSERT INTO UserSignUp (  employeeID , employeeType , address, city , state, zipcode, phoneNumber,
-seniorityDate, payLevel, payStep, tour, firstdayOff,secondDayOff, veteranStatus, layOffProtected, emailAddress) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+$stmtSignUpInfo = $handler->prepare("INSERT INTO UserSignUp (  employee_id , employee_type , address, city , state, zip_code, phone_number,
+seniority_date, pay_level, pay_step, tour, first_day_off, second_day_off, veteran_status, layoff_protected, email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 
 $stmtSignUpInfo->bindValue(1, $employeeID);
@@ -200,14 +220,14 @@ $stmtSignUpInfo->bindValue(16, $email);
 
 $stmtSignUpInfo->execute();
 $count2 = $stmtSignUpInfo->rowCount();
-$conn->commit();
+$handler->commit();
 
   $_SESSION['email'] = $email;
   $_SESSION['eid'] = $employeeID;
   $_SESSION['name'] = $fullName;
   $_SESSION["loggedIn"] = "Logged In";
   header("location:../index.php");
-    $conn = null;
+    $handler = null;
   exit;
 
 
@@ -218,8 +238,8 @@ $conn->commit();
 catch(PDOException $e) {
   echo "We have an error"."<br>";
   echo $e->getMessage()."<br>";
-  $conn->rollBack();
-      $conn = null;
+  $handler->rollBack();
+      $handler = null;
   exit;
    }
 }
