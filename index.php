@@ -23,7 +23,7 @@ function destroySession(){
   <head>
     <script src="https://use.fontawesome.com/1c43e5f606.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>APWU GFS</title>
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/skeleton/2.0.4/css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">

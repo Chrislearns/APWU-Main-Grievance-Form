@@ -58,12 +58,12 @@ $passwordValid = array("options"=>array("regexp"=>"/(?=.*\d)(?=.*[a-z])(?=.*[A-Z
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $errors = false;
 
-      if (filter_var($eid, 257, $optionEID === false)) {
-        $_SESSION["eid_message"] = "Valid employee ID required";
+      if (empty($date)) {
+        $_SESSION["date_message"] = "Date required";
         $errors = true;
       }
       else {
-        $_SESSION["employee_id"] = $eid;
+        $_SESSION["date"] = $date;
       }
       if (filter_var($eid, 257, $optionEID === false)) {
         $_SESSION["eid_message"] = "Valid employee ID required";
