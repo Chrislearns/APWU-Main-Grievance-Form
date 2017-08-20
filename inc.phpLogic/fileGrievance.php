@@ -66,40 +66,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["date"] = $date;
       }
 
-      if (filter_var($eid, 257, $optionEID === false)) {
-        $_SESSION["eid_message"] = "Valid employee ID required";
+      if (empty($time_alone)) {
+        $_SESSION["time_alone_message"] = "Time worked alone required";
         $errors = true;
       }
       else {
-        $_SESSION["employee_id"] = $eid;
+        $_SESSION["time_alone"] = $time_alone;
       }
-      if (filter_var($eid, 257, $optionEID === false)) {
-        $_SESSION["eid_message"] = "Valid employee ID required";
+      if (empty($machine_number)) {
+        $_SESSION["machine_number_message"] = "Valid machine number required";
         $errors = true;
       }
       else {
-        $_SESSION["employee_id"] = $eid;
+        $_SESSION["machine_number"] = $machine_number;
       }
-      if (filter_var($eid, 257, $optionEID === false)) {
-        $_SESSION["eid_message"] = "Valid employee ID required";
+      if (!isset($feed_sweep)) {
+        $_SESSION["feed_sweep_message"] = "Did you feed and sweep the machine";
         $errors = true;
       }
       else {
-        $_SESSION["employee_id"] = $eid;
+        $_SESSION["feed_sweep"] = $feed_sweep;
       }
-      if (filter_var($eid, 257, $optionEID === false)) {
-        $_SESSION["eid_message"] = "Valid employee ID required";
+      if (empty($supervisor)) {
+        $_SESSION["supervisor_message"] = "Supervisor on tour required";
         $errors = true;
       }
       else {
-        $_SESSION["employee_id"] = $eid;
+        $_SESSION["supervisor"] = $supervisor;
       }
-      if (filter_var($eid, 257, $optionEID === false)) {
-        $_SESSION["eid_message"] = "Valid employee ID required";
+      if (empty($mail_processed)) {
+        $_SESSION["mail_processed_message"] = "Amount of mail processed required";
         $errors = true;
       }
       else {
-        $_SESSION["employee_id"] = $eid;
+        $_SESSION["mail_processed"] = $mail_processed;
+      }
+      if (isset($time_helped)) {
+        $_SESSION["time_helped"] = $time_helped;
+      }
+      if (isset($time_swept))  {
+        $_SESSION["time_swept"] = $time_swept;
+      }
+      if (empty($hoursWorkedAlone)) {
+        $_SESSION["hours_worked_alone_message"] = "How many hours worked alone required";
+        $errors = true;
+      }
+      else {
+        $_SESSION["hours_worked_alone"] = $hoursWorkedAlone;
+      }
+      if (isset($minutesWorkedAlone)) {
+        $_SESSION["minutes_worked_alone"] = $minutesWorkedAlone;
       }
 }
 
