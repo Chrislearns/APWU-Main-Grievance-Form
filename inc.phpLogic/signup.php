@@ -2,13 +2,24 @@
 if (session_status() == PHP_SESSION_NONE){
 session_start();
 }
+include ('../connection.php');
+
 function destroySession(){
   session_unset();
   session_destroy();
 }
 
+
+
 if (isset($_SESSION["loggedIn"])) {
+  if(isset($_SESSION("admin"))) {
+    header("location:admin/index.php");
+    $handler = null;
+    exit;
+  }
     header("location:index.php");
+    $handler = null;
+    exit;
     }
 
 if (isset($_SESSION['ip'])) {
@@ -16,13 +27,15 @@ if (isset($_SESSION['ip'])) {
     destroySession();
     $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
     header("location:newLogInPage.php");
+    $handler = null;
+    exit;
   }
 
 }
 else{
   $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
 }
-include ('../connection.php');
+
 $daysOff = $_POST['daysOff'];
 
 $employeeID = htmlentities(trim($_POST['eid']),ENT_QUOTES, "UTF-8");

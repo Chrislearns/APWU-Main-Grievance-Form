@@ -72,14 +72,13 @@ USE grievanceInfo;
 CREATE TABLE unionStewards(
 
   id int(11) AUTO_INCREMENT PRIMARY KEY not null,
-  admin boolean not null default 0,
   name varchar(128) not null,
   email varchar(128) not null,
   tour int(2) not null
 );
 
 CREATE TABLE userAccounts (
-
+  admin boolean not null default 0,
 	full_name varchar(128) NOT null,
 	email varchar(128) NOT null,
 	PASSWORD varchar(128) NOT null,

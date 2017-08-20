@@ -8,7 +8,14 @@ function destroySession(){
 }
 
 if (isset($_SESSION["loggedIn"])) {
+    if(isset($_SESSION("admin"))) {
+      header("location:admin/index.php");
+      $handler = null;
+      exit;
+    }
+
     header("location:index.php");
+    exit;
     }
 
 if (isset($_SESSION['ip'])) {
