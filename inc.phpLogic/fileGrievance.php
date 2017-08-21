@@ -117,6 +117,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (isset($minutesWorkedAlone)) {
         $_SESSION["minutes_worked_alone"] = $minutesWorkedAlone;
       }
+      if($errors){
+        header("location:grievancePage.php");
+        $handler = null;
+        exit;
+      }
 }
 
 $query = 'INSERT INTO filedGrievances(employee_id, date, machine_number, time_alone, supervisor_name, feed_sweep, mailProcessed, time_help_received, time_help_swept_machine, time_worked_alone, minutes_worked_alone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';

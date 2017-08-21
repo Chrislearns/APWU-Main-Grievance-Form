@@ -101,3 +101,23 @@ if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'] || emp
   <p><small>&copy; 2017 American Postal Workers Union</a></small></p></footer>
 
     </html>
+<?php
+unset($_SESSION["date_message"])
+unset($_SESSION["time_alone_message"])
+unset($_SESSION["machine_number_message"])
+unset($_SESSION["feed_sweep_message"])
+unset($_SESSION["supervisor_message"])
+unset($_SESSION["mail_processed_message"])
+unset($_SESSION["hours_worked_alone_message"])
+unset($_SESSION['grievance']);
+unset($_SESSION["date"])
+unset($_SESSION["time_alone"])
+unset($_SESSION["machine_number"])
+unset($_SESSION["feed_sweep"])
+unset($_SESSION["supervisor"])
+unset($_SESSION["mail_processed"])
+unset($_SESSION["time_helped"])
+unset($_SESSION["time_swept"])
+unset($_SESSION["hours_worked_alone"])
+unset($_SESSION["minutes_worked_alone"])
+ ?>
