@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $errors = false;
 
       if (empty($date)) {
-        $_SESSION["date_message"] = "Date required";
+        $_SESSION["date_message"] = "Grievance date required";
         $errors = true;
       }
       else {

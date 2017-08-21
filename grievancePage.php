@@ -48,38 +48,72 @@ if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'] || emp
                 <label>Date of Grievance (mm/dd/yy):</label>
                 <input id="grievance-date" type="date" name="grievance-date" size="10" maxlength="10" required>
 
-             <div class="error" id="grievanceDateError">Grievance date required</div>
+            <?php
+             if(isset($_SESSION["date_message"]){
+            $date = $_SESSION["date_message"];
+             echo "<div>$date</div>";
+             }
+             ?>
 
 
              <label>I worked alone from (Example: 11:45pm until 1:20am)</label>
              <input id="time-alone" type="text" name="timeAlone" size="20" maxlength="28" required>
+             <?php
+              if(isset($_SESSION["time_alone_message"]){
+             $time_alone = $_SESSION["time_alone_message"];
+              echo "<div>$time_alone</div>";
+              }
+              ?>
 
-           <div class="error" id="timeAlone">Must provide time worked alone</div>
+
 
 
 
                 <label> Machine Number</label>
                 <input id="machine" type="number" name="machine" size="30" maxlength="3" required>
+                <?php
+                 if(isset($_SESSION["machine_number_message"]){
+                $machine_number = $_SESSION["machine_number_message"];
+                 echo "<div>$machine_number</div>";
+                 }
+                 ?>
 
-            <div class="error" id="machineNum">Machine # required</div>
+
 
 
               <label class="m_p">I had to feed and sweep the machine myself
               <input id="radio-null" type="radio" name="radio" value="Yes" ><span class="label-body">Yes</span><input id="radio-null2" type="radio" name="radio" value="No"><span class="label-body">No</span>
           </label>
-          <div class="error" id="feedSweep">Did you feed and sweep?</div>
+          <?php
+           if(isset($_SESSION["feed_sweep_message"]){
+          $feed_sweep = $_SESSION["feed_sweep_message"];
+           echo "<div>$feed_sweep</div>";
+           }
+           ?>
+
 
 
 
 <div class="s_m">
                 <label>SUPERVISORS NAME:</label>
                 <input id="supervisor" type="text" name="supervisor" size="28" maxlength="28" required>
+                <?php
+                 if(isset($_SESSION["supervisor_message"]){
+                $supervisor = $_SESSION["supervisor_message"];
+                 echo "<div>$supervisor</div>";
+                 }
+                 ?>
 
-              <div class="error" id="supervisor-error">Supervisor on duty required</div>
             </div>
 
                 <label>I worked approximatedly <input id="mail-processed" type="number" name="mail-processed" size="5" maxlength="10" required> pieces of mail during the time I worked alone.</label>
-                  <div class="error" id="mailProcessed">Pieces of mail processed required</div>
+                <?php
+                 if(isset($_SESSION["mail_processed_message"]){
+                $mail_processed = $_SESSION["mail_processed_message"];
+                 echo "<div>$mail_processed</div>";
+                 }
+                 ?>
+
 <div class="row">
               <div class="w_m"><h2>Only complete field if you receieved help</h2>
                 <label>I did receive help at approximately <input id="time-helped" type="text" name="time-helped" size="5" maxlength="10">
@@ -91,7 +125,14 @@ if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'] || emp
 </div>
                 <label>I worked alone for a total of <br><input id="hours-worked-alone" type="number" name="hours-worked-alone" size="2" maxlength="2" placeholder="Hours" required> and
                    <input id="minutes-worked-alone" type="number" name="minutes-worked-alone" size="5" maxlength="2" placeholder="Minutes"> <br> on the above date and machine.</label>
-                <div class="error" id="totalHoursWorkedAlone">Total hours worked alone required</div>
+
+                   <?php
+                    if(isset($_SESSION["hours_worked_alone_message"]){
+                   $hours_worked_alone = $_SESSION["hours_worked_alone_message"];
+                    echo "<div>$hours_worked_alone</div>";
+                    }
+                    ?>
+
 
             <input id="submit" type="submit" value="Submit Grievance">
 
