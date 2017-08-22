@@ -106,11 +106,11 @@ CREATE TABLE userAccounts (
 
 		);
 
-			CREATE TABLE filedGrievances (
+			CREATE TABLE filed_grievances (
 
 				id int(11) PRIMARY KEY AUTO_INCREMENT NOT null,
 	      employee_id int(8) not null,			
-				date varchar(10) NOT null,
+				date_of_grievance varchar(10) NOT null,
 				machine_number int(3) NOT null,
 				time_alone varchar(28) NOT null,
 				supervisor_name varchar(128) NOT null,
@@ -120,7 +120,7 @@ CREATE TABLE userAccounts (
 				time_help_swept_machine varchar(10),
 				time_worked_alone int(2) NOT null,
 				minutes_worked_alone int(2),
-				resolved varchar(255),
+				status varchar(255) default "Unresolved",
 				comments varchar(1000)
 
 

@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 }
 
-$query = 'INSERT INTO filedGrievances(employee_id, date, machine_number, time_alone, supervisor_name, feed_sweep, mailProcessed, time_help_received, time_help_swept_machine, time_worked_alone, minutes_worked_alone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';
+$query = 'INSERT INTO filed_grievances(employee_id, date_of_grievance,  machine_number, time_alone, supervisor_name, feed_sweep, mailProcessed, time_help_received, time_help_swept_machine, time_worked_alone, minutes_worked_alone) VALUES(?,?,?,?,?,?,?,?,?,?,?) ';
 
 $stmt = $handler->prepare($query);
 $stmt->bindValue(1, $eid);
