@@ -88,7 +88,7 @@ function formatDate($date) {
             <tr>
               <td><?php echo $row->id; ?></td>
               <td><?php echo $row->employee_id; ?></td>
-              <td><?php echo $row->date; ?></td>
+              <td><?php echo $row->date_of_grievance; ?></td>
               <td><?php echo $row->status; ?></td>
               <td><?php echo $row->supervisor_name; ?></td>
             </tr>
