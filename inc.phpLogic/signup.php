@@ -8,11 +8,11 @@ function destroySession(){
   session_unset();
   session_destroy();
 }
-
+$admin = $_SESSION["admin"];
 
 
 if (isset($_SESSION["loggedIn"])) {
-  if(isset($_SESSION("admin"))) {
+  if($admin = 1) {
     header("location:admin/index.php");
     $handler = null;
     exit;
