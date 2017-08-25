@@ -1,33 +1,35 @@
 <?php
-if (session_status() == PHP_SESSION_NONE){
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
 }
-function destroySession(){
+
+function destroySession() {
   session_unset();
   session_destroy();
 }
 
 if (isset($_SESSION["loggedIn"])) {
-    if($_SESSION("admin") === 0) {
+  if($_SESSION("admin") === 0) {
       header("location:admin/index.php");
       $handler = null;
       exit;
-    }
+}
 
-    header("location:index.php");
+header("location:index.php");
     exit;
-    }
+}
 
 if (isset($_SESSION['ip'])) {
-  if ($_SESSION['ip'] !== $_SERVER['REMOTE_ADDR']){
+if ($_SESSION['ip'] !== $_SERVER['REMOTE_ADDR']){
     destroySession();
     $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
     header("location:newLogInPage.php");
-  }
+}
 
 }
-else{
-  $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
+
+else {
+$_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
 }
 
 ?>
@@ -66,9 +68,9 @@ else{
       <form class="login" method="post" action="inc.phpLogic/validatelogin.php">
         <?php
                if(isset($_SESSION["error"])) {
-              $error = $_SESSION["error"];
+$error = $_SESSION["error"];
               echo "<h6 class = i_c >$error</h6>";
-                       }
+}
          ?>
         <input type="text" placeholder="email" name = "user_email" class="center" id="login">
         <input type="password" placeholder="password" name="password" class="center">
@@ -121,9 +123,9 @@ else{
         <div class="error" id="full-name-regex">Full Name can only contain letters only</div>
       </div>
       <?php if (isset($_SESSION['fullName_message'])) {
-        $fn = $_SESSION['fullName_message'];
+$fn = $_SESSION['fullName_message'];
         echo "<div class = php>$fn</div>";
-      }
+}
       ?>
       <div class="four columns">
         <label for="exampleRecipientInput">Employee Status</label>
@@ -137,9 +139,9 @@ else{
       </div>
 
       <?php if (isset($_SESSION['employeeStatus_message'])) {
-        $es = $_SESSION['employeeStatus_message'];
+$es = $_SESSION['employeeStatus_message'];
         echo "<div class = php>$es</div>";
-      }
+}
       ?>
     </div>
     <!--END ROW-->
@@ -164,9 +166,9 @@ else{
         <div class="error" id="city-error">City field required</div>
         <div class="error" id="city-regex">City field should contain letters only</div>
         <?php if (isset($_SESSION['city_message'])) {
-          $city = $_SESSION['city_message'];
+$city = $_SESSION['city_message'];
           echo "<div class = php>$city</div>";
-        }
+}
         ?>
       </div>
       <div class="three columns">
@@ -175,9 +177,9 @@ else{
         <div class="error" id="state-error">State field required</div>
         <div class="error" id="state-regex">State field should contain letters only</div>
         <?php if (isset($_SESSION['state_message'])) {
-          $state = $_SESSION['state_message'];
+$state = $_SESSION['state_message'];
           echo "<div class = php>$state</div>";
-        }
+}
         ?>
       </div>
       <div class="three columns">
@@ -186,9 +188,9 @@ else{
         <div class="error" id="zipCode-error">Zip-Code field required</div>
         <div class="error" id="zipCode-regex">Zip-Code field should contain numbers only</div>
         <?php if (isset($_SESSION['zip_message'])) {
-          $zip = $_SESSION['zip_message'];
+$zip = $_SESSION['zip_message'];
           echo "<div class = php>$zip</div>";
-        }
+}
         ?>
       </div>
     </div>
@@ -202,9 +204,9 @@ else{
     <div class="error" id="eid-error">Employee ID field required</div>
 
       <?php if (isset($_SESSION['eid_message'])) {
-        $eid = $_SESSION['eid_message'];
+$eid = $_SESSION['eid_message'];
         echo "<div class = php>$eid</div>";
-      }
+}
       ?>
 
     <div class="input-spacing">
@@ -228,20 +230,20 @@ else{
     <div class="error" id="payLevel-error">Pay Level field required</div>
     <div class="error" id="payLevel-regex">Pay Level should contain letters and number only</div>
     <?php if (isset($_SESSION['payStatus'])) {
-      $payStat = $_SESSION['payStatus_message'];
+$payStat = $_SESSION['payStatus_message'];
       echo "<div class = php>$payStat</div>";
-    }
+}
     ?>
     <div class="input-spacing">
-      <h3> Pay Step:</h3>
+      <h3> Pay Step(example. "AA"):</h3>
       <input id="payStep" value="<?php if(isset($_SESSION["payStep"])) {echo $p_s = $_SESSION["payStep"];} ?>" type="text" name="payStep" size="10" maxlength="10" required>
     </div>
     <div class="error" id="payStep-error">Pay Step field required</div>
     <div class="error" id="payStep-regex">Pay Step should contain letters and number only</div>
     <?php if (isset($_SESSION['payStep_message'])) {
-      $payAlpha = $_SESSION['payStep_message'];
+$payAlpha = $_SESSION['payStep_message'];
       echo "<div class = php>$payAlpha</div>";
-    }
+}
     ?>
     <div class="input-spacing">
       <h3> Tour:</h3>
@@ -250,39 +252,46 @@ else{
     <div class="error" id="tour-error">Tour field required</div>
     <div class="error" id="tour-regex">Field should contain a 1, 2, or 3</div>
     <?php if (isset($_SESSION['tour_message'])) {
-      $shift = $_SESSION['tour_message'];
+$shift = $_SESSION['tour_message'];
       echo "<div class = php>$shift</div>";
-    }
+}
     ?>
     <div class="input-spacing">
       <h3> Days Off(check all applicable boxes):</h3><br>
     <input type="checkbox" name="daysOff[]" value="Saturday"
-    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Saturday" || $_SESSION["daysOff1"] === "Saturday")
-     { echo " checked";} ?> > Saturday
+    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Saturday" || $_SESSION["daysOff1"] === "Saturday") {
+echo " checked";
+} ?> >Saturday
     <input type="checkbox" name="daysOff[]" value="Sunday"
-    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Sunday" || $_SESSION["daysOff1"] === "Sunday")
-     { echo " checked";} ?> > Sunday
+    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Sunday" || $_SESSION["daysOff1"] === "Sunday") {
+echo " checked";
+} ?> >Sunday
     <input type="checkbox" name="daysOff[]" value="Monday"
-    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Monday" || $_SESSION["daysOff1"] === "Monday")
-     { echo " checked";} ?> > Monday
+    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Monday" || $_SESSION["daysOff1"] === "Monday") {
+echo " checked";
+} ?> >Monday
     <input type="checkbox" name="daysOff[]" value="Tuesday"
-    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Tuesday" || $_SESSION["daysOff1"] === "Tuesday")
-     { echo " checked";} ?> > Tuesday
+    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Tuesday" || $_SESSION["daysOff1"] === "Tuesday") {
+echo " checked";
+} ?> >Tuesday
     <input type="checkbox" name="daysOff[]" value="Wednesday"
-    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Wednesday" || $_SESSION["daysOff1"] === "Wednesday")
-     { echo " checked";} ?> > Wednesday
+    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Wednesday" || $_SESSION["daysOff1"] === "Wednesday") {
+echo " checked";
+} ?> >Wednesday
     <input type="checkbox" name="daysOff[]" value="Thursday"
-    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Thursday" || $_SESSION["daysOff1"] === "Thursday")
-     { echo " checked";} ?> > Thursday
+    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Thursday" || $_SESSION["daysOff1"] === "Thursday") {
+echo " checked";
+} ?> >Thursday
     <input type="checkbox" name="daysOff[]" value="Friday"
-    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Friday" || $_SESSION["daysOff1"] === "Friday")
-     { echo " checked";} ?> > Friday
+    <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Friday" || $_SESSION["daysOff1"] === "Friday") {
+echo " checked";
+} ?> >Friday
     </div>
     <div class="error" id="daysOff-error">Days Off field required</div>
     <?php if (isset($_SESSION['daysOff_message'])) {
-      $days = $_SESSION['daysOff_message'];
+$days = $_SESSION['daysOff_message'];
       echo "<div class = php>$days</div>";
-    }
+}
     ?>
 <br>
     <select name="veteranStatus" class="veteranStatus" id="veteran_ddm" required>
@@ -295,9 +304,9 @@ else{
     </select>
     <div class="error" id="veteranStatus-error">Veteran Status field required</div>
     <?php if (isset($_SESSION['veteran_message'])) {
-      $vet = $_SESSION['veteran_message'];
+$vet = $_SESSION['veteran_message'];
       echo "<div class = php>$vet</div>";
-    }
+}
     ?>
     <select name="layOffProtected" class="layOffProtected" id="layOff_ddm" required>
       <option value="none">Layoff Protected</option>
@@ -309,9 +318,9 @@ else{
     </select>
     <div class="error" id="layOffProtected-error">Lay-off Protected field required</div>
     <?php if (isset($_SESSION['layOff_message'])) {
-      $layOff = $_SESSION['layOff_message'];
+$layOff = $_SESSION['layOff_message'];
       echo "<div class = php>$layOff</div>";
-    }
+}
     ?>
     <div class="input-spacing">
       <h3> Email Address:</h3>
@@ -320,22 +329,23 @@ else{
     <div class="error" id="email1-error">Please enter a email address.</div>
     <div class="error" id="email1-regex">Please enter a  valid email address.</div>
     <?php if (isset($_SESSION['email_message'])) {
-      $emailAdd = $_SESSION['email_message'];
+$emailAdd = $_SESSION['email_message'];
       echo "<div class = php>$emailAdd</div>";
-    }
+}
     ?>
     <div class="input-spacing">
       <h3> Reenter Email Address:</h3>
       <input id="email-address2" value="<?php if(isset($_SESSION["email2"])) {echo $e_a2 = $_SESSION["email2"];} ?>"  type="email" name="email2" size="20" maxlength="120" required>
     </div>
     <?php if (isset($_SESSION['email2_message'])) {
-      $emailAdd2 = $_SESSION['email2_message'];
+$emailAdd2 = $_SESSION['email2_message'];
       echo "<div class = php>$emailAdd2</div>";
-    }
-    if (isset($_SESSION['email_equal'])) {
-      $emailequal = $_SESSION['email_equal'];
+}
+
+if (isset($_SESSION['email_equal'])) {
+$emailequal = $_SESSION['email_equal'];
       echo "<div class = php>$emailequal</div>";
-    }
+}
     ?>
     <div class="error" id="email2-error">Please verify email address</div>
     <div class="error" id="email2-regex">Please verify with a valid email address</div>
@@ -348,9 +358,9 @@ else{
       type="password" name="password1" size="20" maxlength="120" required>
     </div>
     <?php if (isset($_SESSION['password_message'])) {
-      $passMess = $_SESSION['password_message'];
+$passMess = $_SESSION['password_message'];
       echo "<div class = php>$passMess</div>";
-    }
+}
     ?>
     <div class="error" id="password1-error">Please create a password.</div>
     <div class="error" id="password1-equal">Password fields should contain the same password.</div>
@@ -364,13 +374,14 @@ else{
 
     </div>
     <?php if (isset($_SESSION['password2_message'])) {
-      $passMess2 = $_SESSION['password2_message'];
+$passMess2 = $_SESSION['password2_message'];
       echo "<div class = php>$passMess2</div>";
-    }
-   if (isset($_SESSION['password_equal'])) {
-      $passequal = $_SESSION['password_equal'];
+}
+
+if (isset($_SESSION['password_equal'])) {
+$passequal = $_SESSION['password_equal'];
       echo "<div class = php>$passequal</div>";
-    }
+}
 
     ?>
     <div class="error" id="password2-error">Please verify password</div>

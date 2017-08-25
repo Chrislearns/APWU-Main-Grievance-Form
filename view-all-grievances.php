@@ -64,8 +64,10 @@ function formatDate($date) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/skeleton/2.0.4/css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
   </head>
-  <body>
-    <div class="container">
+  <body class="mobile-table-view">
+    <a href= "logout.php"><button class="button u-pull-left">Log out</button></a>
+    <a href="index.php"><button class="button u-pull-left">Menu</button></a>
+    <div class="container u-cf ">
       <div class="content-container">
         <a href="<?php echo (!empty($_SESSION['admin']) && $_SESSION['admin']) ? 'admin/index.php' : 'index.php'; ?>"><img src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
         <div style="padding-top: 80px">

@@ -65,8 +65,8 @@ $name = $row2->full_name;
     <div class="container u-cf">
       <div class="form-container">
         <div class="row">
-            <h3 class="seven columns"style="margin-left: 85px; padding-top:10px;">Update Info<br><small><?php echo $name; ?></small></h3><br>
-        <a href="index.php"><img class="four columns" src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
+            <h3 class="seven columns namespace" >Update Info<br><small><?php echo $name; ?></small></h3><br>
+        <a href="index.php"><img class="four columns logo" src="https://www.advsol.com/ASI/images/NewSite/Clients/cs_logo_apwu.png" alt="APWU" class="apwu-logo" height="100px"></a>
           </div>
           <?php
           if (isset($_SESSION["error"])) {
@@ -215,7 +215,7 @@ $name = $row2->full_name;
             </div>
           </div>
 
-          <input id="submit" type="submit" value="Update Account Information" class="submit-button" name="submit">
+          <input id="submit" type="submit" value="Update" class="submit-button" name="submit">
         </form>
         <!--END OF FORM - tabbed left for spacing-->
       </div>

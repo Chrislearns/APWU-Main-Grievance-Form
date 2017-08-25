@@ -95,7 +95,9 @@ function destroySession(){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="inc.javascript/script.js"></script>
   </body>
-  <?php unset($_SESSION['message']);
+  <?php
+  unset($_SESSION["error"]);
+  unset($_SESSION['message']);
   unset($_SESSION['grievance']);
   unset($_SESSION["date"]);
   unset($_SESSION["time_alone"]);

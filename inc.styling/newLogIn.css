@@ -17,6 +17,26 @@
   footer small {
     margin-left: 50px;
   }
+  @media (max-width: 420px) {
+  .sticky-footer {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  footer small {
+      margin-left: 0px;
+  }
+  .social-box {
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+
+  }
+  .center-text {
+    text-align: center;
+  }
+    }
+
   .center-text {
   text-align: center;
 }
