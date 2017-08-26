@@ -1,12 +1,17 @@
 <?php
 // UI - Administrative Panel for all users
-// If super admin, show an extra button for viewing/editing all grievances 
-session_start(); 
-if (!empty($_SESSION['admin'])) {
-  $name = $_SESSION['name'];
-  $id = $_SESSION['id'];
-} else {
-  header('Location: login.php');
+// If super admin, show an extra button for viewing/editing all grievances
+session_start();
+$admin = $_SESSION("admin");
+
+if (isset($_SESSION["loggedIn"])) {
+  if($admin === 1) {
+   exit(header("location:admin/index.php"));
+
+}
+
+exit(header("location:index.php"));
+
 }
 ?>
 
@@ -43,7 +48,7 @@ if (!empty($_SESSION['admin'])) {
         </div>
       </div>
     </div>
-    
+
     <footer class="sticky-footer">
       <small>&copy; 2017 American Postal Workers Union</a></small>
       <div class="social-box">
@@ -61,7 +66,7 @@ if (!empty($_SESSION['admin'])) {
         </a>
       </div>
     </footer>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../js/script.js"></script>
   </body>

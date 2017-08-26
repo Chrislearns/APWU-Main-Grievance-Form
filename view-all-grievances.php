@@ -12,11 +12,11 @@ function destroySession(){
   if($ip != $_SERVER['REMOTE_ADDR']){
     destroySession();
     $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
-    header("location:newLogInPage.php");
+    exit(header("location:newLogInPage.php"));
 }
   if(empty($_SESSION['name']) || empty($_SESSION["loggedIn"])){
     $_SESSION['error'] = "<h4>Please Log-in</h4>";
-    header("location:newLogInPage.php");
+    exit(header("location:newLogInPage.php"));
   }
 require_once("connection.php");
 /*

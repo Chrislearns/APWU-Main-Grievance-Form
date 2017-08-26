@@ -1,12 +1,17 @@
-<?php 
+<?php
 require_once('../connection.php');
 session_start();
-// Check if session is established 
-if ($_SESSION['admin']) {
-  $id = $_SESSION['id']; // id of user
-  $name = $_SESSION['name'];
-} else {
-  header('Location: ../index.php');
+// Check if session is established
+$admin = $_SESSION("admin");
+
+if (isset($_SESSION["loggedIn"])) {
+  if($admin === 1) {
+   exit(header("location:admin/index.php"));
+
+}
+
+exit(header("location:../index.php"));
+
 }
 $perPage = 5; // number of results per page
 if (isset($_GET['page']) && !empty($_GET['page'])){
@@ -87,11 +92,11 @@ function formatDate($date) {
                   <form method="post" action="?page=<?php echo $currentPage; ?>&gId=<?php echo $row->id; ?>" class="blah" name="view-grievance<?php echo $row->id; ?>">
                     <i class="fa fa-eye fa-2x fa-panel view-comments" aria-hidden="true" data-id="<?php echo $row->id; ?>"  onclick="document.forms['view-grievance<?php echo $row->id; ?>'].submit();"></i>
                   </form>
-                
+
                 </td>
                 <td><?php echo formatDate($row->date_filed); ?></td>
                 <td><?php echo formatDate($row->date); ?></td>
-                <td><?php echo $row->supervisor_name; ?></td> 
+                <td><?php echo $row->supervisor_name; ?></td>
                 <td>
                   <form method="post" action="save-status-changes.php?id=<?php echo $row->id; ?>" class="blah" name="save-status-changes<?php echo $row->id; ?>">
                     <i class="fa fa-floppy-o fa-2x fa-panel view-comments" aria-hidden="true"  onclick="document.forms['save-status-changes<?php echo $row->id; ?>'].submit();"></i>
@@ -103,11 +108,11 @@ function formatDate($date) {
                 </td>
                 <td>
                   <i class="fa fa-plus-square-o fa-2x fa-panel postButton" aria-hidden="true" id="add-comment" data-key="<?php echo $row->id; ?>" onclick="getIdCreateComment(this)"></i>&nbsp;
-                  
+
                   <form method="post" action="?page=<?php echo $currentPage; ?>&id=<?php echo $row->id; ?>" class="blah" name="view-all-comments<?php echo $row->id; ?>">
                     <i class="fa fa-comment-o fa-2x fa-panel view-comments" aria-hidden="true" data-id="<?php echo $row->id; ?>"  onclick="document.forms['view-all-comments<?php echo $row->id; ?>'].submit();"></i>
                     <input type="hidden" name="get-apwu-id" value="<?php echo $row->id; ?>">
-                    
+
                   </form>
                 </td>
               </tr>
@@ -115,11 +120,11 @@ function formatDate($date) {
                 endwhile;
               ?>
             </tbody>
-            
+
           </table>
           <span class="pagination">
           <?php
-            for ($i = $startPage; $i <= $endPage; $i++) { 
+            for ($i = $startPage; $i <= $endPage; $i++) {
               if ($_GET['page'] == $i) {
                 echo "[<a href='?page={$i}'>" . $i . "</a>] ";
               } else if (empty($_GET['page']) && $i == 1) {
@@ -151,22 +156,22 @@ function formatDate($date) {
         </a>
       </div>
     </footer>
-    
+
     <div class="overlay"></div>
-    
+
 <!--START OF COMMENT SUBMISSION FORM-->
     <div class="comment-form">
       <!--START OF FORM - tabbed left for spacing-->
       <form id="sign-up-form" method="post" action="all-grievances.php">
         <h3 class="center-text">Add Comment</h3><br>
-        <div class="row"> <!--FORM ROW--> 
+        <div class="row"> <!--FORM ROW-->
           <div class="twelve columns">
             <label for="topic">Topic</label>
             <input class="u-full-width" id="topic-name" type="text" name="topic">
           </div>
           <div class="error" id = "full-name-error">Full Name Required</div>
         </div> <!--END ROW-->
-        <div class="row"> <!--FORM ROW--> 
+        <div class="row"> <!--FORM ROW-->
           <div class="twelve columns">
             <label for="comment">Comment</label>
             <textarea class="u-full-width" placeholder="Comment here..." id="comment" name="comment"></textarea>
@@ -178,7 +183,7 @@ function formatDate($date) {
       <!--END OF FORM - tabbed left for spacing-->
     </div>
 <!--END OF COMMENT SUBMISSION FORM-->
-     
+
 <!--START OF VIEW COMMENTS-->
     <div class="view-related-comments">
       <?php $id = $_GET['id']; ?>
@@ -192,7 +197,7 @@ function formatDate($date) {
               <th>Message</th>
             </tr>
           </thead>
-          <?php 
+          <?php
             if (isset($_GET['id'])) {
               $id = $_GET['id'];
           ?>
@@ -203,9 +208,9 @@ function formatDate($date) {
               <td><?php echo $row->comment; ?></td>
             </tr>
             <?php endwhile; ?>
-            
+
             <script>
-            // NEED TO CHECK AND see if there is any comments first. 
+            // NEED TO CHECK AND see if there is any comments first.
               // waiting for the page to load
               document.addEventListener("DOMContentLoaded", function() {
                 viewComments();
@@ -226,7 +231,7 @@ function formatDate($date) {
       <?php $query = $handler->query("SELECT * FROM filed_grievances Where id = '$gId'"); ?>
       <div>
         <h3 class="center-text">Grievance</h3><br>
-          <?php 
+          <?php
             if (isset($_GET['gId'])) {
               $id = $_GET['gId'];
           ?>
@@ -244,10 +249,10 @@ function formatDate($date) {
               <li><strong>Received help:</strong> <?php echo $row->time_help_received; ?></li>
               <li><strong>Received assistance for:</strong> <?php echo $row->time_help_swept_machine; ?></li>
               <li><strong>Total time worked alone:</strong> <?php echo $row->time_worked_alone; ?></li>
-            
+
             </ul>
             <script>
-            // NEED TO CHECK AND see if there is any comments first. 
+            // NEED TO CHECK AND see if there is any comments first.
               // waiting for the page to load
               document.addEventListener("DOMContentLoaded", function() {
                 viewGrievance();
@@ -259,7 +264,7 @@ function formatDate($date) {
     </div>
 <!--END OF VIEW GRIEVANCE-->
 
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../js/script.js"></script>
     <script>
@@ -273,6 +278,6 @@ function formatDate($date) {
         createComment();
       }
     </script>
-    
+
   </body>
 </html>

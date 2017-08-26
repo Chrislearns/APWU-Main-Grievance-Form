@@ -1,29 +1,29 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-  session_start();
+session_start();
 }
 
 function destroySession() {
   session_unset();
   session_destroy();
 }
+$admin = $_SESSION("admin");
 
 if (isset($_SESSION["loggedIn"])) {
-  if($_SESSION("admin") === 0) {
-      header("location:admin/index.php");
-      $handler = null;
-      exit;
+  if($admin === 1) {
+   exit(header("location:admin/index.php"));
+
 }
 
-header("location:index.php");
-    exit;
+exit(header("location:index.php"));
+
 }
 
 if (isset($_SESSION['ip'])) {
 if ($_SESSION['ip'] !== $_SERVER['REMOTE_ADDR']){
     destroySession();
     $_SESSION['error'] = "<h6>Technical error! Please Log in again.</h6>";
-    header("location:newLogInPage.php");
+    exit(header("location:newLogInPage.php"));
 }
 
 }
