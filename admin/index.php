@@ -2,7 +2,7 @@
 // UI - Administrative Panel for all users
 // If super admin, show an extra button for viewing/editing all grievances
 session_start();
-$admin = $_SESSION("admin");
+$admin = $_SESSION["admin"];
 
 if (isset($_SESSION["loggedIn"])) {
   if($admin === 1) {

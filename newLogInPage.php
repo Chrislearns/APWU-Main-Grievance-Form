@@ -7,7 +7,7 @@ function destroySession() {
   session_unset();
   session_destroy();
 }
-$admin = $_SESSION("admin");
+$admin = $_SESSION["admin"];
 
 if (isset($_SESSION["loggedIn"])) {
   if($admin === 1) {

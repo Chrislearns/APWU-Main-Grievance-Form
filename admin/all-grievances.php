@@ -2,7 +2,7 @@
 require_once('../connection.php');
 session_start();
 // Check if session is established
-$admin = $_SESSION("admin");
+$admin = $_SESSION["admin"];
 
 if (isset($_SESSION["loggedIn"])) {
   if($admin === 1) {
