@@ -205,7 +205,7 @@ th {
 #save-status {
   width: 75px !important;
 }
-@media (max-width: 420px) {
+@media (max-width: 560px) {
 .sticky-footer {
   display: block;
   width: 100%;

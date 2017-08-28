@@ -17,7 +17,7 @@
   footer small {
     margin-left: 50px;
   }
-  @media (max-width: 420px) {
+  @media (max-width: 560px) {
   .sticky-footer {
     display: block;
     width: 100%;
