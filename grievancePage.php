@@ -137,7 +137,7 @@ if(empty($_SESSION['name']) || $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'] || emp
             <input id="submit" type="submit" value="Submit Grievance">
 
         </form>
-
+</div>
 <footer class="sticky-footer">
   <p><small>&copy; 2017 American Postal Workers Union</a></small></p></footer>
 
