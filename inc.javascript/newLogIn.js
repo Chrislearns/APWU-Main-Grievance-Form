@@ -1,25 +1,27 @@
-/*if (email_RegEx.test($('#email-address1').val())){
-  $('#email1-error').html("<div class = error>Invalid Email Format</div>");
-  fieldErrs = true;
-}*/
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function(event) { 
+
   //Client side validation Checking fields with regex;
-  let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  let lettersOnly = /^[A-Za-z]+$/;
-  let dateValid = /^(0[1-9]|1[012])[\-\/](0[1-9]|[12][0-9]|3[01])[\-\/](19|20)\d\d$/;
-  let numbersOnly = /^[0-9]+$/;
-  let phoneValid = /^\d{10}$/;
-  let lettersNumber = /^[0-9a-zA-Z]+$/;
-  let password = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+  
+  const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const lettersOnly = /^[A-Za-z]+$/;
+  const dateValid = /^(0[1-9]|1[012])[\-\/](0[1-9]|[12][0-9]|3[01])[\-\/](19|20)\d\d$/;
+  const numbersOnly = /^[0-9]+$/;
+  const phoneValid = /^\d{10}$/;
+  const lettersNumber = /^[0-9a-zA-Z]+$/;
+  const password = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
-  $("#full-name").focusout(function(){
-    if($("#full-name").val() === ""){
-      $("#full-name-error").toggle("slow");
+  //Client side validation for text and input fields
 
-    }else if($("#full-name").val() != "") {
-        $("#full-name-error").hide();
-    }
+  const FULLNAME = document.getElementById("full-name");
+  const FULLNAMEERROR = document.getElementById("full-name-error");
+  
+  FULLNAME.addEventListener('focusout', (event) => {
+
+    return FULLNAME.value === "" ? FULLNAMEERROR.toggle("slow") : FULLNAMEERROR.style.display("none");
+
   })
+
+  
 
   $("#drop-down-menu").focusout(function(){
     if ($('#drop-down-menu').val() ==='none'){
