@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
   FULL_NAME.addEventListener('focusout', (event) => {
 
-     FULLNAME.value === "" ? FULL_NAME_ERROR.toggle("slow") : FULL_NAME_ERROR.style.display("none");
+     FULL_NAME.value === "" ? FULL_NAME_ERROR.style.display = "block" : FULL_NAME_ERROR.style.display = "block";
 
   })
 
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   DROP_DOWN_MENU.addEventListener("focusout", (event) => {
 
-     DROP_DOWN_MENU.value === 'none' ? DROP_DOWN_MENU_ERROR.toggle("slow") : DROP_DOWN_MENU_ERROR.style.display("none");
+     DROP_DOWN_MENU.value === 'none' ? DROP_DOWN_MENU_ERROR.style.display = "block" : DROP_DOWN_MENU_ERROR.style.display = block;
 
   })
 
