@@ -12,23 +12,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   //Client side validation for text and input fields
 
-  const FULLNAME = document.getElementById("full-name");
-  const FULLNAMEERROR = document.getElementById("full-name-error");
-  
-  FULLNAME.addEventListener('focusout', (event) => {
+  //Full Name input validation
 
-    return FULLNAME.value === "" ? FULLNAMEERROR.toggle("slow") : FULLNAMEERROR.style.display("none");
+  const FULL_NAME = document.getElementById("full-name");
+  const FULL_NAME_ERROR = document.getElementById("full-name-error");
+  
+  FULL_NAME.addEventListener('focusout', (event) => {
+
+     FULLNAME.value === "" ? FULL_NAME_ERROR.toggle("slow") : FULL_NAME_ERROR.style.display("none");
 
   })
 
-  
+  //Drop down menu input validation
 
-  $("#drop-down-menu").focusout(function(){
-    if ($('#drop-down-menu').val() ==='none'){
-          $('#drop-down-menu-error').show("slow");
+  const DROP_DOWN_MENU = document.getElementById("drop-down-menu");
+  const DROP_DOWN_MENU_ERROR = document.getElementById("drop-down-menu-error");
 
-    }
+  DROP_DOWN_MENU.addEventListener("focusout", (event) => {
+
+     DROP_DOWN_MENU.value === 'none' ? DROP_DOWN_MENU_ERROR.toggle("slow") : DROP_DOWN_MENU_ERROR.style.display("none");
+
   })
+
   $("#address").focusout(function(){
     if ($('#address').val() === "") {
         $('#address-error').show("slow");
