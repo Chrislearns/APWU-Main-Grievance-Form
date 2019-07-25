@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   //Client side validation Checking fields with regex;
   
-  const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const lettersOnly = /^[A-Za-z]+$/;
-  const dateValid = /^(0[1-9]|1[012])[\-\/](0[1-9]|[12][0-9]|3[01])[\-\/](19|20)\d\d$/;
-  const numbersOnly = /^[0-9]+$/;
-  const phoneValid = /^\d{10}$/;
-  const lettersNumber = /^[0-9a-zA-Z]+$/;
-  const password = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+  const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const LETTERS_ONLY = /^[A-Za-z]+$/;
+  const DATE_VALIDATION = /^(0[1-9]|1[012])[\-\/](0[1-9]|[12][0-9]|3[01])[\-\/](19|20)\d\d$/;
+  const NUMBERS_ONLY = /^[0-9]+$/;
+  const PHONE_VALIDATION = /^\d{10}$/;
+  const LETTERS_NUMBERS = /^[0-9a-zA-Z]+$/;
+  const PASSWORD_VALIDATION = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
   //Client side validation for text and input fields
 
@@ -52,18 +52,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   VETERAN_DDM.addEventListener("focusout", (event) => {
 
-    VETERAN_DDM.value = "none" ? VETERAN_STATUS_ERROR.style.display = "block" : VETERAN_STATUS_ERROR.style.display = "none";
+    VETERAN_DDM.value === "none" ? VETERAN_STATUS_ERROR.style.display = "block" : VETERAN_STATUS_ERROR.style.display = "none";
 
   })
 
-  $('#city').focusout(function(){
+  //City field RegEx validation
 
-        if (!lettersOnly.test($('#city').val())) {
-        $('#city-regex').show("slow");
+  const CITY = document.getElementById("city");
+  const CITY_REGEX = document.getElementById("city-regex");
+  
+  CITY.addEventListener("focusout", (event) => {
 
-    }
+    LETTERS_ONLY.test(CITY.value) !== true ? CITY_REGEX.style.display = "block" : CITY_REGEX.style.display = "none";
 
   })
+
+
   $('#state').focusout(function(){
         if (!lettersOnly.test($('#state').val())) {
         $('#state-regex').show("slow");
