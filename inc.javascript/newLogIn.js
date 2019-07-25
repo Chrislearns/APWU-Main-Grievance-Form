@@ -91,13 +91,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   })
 
+  //Phone number RegEx validation
 
-  $("#phone-number").focusout(function(){
-    if ($("#phone-number").val() === "") {
-      $("#phoneNumber-error").show("slow");
+  const PHONE_NUMBER = document.getElementById("phone-number");
+  const PHONE_NUMBER_ERROR = document.getElementById("phoneNumber-error");
+  const PHONE_NUMBER_REGEX = document.getElementById("phoneNumber-regex");
 
-    }
+  PHONE_NUMBER.addEventListener("focusout", () => {
+
+    PHONE_NUMBER.value === "" ? PHONE_NUMBER_ERROR.style.display = "block" : PHONE_NUMBER_ERROR.style.display = "none";
+    PHONE_VALIDATION.test(PHONE_NUMBER.value) !== true && PHONE_NUMBER.value !== "" ? PHONE_NUMBER_REGEX.style.display = "block" : PHONE_NUMBER_REGEX.style.display = "none";
+
   })
+
+  //Seniority Date validation
+
+  const SENIORITY_DATE = document.getElementById("seniorityDate");
+  const SENIORITY_DATE_ERROR = document.getElementById("seniorityDate-error");
+  const SENIORITY_DATE_REGEX = document.getElementById("seniorityDate-regex");
+  
   $("#seniorityDate").focusout(function(){
     if (!$("#seniorityDate").val()) {
       $("#seniorityDate-error").show("slow");
