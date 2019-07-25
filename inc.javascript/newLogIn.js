@@ -74,16 +74,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   STATE.addEventListener("focusout", () => {
 
-    LETTERS_ONLY.test(STATE) !== true ? STATE_REGEX.style.display = "block" : STATE_REGEX.style.display = "none";
+    LETTERS_ONLY.test(STATE.value) !== true ? STATE_REGEX.style.display = "block" : STATE_REGEX.style.display = "none";
 
   })
 
-  
-  $("#zipCode").focusout(function(){
-    if ($("#zipCode").val() === "") {
-       $("#zipCode-error").show("slow");
-    }
+  //Zip code RegEx validation
+
+  const ZIP_CODE = document.getElementById("zipCode");
+  const ZIP_CODE_ERROR = document.getElementById("zipCode-error");
+  const ZIP_CODE_REGEX = document.getElementById("zipCode-regex");
+
+  ZIP_CODE.addEventListener("focusout", () => {
+
+    ZIP_CODE.value === "" ? ZIP_CODE_ERROR.style.display = "block" : ZIP_CODE_ERROR.style.display = "none";
+    NUMBERS_ONLY.test(ZIP_CODE.value) !== true && ZIP_CODE.value !== "" ? ZIP_CODE_REGEX.style.display = "block" : ZIP_CODE_REGEX.style.display = "none";
+
   })
+
+
   $("#phone-number").focusout(function(){
     if ($("#phone-number").val() === "") {
       $("#phoneNumber-error").show("slow");
