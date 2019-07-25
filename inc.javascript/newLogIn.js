@@ -67,14 +67,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   })
 
+  //State RegEx validation
 
-  $('#state').focusout(function(){
-        if (!lettersOnly.test($('#state').val())) {
-        $('#state-regex').show("slow");
+  const STATE = document.getElementById("state");
+  const STATE_REGEX = document.getElementById("state-regex");
 
-    }
+  STATE.addEventListener("focusout", () => {
+
+    LETTERS_ONLY.test(STATE) !== true ? STATE_REGEX.style.display = "block" : STATE_REGEX.style.display = "none";
 
   })
+
+  
   $("#zipCode").focusout(function(){
     if ($("#zipCode").val() === "") {
        $("#zipCode-error").show("slow");
