@@ -48,15 +48,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   //Veteran drop down menu validation
 
   const VETERAN_DDM = document.getElementById("veteran_ddm");
-  const 
+  const VETERAN_STATUS_ERROR = document.getElementById("veteranStatus-error");
 
-  $("#veteran_ddm").focusout(function(){
+  VETERAN_DDM.addEventListener("focusout", (event) => {
 
-          if ($('#veteran_ddm').val() ==='none'){
-          $('#layOffProtected-error').show("slow");
+    VETERAN_DDM.value = "none" ? VETERAN_STATUS_ERROR.style.display = "block" : VETERAN_STATUS_ERROR.style.display = "none";
 
-    }
-        })
+  })
 
   $('#city').focusout(function(){
 
