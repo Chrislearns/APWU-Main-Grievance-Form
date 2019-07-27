@@ -110,12 +110,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const SENIORITY_DATE_ERROR = document.getElementById("seniorityDate-error");
   const SENIORITY_DATE_REGEX = document.getElementById("seniorityDate-regex");
   
-  $("#seniorityDate").focusout(function(){
-    if (!$("#seniorityDate").val()) {
-      $("#seniorityDate-error").show("slow");
+  SENIORITY_DATE.addEventListener("focusout", () => {
 
-    }
-  })
+    !SENIORITY_DATE.value ? SENIORITY_DATE_ERROR.style.display = "block" : SENIORITY_DATE_ERROR.style.display = "none";
+    DATE_VALIDATION.test(SENIORITY_DATE.value) === false  ? SENIORITY_DATE_REGEX.style.display = "block" : SENIORITY_DATE_REGEX.style.display = "none";
+    })
+
+    
   $('#eid').focusout(function(){
         if (!numbersOnly.test($('#eid').val())) {
         $('#eid-error').show("slow");
