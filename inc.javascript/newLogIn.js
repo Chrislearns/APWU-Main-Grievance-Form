@@ -172,7 +172,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     })
 
-
+    //Checkbox validation 
+    const DAYS_OFF_CHECKBOX = document.getElementById("days-off-checkbox");
   if(!$("input[type='checkbox']").is(":checked")){
 
           $('#daysOff-error').show("slow");

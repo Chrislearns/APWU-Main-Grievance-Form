@@ -258,31 +258,31 @@ $shift = $_SESSION['tour_message'];
     ?>
     <div class="input-spacing">
       <h3> Days Off(check all applicable boxes):</h3><br>
-    <input type="checkbox" name="daysOff[]" value="Saturday"
+    <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Saturday"
     <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Saturday" || $_SESSION["daysOff1"] === "Saturday") {
 echo " checked";
 } ?> >Saturday
-    <input type="checkbox" name="daysOff[]" value="Sunday"
+    <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Sunday"
     <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Sunday" || $_SESSION["daysOff1"] === "Sunday") {
 echo " checked";
 } ?> >Sunday
-    <input type="checkbox" name="daysOff[]" value="Monday"
+    <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Monday"
     <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Monday" || $_SESSION["daysOff1"] === "Monday") {
 echo " checked";
 } ?> >Monday
-    <input type="checkbox" name="daysOff[]" value="Tuesday"
+    <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Tuesday"
     <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Tuesday" || $_SESSION["daysOff1"] === "Tuesday") {
 echo " checked";
 } ?> >Tuesday
-    <input type="checkbox" name="daysOff[]" value="Wednesday"
+    <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Wednesday"
     <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Wednesday" || $_SESSION["daysOff1"] === "Wednesday") {
 echo " checked";
 } ?> >Wednesday
-    <input type="checkbox" name="daysOff[]" value="Thursday"
+    <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Thursday"
     <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Thursday" || $_SESSION["daysOff1"] === "Thursday") {
 echo " checked";
 } ?> >Thursday
-    <input type="checkbox" name="daysOff[]" value="Friday"
+    <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Friday"
     <?php if(isset($_SESSION["daysOff0"]) || isset($_SESSION["daysOff1"]) && $_SESSION["daysOff0"] === "Friday" || $_SESSION["daysOff1"] === "Friday") {
 echo " checked";
 } ?> >Friday
