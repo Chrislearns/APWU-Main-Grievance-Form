@@ -131,21 +131,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     })
 
+    //Pay level validation
 
-  $('#payLevel').focusout(function(){
-        if (!lettersNumber.test($('#payLevel').val())) {
-        $('#payLevel-regex').show("slow");
+    const PAY_LEVEL = document.getElementById("payLevel");
+    const PAY_LEVEL_ERROR = document.getElementById("payLevel-error");
+    const PAY_LEVEL_REGEX = document.getElementById("payLevel-regex");
 
-    }
+    PAY_LEVEL.addEventListener("focusout", () => {
 
-  })
-  $('#payStep').focusout(function(){
-        if (!lettersNumber.test($('#payStep').val())) {
-        $('#payStep-regex').show("slow");
+      PAY_LEVEL.value === "" ? PAY_LEVEL_ERROR.style.display = "block" : PAY_LEVEL_ERROR.style.display = "none";
 
-    }
+      //Here I need to add a call to a Pay Level RegEx validator and reference the RegEx error message
 
-  })
+    })
+
+    //Pay Step validation
+  
+    const PAY_STEP = document.getElementById("payStep");
+    const PAY_STEP_ERROR = document.getElementById("payStep-error");
+    const PAY_STEP_REGEX = document.getElementById("payStep-regex");
+
+    PAY_STEP.addEventListener("focusout", () => {
+
+      PAY_STEP.value === "" ? PAY_STEP_ERROR.style.display = "block" : PAY_STEP_ERROR.style.display = "none";
+
+      LETTERS_NUMBERS.test(PAY_STEP.value) === false ? PAY_STEP_REGEX.style.display = "block" : PAY_STEP_REGEX.style.display = "none";
+
+    })
+ 
+  
   $('#tour').focusout(function(){
         if (!(/[123]/).test($('#tour').val())) {
         $('#tour-regex').show("slow");
@@ -214,6 +228,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
 })
    
+})
 
 $(".create-account").on("click", function () {
  $(".overlay").fadeIn("slow");
@@ -233,4 +248,4 @@ $( '.overlay').on('click', function(event) {
  });
 });
 
-});
+
