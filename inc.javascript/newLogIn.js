@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function() { 
 
   //Client side validation Checking fields with regex;
   
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const FULL_NAME = document.getElementById("full-name");
   const FULL_NAME_ERROR = document.getElementById("full-name-error");
   
-  FULL_NAME.addEventListener('focusout', (event) => {
+  FULL_NAME.addEventListener('focusout', () => {
 
      FULL_NAME.value === "" ? FULL_NAME_ERROR.style.display = "block" : FULL_NAME_ERROR.style.display = "block";
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const DROP_DOWN_MENU = document.getElementById("drop-down-menu");
   const DROP_DOWN_MENU_ERROR = document.getElementById("drop-down-menu-error");
 
-  DROP_DOWN_MENU.addEventListener("focusout", (event) => {
+  DROP_DOWN_MENU.addEventListener("focusout", () => {
 
      DROP_DOWN_MENU.value === 'none' ? DROP_DOWN_MENU_ERROR.style.display = "block" : DROP_DOWN_MENU_ERROR.style.display = block;
 
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const ADDRESS = document.getElementById("address");
   const ADDRESS_ERROR = document.getElementById("address-error");
 
-  ADDRESS.addEventListener("focusout", (event) => {
+  ADDRESS.addEventListener("focusout", () => {
 
     ADDRESS.value === "" ? ADDRESS_ERROR.style.display = "block" : ADDRESS_ERROR.style.display = "none";
 
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const VETERAN_DDM = document.getElementById("veteran_ddm");
   const VETERAN_STATUS_ERROR = document.getElementById("veteranStatus-error");
 
-  VETERAN_DDM.addEventListener("focusout", (event) => {
+  VETERAN_DDM.addEventListener("focusout", () => {
 
     VETERAN_DDM.value === "none" ? VETERAN_STATUS_ERROR.style.display = "block" : VETERAN_STATUS_ERROR.style.display = "none";
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const CITY = document.getElementById("city");
   const CITY_REGEX = document.getElementById("city-regex");
   
-  CITY.addEventListener("focusout", (event) => {
+  CITY.addEventListener("focusout", () => {
 
     LETTERS_ONLY.test(CITY.value) !== true ? CITY_REGEX.style.display = "block" : CITY_REGEX.style.display = "none";
 
@@ -159,14 +159,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     })
  
-  
-  $('#tour').focusout(function(){
-        if (!(/[123]/).test($('#tour').val())) {
-        $('#tour-regex').show("slow");
+    //Tour/Shift validation
+    const TOUR = document.getElementById("tour");
+    const TOUR_ERROR = document.getElementById("tour-error");
+    const TOUR_REGEX = document.getElementById("tour-regex");
 
-    }
+    TOUR.addEventListener("focusout", () => {
 
-  })
+      TOUR.value === "" ? TOUR_ERROR.style.display = "block" : TOUR_ERROR.style.display = "none";
+
+      (/[123]/).test(TOUR.value) === false ? TOUR_REGEX.style.display = "block" : TOUR_REGEX.style.display = "none";
+
+    })
+
+
   if(!$("input[type='checkbox']").is(":checked")){
 
           $('#daysOff-error').show("slow");
@@ -240,7 +246,7 @@ $(".create-account").on("click", function () {
 });
 
 
-$( '.overlay').on('click', function(event) {
+$( '.overlay').on('click', function() {
  $(".overlay, .registration-form").fadeOut("slow");
  $('html, body').css({
    overflow: 'auto',
