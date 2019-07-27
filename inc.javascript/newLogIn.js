@@ -116,14 +116,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     DATE_VALIDATION.test(SENIORITY_DATE.value) === false  ? SENIORITY_DATE_REGEX.style.display = "block" : SENIORITY_DATE_REGEX.style.display = "none";
     })
 
-    
-  $('#eid').focusout(function(){
-        if (!numbersOnly.test($('#eid').val())) {
-        $('#eid-error').show("slow");
+    //Employee ID number Validation
 
-    }
+    const EMPLOYEE_ID = document.getElementById("eid");
+    const EMPLOYEE_ID_ERROR = document.getElementById("eid-error");
 
-  })
+    EMPLOYEE_ID.addEventListener("focusout", () => {
+
+      EMPLOYEE_ID.value === "" ? EMPLOYEE_ID_ERROR.style.display = "block" : EMPLOYEE_ID_ERROR.style.display = "none";
+
+      // This fields error message will be updated to a Reg Ex error message
+      // Also will be adding a EID RegEx validation
+      // NUMBERS_ONLY.test(EMPLOYEE_ID.value) == false ? EMPLOYEE_ID_ERROR.style.display = "block" : EMPLOYEE_ID_ERROR.style.display = "none";
+
+    })
+
 
   $('#payLevel').focusout(function(){
         if (!lettersNumber.test($('#payLevel').val())) {
