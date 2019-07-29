@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // This fields error message will be updated to a Reg Ex error message
       // Also will be adding a EID RegEx validation
+
       // NUMBERS_ONLY.test(EMPLOYEE_ID.value) == false ? EMPLOYEE_ID_ERROR.style.display = "block" : EMPLOYEE_ID_ERROR.style.display = "none";
 
     })
@@ -170,30 +171,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
       (/[123]/).test(TOUR.value) === false ? TOUR_REGEX.style.display = "block" : TOUR_REGEX.style.display = "none";
 
-    })
+  })
 
     //Checkbox validation 
-    const DAYS_OFF_CHECKBOX = document.getElementById("days-off-checkbox");
-  if(!$("input[type='checkbox']").is(":checked")){
+    const DAYS_OFF_ERROR = document.getElementById("daysOff-error");
+    const DAYS_OFF_ARRAY = document.getElementsByName("daysOff[]");
+    
 
-          $('#daysOff-error').show("slow");
+    
 
-    }
+    //To see if each checkbox is has a check
 
-  $('#veteran_ddm').focusout(function(){
-        if ($('#veteran_ddm').val() === "none") {
-        $('#veteranStatus-error').show("slow");
+    DAYS_OFF_ARRAY.forEach((checkbox) => {
 
-    }
+      checkbox.addEventListener("focusout", () => {
 
-  })
-  $("#layOff_ddm").focusout(function(){
-        if ($("#layOff_ddm").val() === "none") {
-        $("#layOffProtected-error").show("slow");
+        checkbox.checked === false ? DAYS_OFF_ERROR.style.display = "block" : DAYS_OFF_ERROR.style.display = "none";
 
-    }
+      })
+    })
 
-  })
+    //Lay Off protection drop down menu validation
+    const LAY_OFF_PROTECTED = document.getElementById("lay-off-protected-drop-down-menu");
+    const LAY_OFF_PROTECTED_ERROR = document.getElementById("lay-off-protected-error");
+
+    LAY_OFF_PROTECTED.addEventListener("focusout", () => {
+
+      LAY_OFF_PROTECTED.value === "none" ? LAY_OFF_PROTECTED_ERROR.style.display = "block" : LAY_OFF_PROTECTED_ERROR.style.display = "none";
+
+    })
 
   $("#email-address1").focusout(function(){
 

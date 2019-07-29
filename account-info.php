@@ -166,25 +166,25 @@ $name = $row2->full_name;
           <div class="row"> <!--FORM ROW-->
             <div class="u-full-width">
               <h3> Days Off(check all applicable boxes):</h3><br>
-            <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Saturday"
+            <input type="checkbox"  name="daysOff[]" value="Saturday"
             <?php if($first_day_off === "Saturday" || $second_day_off === "Saturday")
              { echo " checked";} ?>> Saturday
-            <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Sunday"
+            <input type="checkbox"  name="daysOff[]" value="Sunday"
             <?php if($first_day_off === "Sunday" || $second_day_off === "Saturday")
              { echo " checked";} ?>> Sunday
-            <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Monday"
+            <input type="checkbox"  name="daysOff[]" value="Monday"
             <?php if($first_day_off === "Monday" || $second_day_off === "Monday")
              { echo " checked";} ?> > Monday
-            <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Tuesday"
+            <input type="checkbox"  name="daysOff[]" value="Tuesday"
             <?php if($first_day_off === "Tuesday" || $second_day_off === "Tuesday")
              { echo " checked";} ?> > Tuesday
-            <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Wednesday"
+            <input type="checkbox"  name="daysOff[]" value="Wednesday"
             <?php if($first_day_off === "Wednesday" || $second_day_off === "Wednesday")
              { echo " checked";} ?> > Wednesday
-            <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Thursday"
+            <input type="checkbox"  name="daysOff[]" value="Thursday"
             <?php if($first_day_off === "Thursday" || $second_day_off === "Thursday")
              { echo " checked";} ?> > Thursday
-            <input type="checkbox"  id = "days-off-checkbox"name="daysOff[]" value="Friday"
+            <input type="checkbox"  name="daysOff[]" value="Friday"
             <?php if($first_day_off === "Friday" || $second_day_off === "Friday")
              { echo " checked";} ?> > Friday
             </div>
@@ -202,7 +202,7 @@ $name = $row2->full_name;
                 <option <?php echo ((isset($layoff_protected) && $layoff_protected === 'YES') ? "value='YES' selected" : "value='YES'"); ?>>Yes</option>
                 <option <?php echo ((isset($layoff_protected) && $layoff_protected === 'NO') ? "value='NO' selected" : "value='NO'"); ?>>No</option>
               </select>
-              <div class="error" id ="layOffProtected-error">Lay-off Protected field required</div>
+              <div class="error" id ="lay-off-protected-error">Lay-off Protected field required</div>
             </div>
           </div> <!--END ROW-->
 

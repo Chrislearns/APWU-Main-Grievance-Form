@@ -75,7 +75,7 @@ $(document).ready(function () {
           errors = true;
         }
         if ($(".layOffProtected").val() === "none") {
-          $("#layOffProtected-error").show("slow");
+          $("#lay-off-protected-error").show("slow");
           errors = true;
             }
         if ($('#email-address1').val()==="") {
