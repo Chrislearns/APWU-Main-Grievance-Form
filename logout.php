@@ -73,8 +73,8 @@ setcookie(session_name(),'',0,'/');
       <div class="row"> <!--FORM ROW-->
         <div class="six columns">
           <label for="email">Email</label>
-          <input id="email-address1" type="email" name="email1" class="u-full-width" maxlength="120">
-          <div class="error" id = "email1-error">Please enter a email address.</div>
+          <input id="email-address-field-one" type="email" name="email1" class="u-full-width" maxlength="120">
+          <div class="error" id = "email-field-one-error">Please enter a email address.</div>
         </div>
         <div class="six columns">
           <label for="email-confirm">Reenter Email</label>

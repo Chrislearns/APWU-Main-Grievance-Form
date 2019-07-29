@@ -78,12 +78,12 @@ $(document).ready(function () {
           $("#lay-off-protected-error").show("slow");
           errors = true;
             }
-        if ($('#email-address1').val()==="") {
-            $('#email1-error').show("slow");
+        if ($('#email-address-field-one').val()==="") {
+            $('#email-field-one-error').show("slow");
                 errors = true;
                 }
 
-        if ( $('#email-address1').val() !== $('#email-address2').val()) {
+        if ( $('#email-address-field-one').val() !== $('#email-address2').val()) {
               $('#email2-error').show("slow");
                 errors = true;
                 }

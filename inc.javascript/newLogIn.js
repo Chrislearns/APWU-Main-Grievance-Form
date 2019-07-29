@@ -201,21 +201,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     })
 
-  $("#email-address1").focusout(function(){
+    //Email Address Validation
+    const EMAIL_ADDRESS_FIELD_ONE = document.getElementById("email-address-field-one");
+    const EMAIL_ADDRESS_ERROR = document.getElementById("email-field-one-error");
+    const EMAIL_REGEX_VALIDATION = document.getElementById("email-field-one-regex");
 
-        if (!emailRegEx.test($("#email-address1").val())) {
-        $("#email1-regex").show("slow");
+    EMAIL_ADDRESS_FIELD_ONE.addEventListener("focusout", () => {
 
-    }
+      EMAIL_ADDRESS_FIELD_ONE.value === "" ? EMAIL_ADDRESS_ERROR.style.display = "block" : EMAIL_ADDRESS_ERROR.style.display = "none";
+      EMAIL_REGEX.test(EMAIL_ADDRESS_FIELD_ONE.value) === false ? EMAIL_REGEX_VALIDATION.style.display = "block" : EMAIL_REGEX_VALIDATION.style.display = "none";
 
+    })
 
-  })
   $("#email-address2").focusout(function(){
         if (!emailRegEx.test($("#email-address2").val())) {
         $("#email2-regex").show("slow");
 
 }
-        if ($("#email-address1").val() !== $("#email-address2")) {
+        if ($("#email-address-field-one").val() !== $("#email-address2")) {
         $("#email2-equal").show("slow");
 
     }

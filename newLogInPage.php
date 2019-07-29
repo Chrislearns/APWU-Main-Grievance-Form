@@ -324,10 +324,10 @@ $layOff = $_SESSION['layOff_message'];
     ?>
     <div class="input-spacing">
       <h3> Email Address:</h3>
-      <input id="email-address1" value="<?php if(isset($_SESSION["email1"])) {echo $e_a = $_SESSION["email1"];} ?>" type="email" name="email1" size="20" maxlength="120" required>
+      <input id="email-address-field-one" value="<?php if(isset($_SESSION["email1"])) {echo $e_a = $_SESSION["email1"];} ?>" type="email" name="email1" size="20" maxlength="120" required>
     </div>
-    <div class="error" id="email1-error">Please enter a email address.</div>
-    <div class="error" id="email1-regex">Please enter a  valid email address.</div>
+    <div class="error" id="email-field-one-error">Please enter a email address.</div>
+    <div class="error" id="email-field-one-regex">Please enter a  valid email address.</div>
     <?php if (isset($_SESSION['email_message'])) {
 $emailAdd = $_SESSION['email_message'];
       echo "<div class = php>$emailAdd</div>";
